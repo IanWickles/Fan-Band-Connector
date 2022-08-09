@@ -169,4 +169,25 @@ TABLESPACE pg_default;
 ALTER TABLE IF EXISTS public.show_band
     OWNER to postgres;
 
+DROP TABLE IF EXISTS public.user_messages;
+
+CREATE TABLE public.user_messages
+(
+    user_id integer NOT NULL,
+    message_id integer NOT NULL,
+    CONSTRAINT user_id FOREIGN KEY (user_id)
+        REFERENCES public.users (user_id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION,
+    CONSTRAINT message_id FOREIGN KEY (message_id)
+        REFERENCES public.messages (message_id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.band_genre
+    OWNER to postgres;
+
 COMMIT TRANSACTION;
