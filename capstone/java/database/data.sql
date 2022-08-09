@@ -26,6 +26,56 @@ INSERT INTO band (band_name, band_description, band_member, manager_id) VALUES (
 INSERT INTO band (band_name, band_description, band_member, manager_id) VALUES ('Groovesect', 'Groovesect was founded in 2006 by New Orleans musicians who had played together in various incarnations since they were eighteen, blending syncopated funk beats and jazz rhythms with rock and soul. Since "Uganda" joined the band in the spring of 2007, Groovesect has been voted the #1 Funk Band and #2 Contemporary Jazz Band in the 2007 Best of the Big Easy Awards.', 'Danny Abel, Nick Krawitz, Tim Sullivan, Eric Vogel, Colin Davis, Alfred "Uganda" Roberts, Justin Aliperti', (select user_id from users where email_address = 'J.Aliperti@gmail.com'));
 INSERT INTO band (band_name, band_description, band_member, manager_id) VALUES ('The Meters', 'The Meters are an American funk band formed in 1965 in New Orleans by Zigaboo Modeliste (drums), George Porter Jr. (bass), Leo Nocentelli (guitar) and Art Neville (keyboards). The band performed and recorded their own music from the late 1960s until 1977 and played an influential role as backing musicians for other artists.', 'George Porter Jr., Leo Nocentelli, Zigaboo Modeliste, Brian Stoltz, Terrence Houston', (select user_id from users where email_address = 'G.Porter@gmail.com'));
 
+INSERT INTO genre (genre_name) VALUES ('Jazz');
+INSERT INTO genre (genre_name) VALUES ('Folk');
+INSERT INTO genre (genre_name) VALUES ('Bluegrass');
+INSERT INTO genre (genre_name) VALUES ('Rock');
+INSERT INTO genre (genre_name) VALUES ('Country');
+INSERT INTO genre (genre_name) VALUES ('Americana');
+INSERT INTO genre (genre_name) VALUES ('Cajun');
+INSERT INTO genre (genre_name) VALUES ('Blues');
+INSERT INTO genre (genre_name) VALUES ('Gospel');
+INSERT INTO genre (genre_name) VALUES ('R&B');
+INSERT INTO genre (genre_name) VALUES ('Zydeco');
+INSERT INTO genre (genre_name) VALUES ('Funk');
+INSERT INTO genre (genre_name) VALUES ('Soul');
 
+INSERT INTO band_genre (band_id, genre_id) VALUES ((select band_id from band where band_name = 'Feufollet'), (select genre_id from genre where genre_name = 'Americana'));
+INSERT INTO band_genre (band_id, genre_id) VALUES ((select band_id from band where band_name = 'Feufollet'), (select genre_id from genre where genre_name = 'Cajun'));
+INSERT INTO band_genre (band_id, genre_id) VALUES ((select band_id from band where band_name = 'Steve Riley and the Mamou Playboys'), (select genre_id from genre where genre_name = 'Cajun'));
+INSERT INTO band_genre (band_id, genre_id) VALUES ((select band_id from band where band_name = 'Astral Project'), (select genre_id from genre where genre_name = 'Jazz'));
+INSERT INTO band_genre (band_id, genre_id) VALUES ((select band_id from band where band_name = 'Better Than Ezra'), (select genre_id from genre where genre_name = 'Rock'));
+INSERT INTO band_genre (band_id, genre_id) VALUES ((select band_id from band where band_name = 'Cha Wa'), (select genre_id from genre where genre_name = 'Funk'));
+INSERT INTO band_genre (band_id, genre_id) VALUES ((select band_id from band where band_name = 'The Deslondes'), (select genre_id from genre where genre_name = 'Americana'));
+INSERT INTO band_genre (band_id, genre_id) VALUES ((select band_id from band where band_name = 'The Deslondes'), (select genre_id from genre where genre_name = 'Folk'));
+INSERT INTO band_genre (band_id, genre_id) VALUES ((select band_id from band where band_name = 'The Deslondes'), (select genre_id from genre where genre_name = 'Rock'));
+INSERT INTO band_genre (band_id, genre_id) VALUES ((select band_id from band where band_name = 'The Deslondes'), (select genre_id from genre where genre_name = 'Bluegrass'));
+INSERT INTO band_genre (band_id, genre_id) VALUES ((select band_id from band where band_name = 'The Deslondes'), (select genre_id from genre where genre_name = 'R&B'));
+INSERT INTO band_genre (band_id, genre_id) VALUES ((select band_id from band where band_name = 'The Deslondes'), (select genre_id from genre where genre_name = 'Blues'));
+INSERT INTO band_genre (band_id, genre_id) VALUES ((select band_id from band where band_name = 'The Deslondes'), (select genre_id from genre where genre_name = 'Gospel'));
+INSERT INTO band_genre (band_id, genre_id) VALUES ((select band_id from band where band_name = 'The Deslondes'), (select genre_id from genre where genre_name = 'Country'));
+INSERT INTO band_genre (band_id, genre_id) VALUES ((select band_id from band where band_name = 'The Deslondes'), (select genre_id from genre where genre_name = 'Zydeco'));
+INSERT INTO band_genre (band_id, genre_id) VALUES ((select band_id from band where band_name = 'Egg Yolk Jubilee'), (select genre_id from genre where genre_name = 'Jazz'));
+INSERT INTO band_genre (band_id, genre_id) VALUES ((select band_id from band where band_name = 'Egg Yolk Jubilee'), (select genre_id from genre where genre_name = 'Blues'));
+INSERT INTO band_genre (band_id, genre_id) VALUES ((select band_id from band where band_name = 'Egg Yolk Jubilee'), (select genre_id from genre where genre_name = 'Folk'));
+INSERT INTO band_genre (band_id, genre_id) VALUES ((select band_id from band where band_name = 'Egg Yolk Jubilee'), (select genre_id from genre where genre_name = 'Rock'));
+INSERT INTO band_genre (band_id, genre_id) VALUES ((select band_id from band where band_name = 'Flow Tribe'), (select genre_id from genre where genre_name = 'Funk'));
+INSERT INTO band_genre (band_id, genre_id) VALUES ((select band_id from band where band_name = 'Flow Tribe'), (select genre_id from genre where genre_name = 'Rock'));
+INSERT INTO band_genre (band_id, genre_id) VALUES ((select band_id from band where band_name = 'Groovesect'), (select genre_id from genre where genre_name = 'Funk'));
+INSERT INTO band_genre (band_id, genre_id) VALUES ((select band_id from band where band_name = 'Groovesect'), (select genre_id from genre where genre_name = 'Jazz'));
+INSERT INTO band_genre (band_id, genre_id) VALUES ((select band_id from band where band_name = 'Groovesect'), (select genre_id from genre where genre_name = 'Rock'));
+INSERT INTO band_genre (band_id, genre_id) VALUES ((select band_id from band where band_name = 'Groovesect'), (select genre_id from genre where genre_name = 'Soul'));
+INSERT INTO band_genre (band_id, genre_id) VALUES ((select band_id from band where band_name = 'The Meters'), (select genre_id from genre where genre_name = 'Funk'));
+
+INSERT INTO messages (message_body, message_timestamp, band_id) VALUES ('Hey everyone, our new fan band page is up and running!', CURRENT_TIMESTAMP, (select band_id from band where band_name = 'Feufollet'));
+INSERT INTO messages (message_body, message_timestamp, band_id) VALUES ('Hey everyone, our new fan band page is up and running!', CURRENT_TIMESTAMP, (select band_id from band where band_name = 'Steve Riley and the Mamou Playboys'));
+INSERT INTO messages (message_body, message_timestamp, band_id) VALUES ('Hey everyone, our new fan band page is up and running!', CURRENT_TIMESTAMP, (select band_id from band where band_name = 'Astral Project'));
+INSERT INTO messages (message_body, message_timestamp, band_id) VALUES ('Hey everyone, our new fan band page is up and running!', CURRENT_TIMESTAMP, (select band_id from band where band_name = 'Better Than Ezra'));
+INSERT INTO messages (message_body, message_timestamp, band_id) VALUES ('Hey everyone, our new fan band page is up and running!', CURRENT_TIMESTAMP, (select band_id from band where band_name = 'Cha Wa'));
+INSERT INTO messages (message_body, message_timestamp, band_id) VALUES ('Hey everyone, our new fan band page is up and running!', CURRENT_TIMESTAMP, (select band_id from band where band_name = 'The Deslondes'));
+INSERT INTO messages (message_body, message_timestamp, band_id) VALUES ('Hey everyone, our new fan band page is up and running!', CURRENT_TIMESTAMP, (select band_id from band where band_name = 'Egg Yolk Jubilee'));
+INSERT INTO messages (message_body, message_timestamp, band_id) VALUES ('Hey everyone, our new fan band page is up and running!', CURRENT_TIMESTAMP, (select band_id from band where band_name = 'Flow Tribe'));
+INSERT INTO messages (message_body, message_timestamp, band_id) VALUES ('Hey everyone, our new fan band page is up and running!', CURRENT_TIMESTAMP, (select band_id from band where band_name = 'Groovesect'));
+INSERT INTO messages (message_body, message_timestamp, band_id) VALUES ('Hey everyone, our new fan band page is up and running!', CURRENT_TIMESTAMP, (select band_id from band where band_name = 'The Meters'));
 
 COMMIT TRANSACTION;
