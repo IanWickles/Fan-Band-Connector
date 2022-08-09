@@ -78,27 +78,27 @@ INSERT INTO messages (message_body, message_timestamp, band_id) VALUES ('Hey eve
 INSERT INTO messages (message_body, message_timestamp, band_id) VALUES ('Hey everyone, our new fan band page is up and running!', CURRENT_TIMESTAMP, (select band_id from band where band_name = 'Groovesect'));
 INSERT INTO messages (message_body, message_timestamp, band_id) VALUES ('Hey everyone, our new fan band page is up and running!', CURRENT_TIMESTAMP, (select band_id from band where band_name = 'The Meters'));
 
-INSERT INTO venue (venue_name, venue_address) VALUES ('House of Blues', '225 Decatur St, New Orleans, LA 70130');
-INSERT INTO venue (venue_name, venue_address) VALUES ('Preservation Hall', '726 St Peter, New Orleans, LA 70116');
-INSERT INTO venue (venue_name, venue_address) VALUES ('Gasa Gasa', '4920 Freret St, New Orleans, LA 70115');
-INSERT INTO venue (venue_name, venue_address) VALUES ('The Howlin'' Wolf', '907 S Peters St, New Orleans, LA 70130');
-INSERT INTO venue (venue_name, venue_address) VALUES ('d.b.a.', '618 Frenchmen St, New Orleans, LA 70116');
-INSERT INTO venue (venue_name, venue_address) VALUES ('Fillmore New Orleans', '6 Canal St, New Orleans, LA 70130');
-INSERT INTO venue (venue_name, venue_address) VALUES ('Tipitina''s', '501 Napoleon Ave, New Orleans, LA 70115');
-INSERT INTO venue (venue_name, venue_address) VALUES ('Three Keys At Ace Hotel New Orleans', '600 Carondelet St, New Orleans, LA 70130');
-INSERT INTO venue (venue_name, venue_address) VALUES ('Republic NOLA', '828 S Peters St, New Orleans, LA 70130');
-INSERT INTO venue (venue_name, venue_address) VALUES ('Blue Nile', '532 Frenchmen St, New Orleans, LA 70116');
+INSERT INTO venue (venue_name, venue_address, venue_description) VALUES ('House of Blues', '225 Decatur St, New Orleans, LA 70130', 'Rock & blues-themed chain with Southern dishes such as po boys & jambalaya, plus live music.');
+INSERT INTO venue (venue_name, venue_address, venue_description) VALUES ('Preservation Hall', '726 St Peter, New Orleans, LA 70116', 'Historic, all-ages place for jazz in a no-frills space with wooden floors & no air-conditioning.');
+INSERT INTO venue (venue_name, venue_address, venue_description) VALUES ('Gasa Gasa', '4920 Freret St, New Orleans, LA 70115', 'Gasa Gasa is the uptown neighborhood''s newest music and arts venue. Located on Feret Street, Gasa Gasa supports local talent through weekly events.');
+INSERT INTO venue (venue_name, venue_address, venue_description) VALUES ('The Howlin'' Wolf', '907 S Peters St, New Orleans, LA 70130', 'Musical acts shine at this expansive, low-key concert hall with a mahogany bar & pub fare.');
+INSERT INTO venue (venue_name, venue_address, venue_description) VALUES ('d.b.a.', '618 Frenchmen St, New Orleans, LA 70116', 'Popular, intimate nightspot pouring craft beers & hosting an eclectic lineup of live music.');
+INSERT INTO venue (venue_name, venue_address, venue_description) VALUES ('Fillmore New Orleans', '6 Canal St, New Orleans, LA 70130', 'The Fillmore was the focal point for the psychedelic music scene during the 1960s and 1970s, helping launch the careers of the biggest names of the era such as The Grateful Dead, Jimi Hendrix, Led Zeppelin, and The Doors.');
+INSERT INTO venue (venue_name, venue_address, venue_description) VALUES ('Tipitina''s', '501 Napoleon Ave, New Orleans, LA 70115', 'Rustic, black-and-white tiled warehouse space & landmark since ’77 for live music & Cajun dancing.');
+INSERT INTO venue (venue_name, venue_address, venue_description) VALUES ('Three Keys At Ace Hotel New Orleans', '600 Carondelet St, New Orleans, LA 70130', 'Cocktails and casual eats in the lobby makes for great people watching. Reasonably priced and conveniently located in the CBD.');
+INSERT INTO venue (venue_name, venue_address, venue_description) VALUES ('Republic NOLA', '828 S Peters St, New Orleans, LA 70130', 'Warehouse turned concert venue & club (Thursdays–Saturdays) with wooden beams & crystal chandeliers.');
+INSERT INTO venue (venue_name, venue_address, venue_description) VALUES ('Blue Nile', '532 Frenchmen St, New Orleans, LA 70116', 'A range of acts from funk & blues to brass bands takes the stage at this longtime live music bar.');
 
-INSERT INTO show (show_time, venue_id) VALUES (timestamp '2022-08-12 06:00:00', (select venue_id from venue where venue_name = 'House of Blues'));
-INSERT INTO show (show_time, venue_id) VALUES (timestamp '2022-08-12 06:00:00', (select venue_id from venue where venue_name = 'd.b.a.'));
-INSERT INTO show (show_time, venue_id) VALUES (timestamp '2022-08-12 06:30:00', (select venue_id from venue where venue_name = 'Blue Nile'));
-INSERT INTO show (show_time, venue_id) VALUES (timestamp '2022-08-12 06:30:00', (select venue_id from venue where venue_name = 'Preservation Hall'));
-INSERT INTO show (show_time, venue_id) VALUES (timestamp '2022-08-12 07:00:00', (select venue_id from venue where venue_name = 'Republic NOLA'));
-INSERT INTO show (show_time, venue_id) VALUES (timestamp '2022-08-12 07:00:00', (select venue_id from venue where venue_name = 'Gasa Gasa'));
-INSERT INTO show (show_time, venue_id) VALUES (timestamp '2022-08-12 07:30:00', (select venue_id from venue where venue_name = 'Three Keys At Ace Hotel New Orleans'));
-INSERT INTO show (show_time, venue_id) VALUES (timestamp '2022-08-12 07:30:00', (select venue_id from venue where venue_name = 'The Howlin'' Wolf'));
-INSERT INTO show (show_time, venue_id) VALUES (timestamp '2022-08-12 08:00:00', (select venue_id from venue where venue_name = 'Tipitina''s'));
-INSERT INTO show (show_time, venue_id) VALUES (timestamp '2022-08-12 08:00:00', (select venue_id from venue where venue_name = 'Fillmore New Orleans'));
+INSERT INTO show (show_time, venue_id, show_title, show_description) VALUES (timestamp '2022-08-12 06:00:00', (select venue_id from venue where venue_name = 'House of Blues'), 'The amazing show at House of Blues!', 'Come down to the House of Blues and watch some live music!');
+INSERT INTO show (show_time, venue_id, show_title, show_description) VALUES (timestamp '2022-08-12 06:00:00', (select venue_id from venue where venue_name = 'd.b.a.'), 'The amazing show at d.b.a!', 'Come down to d.b.a and watch some live music!');
+INSERT INTO show (show_time, venue_id, show_title, show_description) VALUES (timestamp '2022-08-12 06:30:00', (select venue_id from venue where venue_name = 'Blue Nile'), 'The amazing show at Blue Nile!', 'Come down to Blue Nile and watch some live music!');
+INSERT INTO show (show_time, venue_id, show_title, show_description) VALUES (timestamp '2022-08-12 06:30:00', (select venue_id from venue where venue_name = 'Preservation Hall'), 'The amazing show at Preservation Hall!', 'Come down to Preservation Hall and watch some live music!');
+INSERT INTO show (show_time, venue_id, show_title, show_description) VALUES (timestamp '2022-08-12 07:00:00', (select venue_id from venue where venue_name = 'Republic NOLA'), 'The amazing show at Republic NOLA!', 'Come down to Republic NOLA and watch some live music!');
+INSERT INTO show (show_time, venue_id, show_title, show_description) VALUES (timestamp '2022-08-12 07:00:00', (select venue_id from venue where venue_name = 'Gasa Gasa'), 'The amazing show at Gasa Gasa!', 'Come down to Gasa Gasa and watch some live music!');
+INSERT INTO show (show_time, venue_id, show_title, show_description) VALUES (timestamp '2022-08-12 07:30:00', (select venue_id from venue where venue_name = 'Three Keys At Ace Hotel New Orleans'), 'The amazing show at Three Keys!', 'Come down to Three Keys and watch some live music!');
+INSERT INTO show (show_time, venue_id, show_title, show_description) VALUES (timestamp '2022-08-12 07:30:00', (select venue_id from venue where venue_name = 'The Howlin'' Wolf'), 'The amazing show at The Howlin'' Wolf', 'Come down to The Howlin'' Wolf and watch some live music!');
+INSERT INTO show (show_time, venue_id, show_title, show_description) VALUES (timestamp '2022-08-12 08:00:00', (select venue_id from venue where venue_name = 'Tipitina''s'), 'The amazing show at Tipitina''s!', 'Come down to Tipitina''s and watch some live music!');
+INSERT INTO show (show_time, venue_id, show_title, show_description) VALUES (timestamp '2022-08-12 08:00:00', (select venue_id from venue where venue_name = 'Fillmore New Orleans'), 'The amazing show at Fillmore New Orleans', 'Come down to the Fillmore New Orleans and watch some live music!');
 
 INSERT INTO show_band (show_id, band_id) VALUES ((select show_id from show where show_time = '2022-08-12 06:00:00' and venue_id = (select venue_id from venue where venue_name = 'House of Blues')), (select band_id from band where band_name = 'The Meters'));
 INSERT INTO show_band (show_id, band_id) VALUES ((select show_id from show where show_time = '2022-08-12 06:00:00' and venue_id = (select venue_id from venue where venue_name = 'House of Blues')), (select band_id from band where band_name = 'Feufollet'));
