@@ -13,7 +13,11 @@ CREATE TABLE users (
 
 CREATE TABLE IF NOT EXISTS public.band
 (
+<<<<<<< HEAD
+    band_id, serial integer NOT NULL DEFAULT --nextval('"Band_band_id_seq"'::regclass),
+=======
     band_id serial, --integer NOT NULL DEFAULT nextval('"Band_band_id_seq"'::regclass),
+>>>>>>> cac7416b6eb7c89eb834435b4d528042e0ea39c0
     band_name character varying(200) COLLATE pg_catalog."default" NOT NULL,
     band_description character varying(1000) COLLATE pg_catalog."default" NOT NULL,
     band_member character varying(1000) COLLATE pg_catalog."default" NOT NULL,
@@ -33,7 +37,11 @@ ALTER TABLE IF EXISTS public.band
 
 CREATE TABLE IF NOT EXISTS public.genre
 (
+<<<<<<< HEAD
+    genre_id, serial integer NOT NULL DEFAULT --nextval('genre_genre_id_seq'::regclass),
+=======
     genre_id  serial,--integer NOT NULL DEFAULT nextval('genre_genre_id_seq'::regclass),
+>>>>>>> cac7416b6eb7c89eb834435b4d528042e0ea39c0
     genre_name character varying(100) COLLATE pg_catalog."default" NOT NULL,
     CONSTRAINT genre_pkey PRIMARY KEY (genre_id)
 )
@@ -64,7 +72,11 @@ ALTER TABLE IF EXISTS public.band_genre
 
 CREATE TABLE IF NOT EXISTS public.messages
 (
+<<<<<<< HEAD
+    message_id, serial integer NOT NULL DEFAULT --nextval('messages_message_id_seq'::regclass),
+=======
     message_id serial, --integer NOT NULL DEFAULT nextval('messages_message_id_seq'::regclass),
+>>>>>>> cac7416b6eb7c89eb834435b4d528042e0ea39c0
     message_body character varying(2000) COLLATE pg_catalog."default" NOT NULL,
     message_timestamp timestamp without time zone NOT NULL,
     band_id integer NOT NULL,
@@ -102,7 +114,11 @@ ALTER TABLE IF EXISTS public.user_band
 
 CREATE TABLE IF NOT EXISTS public.show
 (
+<<<<<<< HEAD
+    show_id, serial integer NOT NULL DEFAULT --nextval('show_show_id_seq'::regclass),
+=======
     show_id serial, --integer NOT NULL DEFAULT nextval('show_show_id_seq'::regclass),
+>>>>>>> cac7416b6eb7c89eb834435b4d528042e0ea39c0
     show_time timestamp without time zone NOT NULL,
     show_location character varying(200) COLLATE pg_catalog."default" NOT NULL,
     CONSTRAINT show_pkey PRIMARY KEY (show_id)
@@ -134,7 +150,11 @@ ALTER TABLE IF EXISTS public.show_band
 
 CREATE TABLE IF NOT EXISTS public.venue
 (
+<<<<<<< HEAD
+    venue_id, serial integer NOT NULL DEFAULT --nextval('venue_venue_id_seq'::regclass),
+=======
     venue_id serial, --integer NOT NULL DEFAULT nextval('venue_venue_id_seq'::regclass),
+>>>>>>> cac7416b6eb7c89eb834435b4d528042e0ea39c0
     venue_name character varying(200) COLLATE pg_catalog."default" NOT NULL,
     venue_address character varying(200) COLLATE pg_catalog."default" NOT NULL,
     CONSTRAINT venue_pkey PRIMARY KEY (venue_id)

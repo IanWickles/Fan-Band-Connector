@@ -13,7 +13,7 @@ CREATE TABLE users (
 
 CREATE TABLE IF NOT EXISTS public.band
 (
-    band_id serial, --integer NOT NULL DEFAULT nextval('"Band_band_id_seq"'::regclass),
+    band_id, serial integer NOT NULL DEFAULT --nextval('"Band_band_id_seq"'::regclass),
     band_name character varying(200) COLLATE pg_catalog."default" NOT NULL,
     band_description character varying(1000) COLLATE pg_catalog."default" NOT NULL,
     band_member character varying(1000) COLLATE pg_catalog."default" NOT NULL,
@@ -33,7 +33,7 @@ ALTER TABLE IF EXISTS public.band
 
 CREATE TABLE IF NOT EXISTS public.genre
 (
-    genre_id  serial,--integer NOT NULL DEFAULT nextval('genre_genre_id_seq'::regclass),
+    genre_id, serial integer NOT NULL DEFAULT --nextval('genre_genre_id_seq'::regclass),
     genre_name character varying(100) COLLATE pg_catalog."default" NOT NULL,
     CONSTRAINT genre_pkey PRIMARY KEY (genre_id)
 )
@@ -64,7 +64,7 @@ ALTER TABLE IF EXISTS public.band_genre
 
 CREATE TABLE IF NOT EXISTS public.messages
 (
-    message_id serial, --integer NOT NULL DEFAULT nextval('messages_message_id_seq'::regclass),
+    message_id, serial integer NOT NULL DEFAULT --nextval('messages_message_id_seq'::regclass),
     message_body character varying(2000) COLLATE pg_catalog."default" NOT NULL,
     message_timestamp timestamp without time zone NOT NULL,
     band_id integer NOT NULL,
@@ -102,7 +102,7 @@ ALTER TABLE IF EXISTS public.user_band
 
 CREATE TABLE IF NOT EXISTS public.show
 (
-    show_id serial, --integer NOT NULL DEFAULT nextval('show_show_id_seq'::regclass),
+    show_id, serial integer NOT NULL DEFAULT --nextval('show_show_id_seq'::regclass),
     show_time timestamp without time zone NOT NULL,
     show_location character varying(200) COLLATE pg_catalog."default" NOT NULL,
     CONSTRAINT show_pkey PRIMARY KEY (show_id)
@@ -134,7 +134,7 @@ ALTER TABLE IF EXISTS public.show_band
 
 CREATE TABLE IF NOT EXISTS public.venue
 (
-    venue_id serial, --integer NOT NULL DEFAULT nextval('venue_venue_id_seq'::regclass),
+    venue_id, serial integer NOT NULL DEFAULT --nextval('venue_venue_id_seq'::regclass),
     venue_name character varying(200) COLLATE pg_catalog."default" NOT NULL,
     venue_address character varying(200) COLLATE pg_catalog."default" NOT NULL,
     CONSTRAINT venue_pkey PRIMARY KEY (venue_id)
