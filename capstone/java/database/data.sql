@@ -78,4 +78,60 @@ INSERT INTO messages (message_body, message_timestamp, band_id) VALUES ('Hey eve
 INSERT INTO messages (message_body, message_timestamp, band_id) VALUES ('Hey everyone, our new fan band page is up and running!', CURRENT_TIMESTAMP, (select band_id from band where band_name = 'Groovesect'));
 INSERT INTO messages (message_body, message_timestamp, band_id) VALUES ('Hey everyone, our new fan band page is up and running!', CURRENT_TIMESTAMP, (select band_id from band where band_name = 'The Meters'));
 
+INSERT INTO venue (venue_name, venue_address) VALUES ('House of Blues', '225 Decatur St, New Orleans, LA 70130');
+INSERT INTO venue (venue_name, venue_address) VALUES ('Preservation Hall', '726 St Peter, New Orleans, LA 70116');
+INSERT INTO venue (venue_name, venue_address) VALUES ('Gasa Gasa', '4920 Freret St, New Orleans, LA 70115');
+INSERT INTO venue (venue_name, venue_address) VALUES ('The Howlin'' Wolf', '907 S Peters St, New Orleans, LA 70130');
+INSERT INTO venue (venue_name, venue_address) VALUES ('d.b.a.', '618 Frenchmen St, New Orleans, LA 70116');
+INSERT INTO venue (venue_name, venue_address) VALUES ('Fillmore New Orleans', '6 Canal St, New Orleans, LA 70130');
+INSERT INTO venue (venue_name, venue_address) VALUES ('Tipitina''s', '501 Napoleon Ave, New Orleans, LA 70115');
+INSERT INTO venue (venue_name, venue_address) VALUES ('Three Keys At Ace Hotel New Orleans', '600 Carondelet St, New Orleans, LA 70130');
+INSERT INTO venue (venue_name, venue_address) VALUES ('Republic NOLA', '828 S Peters St, New Orleans, LA 70130');
+INSERT INTO venue (venue_name, venue_address) VALUES ('Blue Nile', '532 Frenchmen St, New Orleans, LA 70116');
+
+INSERT INTO show (show_time, venue_id) VALUES (timestamp '2022-08-12 06:00:00', (select venue_id from venue where venue_name = 'House of Blues'));
+INSERT INTO show (show_time, venue_id) VALUES (timestamp '2022-08-12 06:00:00', (select venue_id from venue where venue_name = 'd.b.a.'));
+INSERT INTO show (show_time, venue_id) VALUES (timestamp '2022-08-12 06:30:00', (select venue_id from venue where venue_name = 'Blue Nile'));
+INSERT INTO show (show_time, venue_id) VALUES (timestamp '2022-08-12 06:30:00', (select venue_id from venue where venue_name = 'Preservation Hall'));
+INSERT INTO show (show_time, venue_id) VALUES (timestamp '2022-08-12 07:00:00', (select venue_id from venue where venue_name = 'Republic NOLA'));
+INSERT INTO show (show_time, venue_id) VALUES (timestamp '2022-08-12 07:00:00', (select venue_id from venue where venue_name = 'Gasa Gasa'));
+INSERT INTO show (show_time, venue_id) VALUES (timestamp '2022-08-12 07:30:00', (select venue_id from venue where venue_name = 'Three Keys At Ace Hotel New Orleans'));
+INSERT INTO show (show_time, venue_id) VALUES (timestamp '2022-08-12 07:30:00', (select venue_id from venue where venue_name = 'The Howlin'' Wolf'));
+INSERT INTO show (show_time, venue_id) VALUES (timestamp '2022-08-12 08:00:00', (select venue_id from venue where venue_name = 'Tipitina''s'));
+INSERT INTO show (show_time, venue_id) VALUES (timestamp '2022-08-12 08:00:00', (select venue_id from venue where venue_name = 'Fillmore New Orleans'));
+
+INSERT INTO show_band (show_id, band_id) VALUES ((select show_id from show where show_time = '2022-08-12 06:00:00' and venue_id = (select venue_id from venue where venue_name = 'House of Blues')), (select band_id from band where band_name = 'The Meters'));
+INSERT INTO show_band (show_id, band_id) VALUES ((select show_id from show where show_time = '2022-08-12 06:00:00' and venue_id = (select venue_id from venue where venue_name = 'House of Blues')), (select band_id from band where band_name = 'Feufollet'));
+INSERT INTO show_band (show_id, band_id) VALUES ((select show_id from show where show_time = '2022-08-12 06:00:00' and venue_id = (select venue_id from venue where venue_name = 'House of Blues')), (select band_id from band where band_name = 'Steve Riley and the Mamou Playboys'));
+INSERT INTO show_band (show_id, band_id) VALUES ((select show_id from show where show_time = '2022-08-12 06:00:00' and venue_id = (select venue_id from venue where venue_name = 'd.b.a.')), (select band_id from band where band_name = 'Groovesect'));
+INSERT INTO show_band (show_id, band_id) VALUES ((select show_id from show where show_time = '2022-08-12 06:30:00' and venue_id = (select venue_id from venue where venue_name = 'Preservation Hall')), (select band_id from band where band_name = 'Flow Tribe'));
+INSERT INTO show_band (show_id, band_id) VALUES ((select show_id from show where show_time = '2022-08-12 06:30:00' and venue_id = (select venue_id from venue where venue_name = 'Blue Nile')), (select band_id from band where band_name = 'Egg Yolk Jubilee'));
+INSERT INTO show_band (show_id, band_id) VALUES ((select show_id from show where show_time = '2022-08-12 07:00:00' and venue_id = (select venue_id from venue where venue_name = 'Republic NOLA')), (select band_id from band where band_name = 'The Deslondes'));
+INSERT INTO show_band (show_id, band_id) VALUES ((select show_id from show where show_time = '2022-08-12 07:00:00' and venue_id = (select venue_id from venue where venue_name = 'Gasa Gasa')), (select band_id from band where band_name = 'Cha Wa'));
+INSERT INTO show_band (show_id, band_id) VALUES ((select show_id from show where show_time = '2022-08-12 07:30:00' and venue_id = (select venue_id from venue where venue_name = 'The Howlin'' Wolf')), (select band_id from band where band_name = 'Better Than Ezra'));
+INSERT INTO show_band (show_id, band_id) VALUES ((select show_id from show where show_time = '2022-08-12 07:30:00' and venue_id = (select venue_id from venue where venue_name = 'Three Keys At Ace Hotel New Orleans')), (select band_id from band where band_name = 'Astral Project'));
+INSERT INTO show_band (show_id, band_id) VALUES ((select show_id from show where show_time = '2022-08-12 08:00:00' and venue_id = (select venue_id from venue where venue_name = 'Tipitina''s')), (select band_id from band where band_name = 'Steve Riley and the Mamou Playboys'));
+INSERT INTO show_band (show_id, band_id) VALUES ((select show_id from show where show_time = '2022-08-12 08:00:00' and venue_id = (select venue_id from venue where venue_name = 'Fillmore New Orleans')), (select band_id from band where band_name = 'Feufollet'));
+
+INSERT INTO user_band (user_id, band_id) VALUES ((select user_id from users where username = 'George'), (select band_id from band where band_name = 'The Meters'));
+INSERT INTO user_band (user_id, band_id) VALUES ((select user_id from users where username = 'Philippe'), (select band_id from band where band_name = 'Feufollet'));
+INSERT INTO user_band (user_id, band_id) VALUES ((select user_id from users where username = 'Steve'), (select band_id from band where band_name = 'Steve Riley and the Mamou Playboys'));
+INSERT INTO user_band (user_id, band_id) VALUES ((select user_id from users where username = 'Justin'), (select band_id from band where band_name = 'Groovesect'));
+INSERT INTO user_band (user_id, band_id) VALUES ((select user_id from users where username = 'Mario'), (select band_id from band where band_name = 'Flow Tribe'));
+INSERT INTO user_band (user_id, band_id) VALUES ((select user_id from users where username = 'Eric'), (select band_id from band where band_name = 'Egg Yolk Jubilee'));
+INSERT INTO user_band (user_id, band_id) VALUES ((select user_id from users where username = 'Dan'), (select band_id from band where band_name = 'The Deslondes'));
+INSERT INTO user_band (user_id, band_id) VALUES ((select user_id from users where username = 'Joe'), (select band_id from band where band_name = 'Cha Wa'));
+INSERT INTO user_band (user_id, band_id) VALUES ((select user_id from users where username = 'Kevin'), (select band_id from band where band_name = 'Better Than Ezra'));
+INSERT INTO user_band (user_id, band_id) VALUES ((select user_id from users where username = 'Tony'), (select band_id from band where band_name = 'Astral Project'));
+INSERT INTO user_band (user_id, band_id) VALUES ((select user_id from users where username = 'user'), (select band_id from band where band_name = 'The Meters'));
+INSERT INTO user_band (user_id, band_id) VALUES ((select user_id from users where username = 'user'), (select band_id from band where band_name = 'Feufollet'));
+INSERT INTO user_band (user_id, band_id) VALUES ((select user_id from users where username = 'user'), (select band_id from band where band_name = 'Steve Riley and the Mamou Playboys'));
+INSERT INTO user_band (user_id, band_id) VALUES ((select user_id from users where username = 'user'), (select band_id from band where band_name = 'Groovesect'));
+INSERT INTO user_band (user_id, band_id) VALUES ((select user_id from users where username = 'user'), (select band_id from band where band_name = 'Flow Tribe'));
+INSERT INTO user_band (user_id, band_id) VALUES ((select user_id from users where username = 'user'), (select band_id from band where band_name = 'Egg Yolk Jubilee'));
+INSERT INTO user_band (user_id, band_id) VALUES ((select user_id from users where username = 'user'), (select band_id from band where band_name = 'The Deslondes'));
+INSERT INTO user_band (user_id, band_id) VALUES ((select user_id from users where username = 'user'), (select band_id from band where band_name = 'Cha Wa'));
+INSERT INTO user_band (user_id, band_id) VALUES ((select user_id from users where username = 'user'), (select band_id from band where band_name = 'Better Than Ezra'));
+INSERT INTO user_band (user_id, band_id) VALUES ((select user_id from users where username = 'user'), (select band_id from band where band_name = 'Astral Project'));
+
 COMMIT TRANSACTION;
