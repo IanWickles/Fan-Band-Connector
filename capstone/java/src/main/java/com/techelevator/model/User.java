@@ -14,14 +14,16 @@ public class User {
    private String password;
    @JsonIgnore
    private boolean activated;
+   private String userEmail;
    private Set<Authority> authorities = new HashSet<>();
 
    public User() { }
 
-   public User(int id, String username, String password, String authorities) {
+   public User(int id, String username, String password, String userEmail, String authorities) {
       this.id = id;
       this.username = username;
       this.password = password;
+      this.userEmail = userEmail;
       if(authorities != null) this.setAuthorities(authorities);
       this.activated = true;
    }
@@ -66,6 +68,14 @@ public class User {
       this.authorities = authorities;
    }
 
+   public String getUserEmail() {
+      return userEmail;
+   }
+
+   public void setUserEmail(String userEmail) {
+      this.userEmail = userEmail;
+   }
+
    public void setAuthorities(String authorities) {
       String[] roles = authorities.split(",");
       for(String role : roles) {
@@ -83,12 +93,13 @@ public class User {
               activated == user.activated &&
               Objects.equals(username, user.username) &&
               Objects.equals(password, user.password) &&
-              Objects.equals(authorities, user.authorities);
+              Objects.equals(authorities, user.authorities) &&
+              Objects.equals(userEmail, user.userEmail); // if errors, check this;
    }
 
    @Override
    public int hashCode() {
-      return Objects.hash(id, username, password, activated, authorities);
+      return Objects.hash(id, username, password,  activated, authorities, userEmail);
    }
 
    @Override
@@ -98,6 +109,7 @@ public class User {
               ", username='" + username + '\'' +
               ", activated=" + activated +
               ", authorities=" + authorities +
+              ", userEmail='" + userEmail +  //if errors, check this
               '}';
    }
 }

@@ -110,14 +110,21 @@ TABLESPACE pg_default;
 ALTER TABLE IF EXISTS public.user_band
     OWNER to postgres;
 
+<<<<<<< HEAD
+CREATE TABLE IF NOT EXISTS public.venue
+=======
 DROP TABLE IF EXISTS public.venue;
 
 CREATE TABLE public.venue
+>>>>>>> cc4df6edd5a135785e6875fa21088a89f6219c04
 (
     venue_id serial, --integer NOT NULL DEFAULT nextval('venue_venue_id_seq'::regclass),
     venue_name character varying(200) COLLATE pg_catalog."default" NOT NULL,
     venue_address character varying(200) COLLATE pg_catalog."default" NOT NULL,
+<<<<<<< HEAD
+=======
     venue_description character varying(1000) COLLATE pg_catalog."default" NOT NULL,
+>>>>>>> cc4df6edd5a135785e6875fa21088a89f6219c04
     CONSTRAINT venue_pkey PRIMARY KEY (venue_id)
 )
 
@@ -126,6 +133,19 @@ TABLESPACE pg_default;
 ALTER TABLE IF EXISTS public.venue
     OWNER to postgres;
 
+<<<<<<< HEAD
+CREATE TABLE IF NOT EXISTS public.show
+(
+    show_id serial, --integer NOT NULL DEFAULT nextval('show_show_id_seq'::regclass),
+    show_time timestamp without time zone NOT NULL,
+    venue_id integer NOT NULL,
+        CONSTRAINT show_pkey PRIMARY KEY (show_id),
+        CONSTRAINT venue_id FOREIGN KEY (venue_id)
+                REFERENCES public.venue (venue_id) MATCH SIMPLE
+                ON UPDATE NO ACTION
+                ON DELETE NO ACTION
+                NOT VALID
+=======
 DROP TABLE IF EXISTS public.show;
 
 CREATE TABLE public.show
@@ -141,6 +161,7 @@ CREATE TABLE public.show
             ON UPDATE NO ACTION
             ON DELETE NO ACTION
             NOT VALID
+>>>>>>> cc4df6edd5a135785e6875fa21088a89f6219c04
 )
 
 TABLESPACE pg_default;
@@ -169,4 +190,9 @@ TABLESPACE pg_default;
 ALTER TABLE IF EXISTS public.show_band
     OWNER to postgres;
 
+<<<<<<< HEAD
+
+
+=======
+>>>>>>> cc4df6edd5a135785e6875fa21088a89f6219c04
 COMMIT TRANSACTION;

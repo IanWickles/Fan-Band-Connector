@@ -1,5 +1,6 @@
 package com.techelevator.dao;
 
+import com.techelevator.model.Band;
 import com.techelevator.model.User;
 
 import java.util.List;
@@ -14,5 +15,10 @@ public interface UserDao {
 
     int findIdByUsername(String username);
 
-    boolean create(String username, String password, String role);
+    boolean create(String username, String password, String role, String userEmail);
+
+    List<User> getFollowersByBand(String bandName);
+
+    boolean followBand(String bandName); //maybe void??
+    boolean unfollowBand(String bandName); //maybe void??
 }
