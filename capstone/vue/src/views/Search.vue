@@ -2,6 +2,7 @@
   <div>
     <band-list />
     <venue-list />
+    <div></div>
   </div>
 </template>
 

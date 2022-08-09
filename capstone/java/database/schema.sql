@@ -100,12 +100,30 @@ TABLESPACE pg_default;
 ALTER TABLE IF EXISTS public.user_band
     OWNER to postgres;
 
+CREATE TABLE IF NOT EXISTS public.venue
+(
+    venue_id serial, --integer NOT NULL DEFAULT nextval('venue_venue_id_seq'::regclass),
+    venue_name character varying(200) COLLATE pg_catalog."default" NOT NULL,
+    venue_address character varying(200) COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT venue_pkey PRIMARY KEY (venue_id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.venue
+    OWNER to postgres;
+
 CREATE TABLE IF NOT EXISTS public.show
 (
     show_id serial, --integer NOT NULL DEFAULT nextval('show_show_id_seq'::regclass),
     show_time timestamp without time zone NOT NULL,
-    show_location character varying(200) COLLATE pg_catalog."default" NOT NULL,
-    CONSTRAINT show_pkey PRIMARY KEY (show_id)
+    venue_id integer NOT NULL,
+        CONSTRAINT show_pkey PRIMARY KEY (show_id),
+        CONSTRAINT venue_id FOREIGN KEY (venue_id)
+                REFERENCES public.venue (venue_id) MATCH SIMPLE
+                ON UPDATE NO ACTION
+                ON DELETE NO ACTION
+                NOT VALID
 )
 
 TABLESPACE pg_default;
@@ -132,17 +150,6 @@ TABLESPACE pg_default;
 ALTER TABLE IF EXISTS public.show_band
     OWNER to postgres;
 
-CREATE TABLE IF NOT EXISTS public.venue
-(
-    venue_id serial, --integer NOT NULL DEFAULT nextval('venue_venue_id_seq'::regclass),
-    venue_name character varying(200) COLLATE pg_catalog."default" NOT NULL,
-    venue_address character varying(200) COLLATE pg_catalog."default" NOT NULL,
-    CONSTRAINT venue_pkey PRIMARY KEY (venue_id)
-)
 
-TABLESPACE pg_default;
-
-ALTER TABLE IF EXISTS public.venue
-    OWNER to postgres;
 
 COMMIT TRANSACTION;
