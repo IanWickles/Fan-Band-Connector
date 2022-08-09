@@ -132,4 +132,17 @@ TABLESPACE pg_default;
 ALTER TABLE IF EXISTS public.show_band
     OWNER to postgres;
 
+CREATE TABLE IF NOT EXISTS public.venue
+(
+    venue_id integer NOT NULL DEFAULT nextval('venue_venue_id_seq'::regclass),
+    venue_name character varying(200) COLLATE pg_catalog."default" NOT NULL,
+    venue_address character varying(200) COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT venue_pkey PRIMARY KEY (venue_id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.venue
+    OWNER to postgres;
+
 COMMIT TRANSACTION;
