@@ -23,6 +23,9 @@ public class Show {
 
     }
 
+    public Show(Show mapShowToRowSet) {
+    }
+
     public int getShowId() {
         return showId;
     }

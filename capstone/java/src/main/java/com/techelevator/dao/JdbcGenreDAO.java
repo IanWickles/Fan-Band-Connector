@@ -1,6 +1,5 @@
 package com.techelevator.dao;
 
-import com.techelevator.model.Band;
 import com.techelevator.model.Genre;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
@@ -12,14 +11,16 @@ import java.util.List;
 @Component
 public class JdbcGenreDAO implements GenreDAO{
 
-    private JdbcTemplate jdbcTemplate;
+    JdbcTemplate jdbcTemplate;
 
-
+    public  JdbcGenreDAO(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
 
     public List<Genre> getGenresByBand(String bandName) {
 
         List<Genre> genres = new ArrayList<>();
-        String sql = "SELECT genre_name FROM genre JOIN band_genre USING (genre_id) JOIN band USING (band_id) WHERE band_name = ?;";
+        String sql = "SELECT * FROM genre JOIN band_genre USING (genre_id) JOIN band USING (band_id) WHERE band_name = ?;";
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, bandName);
         while (results.next()){

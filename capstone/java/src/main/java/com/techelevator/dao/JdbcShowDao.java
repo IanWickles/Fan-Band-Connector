@@ -19,11 +19,11 @@ public class JdbcShowDao implements ShowDAO {
 
     public List<Show> getShowsByVenue(String venueName) {
         List<Show> shows = new LinkedList<>();
-        String sql = "SELECT show_id FROM show JOIN venue USING (venue_id) WHERE venue_name = ?;";
+        String sql = "SELECT * FROM show JOIN venue USING (venue_id) WHERE venue_name = ?;";
         SqlRowSet results =jdbcTemplate.queryForRowSet(sql, venueName);
 
         while (results.next()) {
-            Show show = new Show();
+            Show show = mapShowToRowSet(results);
             shows.add(show);
         }
         return shows;
@@ -31,11 +31,11 @@ public class JdbcShowDao implements ShowDAO {
 
     public List<Show> getShowsByBand(String bandName){
         List<Show> shows = new LinkedList<>();
-        String sql = "SELECT show_id FROM show JOIN show_band USING (show_id) WHERE band_name = ?;";
+        String sql = "SELECT * FROM show JOIN show_band USING (show_id) JOIN band USING (band_id) WHERE band_name = ?;";
         SqlRowSet results =jdbcTemplate.queryForRowSet(sql, bandName);
 
         while (results.next()) {
-            Show show = new Show();
+            Show show = mapShowToRowSet(results);
             shows.add(show);
         }
 
@@ -57,11 +57,13 @@ public class JdbcShowDao implements ShowDAO {
     private Show mapShowToRowSet (SqlRowSet rs) {
         Show show = new Show();
 
+
         show.setShowId(rs.getInt("show_id"));
         show.setShowTime(rs.getDate("show_time"));
         show.setShowTitle(rs.getString("show_title"));
         show.setShowDesc(rs.getString("show_description"));
         show.setVenueId(rs.getInt("venue_id"));
+
 
         return show;
     }
