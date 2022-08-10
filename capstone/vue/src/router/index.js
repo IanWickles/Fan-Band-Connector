@@ -5,6 +5,11 @@ import Login from '../views/Login.vue'
 import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import store from '../store/index'
+import NewBand from '../views/NewBand.vue'
+import Band from '../views/Band.vue'
+import Search from '../views/Search.vue'
+import Profile from '../views/Profile.vue'
+import Venue from '../views/Venue.vue'
 
 Vue.use(Router)
 
@@ -52,7 +57,47 @@ const router = new Router({
       meta: {
         requiresAuth: false
       }
-    }
+    },
+    {
+      path: "/search",
+      name: "search",
+      component: Search,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/new-band",
+      name: "new-band",
+      component: NewBand,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/:userId",
+      name: "profile",
+      component: Profile,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/bands/:bandId",
+      name: "band",
+      component: Band,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: "/venues/:venueId",
+      name: "venue",
+      component: Venue,
+      meta: {
+        requiresAuth: false
+      }
+    },
   ]
 })
 
