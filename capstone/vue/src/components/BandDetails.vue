@@ -6,10 +6,11 @@
 </template>
 
 <script>
-import Band from "@/components/Band.vue";
+// import Band from "@/components/Band.vue";
+
 export default {
-  //   name: "band-details",
-  //   components: { Band },
+  // name: "band-details",
+  // components: { Band },
 };
 </script>
 

@@ -7,8 +7,8 @@
 
 <script>
 export default {
-  // name: "band",
-  // props: ["band"],
+  name: "band",
+  props: ["band"],
 
   methods: {},
 };

@@ -21,11 +21,11 @@ export default new Vuex.Store({
     token: currentToken || '',
     user: currentUser || {},
     bands: {
-      id: 0,
+      band_id: 0,
       name: "",
-      bandMember: [],
-      genre: [],
       description: "",
+      bandMember: "",
+      manager_id: ""
       //Add in any other field
     }, venues: {
       id: 0,
@@ -36,6 +36,9 @@ export default new Vuex.Store({
       description: ""
     },
     mutations: {
+      SET_BANDS(state, data) {
+        state.bands = data;
+      },
       SET_AUTH_TOKEN(state, token) {
         state.token = token;
         localStorage.setItem('token', token);
@@ -54,6 +57,7 @@ export default new Vuex.Store({
       },
       ADD_BAND(state, band) {
         state.bands.push(band)
-      }
+      },
     }
-  })
+  }
+})

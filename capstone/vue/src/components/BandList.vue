@@ -10,10 +10,21 @@
 
 <script>
 import Band from "@/components/Band.vue";
+import bandService from "@/services/BandService.js";
 
 export default {
   name: "band-list",
   components: { Band },
+  methods: {
+    getBands() {
+      bandService.list().then((response) => {
+        this.$store.commit("SET_BANDS", response.data);
+      });
+    },
+  },
+  created() {
+    this.getBands();
+  },
 };
 </script>
 

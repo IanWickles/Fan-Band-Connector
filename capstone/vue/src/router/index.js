@@ -63,7 +63,7 @@ const router = new Router({
       name: "search",
       component: Search,
       meta: {
-        requiresAuth: true
+        requiresAuth: false
       }
     },
     {
