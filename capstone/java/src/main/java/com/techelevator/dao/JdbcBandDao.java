@@ -79,20 +79,26 @@ public class JdbcBandDao implements BandDAO {
             return bands;
         }
 
-        public Band createBand() {
-            // should this actually take in a Band band object??
+        public Band createBand(Band newBand) {     //maybe also take in a userId??
             String sql = "INSERT INTO band VALUES (band_id, band_name, band_description, band_member, manager_id) " +
                         "(default, ?, ?, ?, ?)"; //does manager ID need to be a subquery??
 
-        return null;
+            //will need to be wrapped in Try/Catch
+
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, newBand.getBandName(), newBand.getBandDesc(), newBand.getMembers(), newBand.getMgrId()); //should this take in a userId or getMgrId??
+            if (results.next()) {
+                int id = newBand.getBandId();
+                newBand.setBandId(id);
+                return newBand;
+            }
+
+            return null;
         }
 
 
-        public Band updateBand(Band updatedBand, int bandId) {
+        public boolean updateBand(Band updatedBand, int bandId) {
             String sql = "UPDATE band SET band_name = ?, band_description = ?, band_member = ?, manager_id = ? WHERE band_id = ?; ";
-
-            // not working - return jdbcTemplate.update(sql, updatedBand.getBandName(), updatedBand.getBandDesc(), updatedBand.getMembers(), updatedBand.getMgrId());
-            return null;
+            return jdbcTemplate.update(sql, updatedBand.getBandName(), updatedBand.getBandDesc(), updatedBand.getMembers(), updatedBand.getMgrId(), bandId) == 1; // how come this method returns a 1??
         }
 
         public boolean deleteBand(int bandId) {
