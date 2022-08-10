@@ -83,7 +83,7 @@ const router = new Router({
       }
     },
     {
-      path: "/band/:bandId",
+      path: "/bands/:bandId",
       name: "band",
       component: Band,
       meta: {
@@ -91,7 +91,7 @@ const router = new Router({
       }
     },
     {
-      path: "/venue/:venueId",
+      path: "/venues/:venueId",
       name: "venue",
       component: Venue,
       meta: {

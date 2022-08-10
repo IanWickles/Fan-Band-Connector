@@ -1,25 +1,21 @@
 import axios from 'axios';
 
-const http = axios.create({
-    baseURL: "http://localhost:9000"
-});
-
 export default {
 
     list() {
-        return http.get('/bands');
+        return axios.get('/bands');
     },
 
     get(id) {
-        return http.get(`/bands/${id}`);
+        return axios.get(`/bands/${id}`);
     },
     addBand(band) {
-        return http.post('/bands', band);
+        return axios.post('/bands', band);
     },
     updateBand(band) {
-        return http.put(`/bands/${band.id}`, band);
+        return axios.put(`/bands/${band.id}`, band);
     },
     deleteBand(bandId) {
-        return http.delete(`/bands/${bandId}`);
+        return axios.delete(`/bands/${bandId}`);
     },
 }

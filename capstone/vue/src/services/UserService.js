@@ -1,15 +1,11 @@
 import axios from 'axios';
 
-const http = axios.create({
-    baseURL: "http://localhost:9000"
-});
-
 export default {
     get(id) {
-        return http.get(`/users/${id}`);
+        return axios.get(`/user/${id}`);
     },
     updateUser(user) {
-        return http.put(`/users/${user.id}`, user);
+        return axios.put(`/user/${user.id}`, user);
     },
 
 }

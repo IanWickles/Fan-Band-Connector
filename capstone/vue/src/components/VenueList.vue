@@ -1,7 +1,12 @@
 <template> </template>
 
 <script>
-export default {};
+import venueService from "@services/VenueServices.js";
+
+export default {
+name: "venue-list"
+
+};
 </script>
 
 <style></style>
