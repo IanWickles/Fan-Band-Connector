@@ -25,9 +25,9 @@ public interface BandDAO {
 
     Band createBand();
 
-    void deleteBand(int bandId);
+    boolean deleteBand(int bandId);
 
-    Band updateBand(int bandId);
+    Band updateBand(Band updatedBand, int bandId);
 
 
 

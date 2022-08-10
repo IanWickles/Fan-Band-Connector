@@ -19,6 +19,10 @@ public class Show {
         this.venueId = venueId;
     }
 
+    public Show() {
+
+    }
+
     public int getShowId() {
         return showId;
     }
