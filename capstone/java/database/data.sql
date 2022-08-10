@@ -134,4 +134,25 @@ INSERT INTO user_band (user_id, band_id) VALUES ((select user_id from users wher
 INSERT INTO user_band (user_id, band_id) VALUES ((select user_id from users where username = 'user'), (select band_id from band where band_name = 'Better Than Ezra'));
 INSERT INTO user_band (user_id, band_id) VALUES ((select user_id from users where username = 'user'), (select band_id from band where band_name = 'Astral Project'));
 
+INSERT INTO user_messages (user_id, message_id) VALUES ('1', '1');
+INSERT INTO user_messages (user_id, message_id) VALUES ('1', '2');
+INSERT INTO user_messages (user_id, message_id) VALUES ('1', '3');
+INSERT INTO user_messages (user_id, message_id) VALUES ('1', '4');
+INSERT INTO user_messages (user_id, message_id) VALUES ('1', '5');
+INSERT INTO user_messages (user_id, message_id) VALUES ('1', '6');
+INSERT INTO user_messages (user_id, message_id) VALUES ('1', '7');
+INSERT INTO user_messages (user_id, message_id) VALUES ('1', '8');
+INSERT INTO user_messages (user_id, message_id) VALUES ('1', '9');
+INSERT INTO user_messages (user_id, message_id) VALUES ('1', '10');
+INSERT INTO user_messages (user_id, message_id) VALUES ('4', '1');
+INSERT INTO user_messages (user_id, message_id) VALUES ('5', '2');
+INSERT INTO user_messages (user_id, message_id) VALUES ('6', '3');
+INSERT INTO user_messages (user_id, message_id) VALUES ('7', '4');
+INSERT INTO user_messages (user_id, message_id) VALUES ('8', '5');
+INSERT INTO user_messages (user_id, message_id) VALUES ('9', '6');
+INSERT INTO user_messages (user_id, message_id) VALUES ('10', '7');
+INSERT INTO user_messages (user_id, message_id) VALUES ('11', '8');
+INSERT INTO user_messages (user_id, message_id) VALUES ('12', '9');
+INSERT INTO user_messages (user_id, message_id) VALUES ('13', '10');
+
 COMMIT TRANSACTION;
