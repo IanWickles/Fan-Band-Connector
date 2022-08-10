@@ -5,8 +5,11 @@
   </div>
 </template>
 
+<!--
+home page 
+-->
 <script>
 export default {
-  name: "home"
+  name: "home",
 };
 </script>
