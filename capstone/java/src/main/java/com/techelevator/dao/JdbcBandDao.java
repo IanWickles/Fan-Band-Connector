@@ -95,10 +95,11 @@ public class JdbcBandDao implements BandDAO {
             return null;
         }
 
+        public boolean updateBand(Band updatedBand, int mgrId) {
+            String sql = "UPDATE band SET band_name = ?, band_description = ?, band_member = ?, manager_id = ? WHERE manager_id = ?; ";
+            return jdbcTemplate.update(sql, updatedBand.getBandName(), updatedBand.getBandDesc(), updatedBand.getMembers(), updatedBand.getMgrId(), mgrId) == 1;
 
-        public boolean updateBand(Band updatedBand, int bandId) {
-            String sql = "UPDATE band SET band_name = ?, band_description = ?, band_member = ?, manager_id = ? WHERE band_id = ?; ";
-            return jdbcTemplate.update(sql, updatedBand.getBandName(), updatedBand.getBandDesc(), updatedBand.getMembers(), updatedBand.getMgrId(), bandId) == 1; // how come this method returns a 1??
+            // add exception handling for changing managerId to a band that already has ownership
         }
 
         public boolean deleteBand(int bandId) {
