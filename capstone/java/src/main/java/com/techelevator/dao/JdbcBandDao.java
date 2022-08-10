@@ -19,7 +19,7 @@ public class JdbcBandDao implements BandDAO {
 
         public List<Band> getBandsByGenre(String genreName){
             List<Band>  bands = new ArrayList<>();
-            String sql = "SELECT band_name FROM band JOIN band-genre USING (band_id) JOIN genre USING (genre_id) WHERE genre_name = ?;";
+            String sql = "SELECT band_name FROM band JOIN band_genre USING (band_id) JOIN genre USING (genre_id) WHERE genre_name = ?;";
 
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql, genreName);
             while(results.next()) {
@@ -44,21 +44,18 @@ public class JdbcBandDao implements BandDAO {
         }
 
         public List<Band> getBandsByShow(String showTitle) {
-
             List<Band> bands = new ArrayList<>();
-            String sql = "SELECT band_name FROM band JOIN band_show USING (band_id) WHERE show_id = ?;";
+            String sql = "SELECT band_name FROM band JOIN show_band USING (band_id) WHERE show_id = ?;";
 
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql, showTitle);
             while(results.next()) {
                 Band band = mapRowToBand(results);
                 bands.add(band);
             }
-
             return bands;
         }
 
         public List<Band> getAllBands() {
-
             List<Band> bands = new ArrayList<>();
             String sql = "SELECT band_name FROM band;";
 
@@ -67,31 +64,43 @@ public class JdbcBandDao implements BandDAO {
                 Band band = mapRowToBand(results);
                 bands.add(band);
             }
-
             return bands;
         }
 
         public List<Band> getBandsByNameAndGenre(String bandName, String genreName) {
+            List<Band> bands = new ArrayList<>();
+            String sql = "SELECT band_name FROM band JOIN band_genre USING (band_id) JOIN genre USING (genre_id) WHERE (genre_name = ?) AND (band_name = ?);";
+
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+            while(results.next()) {
+                Band band = mapRowToBand(results);
+                bands.add(band);
+            }
+            return bands;
+        }
+
+        public Band createBand() {
+            // should this actually take in a Band band object??
+            String sql = "INSERT INTO band VALUES (band_id, band_name, band_description, band_member, manager_id) " +
+                        "(default, ?, ?, ?, ?)"; //does manager ID need to be a subquery??
 
         return null;
         }
 
 
-    public Band createBand() {
-        return null;
-    }
+        public Band updateBand(Band updatedBand, int bandId) {
+            String sql = "UPDATE band SET band_name = ?, band_description = ?, band_member = ?, manager_id = ? WHERE band_id = ?; ";
 
-
-    public Band updateBand(int bandId) {
+            // not working - return jdbcTemplate.update(sql, updatedBand.getBandName(), updatedBand.getBandDesc(), updatedBand.getMembers(), updatedBand.getMgrId());
             return null;
-    }
+        }
 
+        public boolean deleteBand(int bandId) {
+            String sql = "DELETE FROM band WHERE band_id = ?";
+            return jdbcTemplate.update(sql, bandId) == 1;
+        }
 
-    public void deleteBand(int bandId) {
-
-    }
-
-    private Band mapRowToBand (SqlRowSet rs) {
+        private Band mapRowToBand (SqlRowSet rs) {
             Band band = new Band();
 
             band.setBandId(rs.getInt("band_id"));
@@ -101,7 +110,7 @@ public class JdbcBandDao implements BandDAO {
             band.setMgrId(rs.getInt("manager_id"));
 
             return band;
-        }
+         }
 
     }
 
