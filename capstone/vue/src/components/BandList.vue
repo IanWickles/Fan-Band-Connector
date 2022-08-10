@@ -1,10 +1,12 @@
 <template>
   <div class="band-container">
-    <band
-      v-bind:band="band"
-      v-for="band in $store.state.bands"
-      v-bind:key="band.id"
-    />
+    <div v-for="band in bands" v-bind:key="band.id" class="band">
+      <band
+        v-bind:band="band"
+        v-for="band in $store.state.bands"
+        v-bind:key="band.id"
+      />
+    </div>
   </div>
 </template>
 
@@ -14,17 +16,28 @@ import bandService from "@/services/BandService.js";
 
 export default {
   name: "band-list",
-  components: { Band },
-  methods: {
-    getBands() {
-      bandService.list().then((response) => {
-        this.$store.commit("SET_BANDS", response.data);
-      });
-    },
+  data() {
+    return {
+      bands: [],
+    };
   },
   created() {
-    this.getBands();
+    bandService.list().then((response) => {
+      this.bands = response.data;
+      console.log(this.bands);
+      console.log(this.$store);
+      this.$store.commit("SET_USER", null);
+      this.isLoading = false;
+    });
   },
+  components: { Band },
+  // methods: {
+  //   getBands() {
+  //     bandService.list().then((response) => {
+  //       this.bands = response.data;
+  //     });
+  //   },
+  // },
 };
 </script>
 
