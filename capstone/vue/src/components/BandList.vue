@@ -1,6 +1,6 @@
 <template>
   <div class="band-container">
-    <div v-for="band in bands" v-bind:key="band.id" class="band">
+    <div class="band">
       <band
         v-bind:band="band"
         v-for="band in $store.state.bands"
@@ -24,9 +24,7 @@ export default {
   created() {
     bandService.list().then((response) => {
       this.bands = response.data;
-      console.log(this.bands);
-      console.log(this.$store);
-      this.$store.commit("SET_USER", null);
+      this.$store.commit("SET_BANDS", this.bands);
       this.isLoading = false;
     });
   },
