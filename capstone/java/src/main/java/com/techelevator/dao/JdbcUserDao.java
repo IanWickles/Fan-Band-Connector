@@ -84,8 +84,15 @@ public class JdbcUserDao implements UserDao {
     }
 
     public List<User> getFollowersByBand(String bandName) {
+        List<User> users = new ArrayList<>();
+        String sql = "SELECT username from users JOIN user_band USING (user_id) JOIN band USING (band_id) WHERE band_name = ?;";
 
-        return null;
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, bandName);
+        while(results.next()) {
+            User user = mapRowToUser(results);
+            users.add(user);
+        }
+        return users;
 
         //needs implemented
     }

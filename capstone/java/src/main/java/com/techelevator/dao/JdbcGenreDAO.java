@@ -19,7 +19,7 @@ public class JdbcGenreDAO implements GenreDAO{
     public List<Genre> getGenresByBand(String bandName) {
 
         List<Genre> genres = new ArrayList<>();
-        String sql = "SELECT genre_name FROM genre JOIN band-genre USING (genre_id) JOIN band USING (band_id) WHERE band_name = ?;";
+        String sql = "SELECT genre_name FROM genre JOIN band_genre USING (genre_id) JOIN band USING (band_id) WHERE band_name = ?;";
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, bandName);
         while (results.next()){
