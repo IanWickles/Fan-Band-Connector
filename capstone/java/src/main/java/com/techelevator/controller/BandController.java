@@ -11,8 +11,9 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
-@RestController
 @CrossOrigin
+@RestController
+// @PreAuthorize("isAuthenticated()")
 public class BandController {
 
 private BandDAO bandDAO;
@@ -47,8 +48,8 @@ public BandController (BandDAO bandDAO) {this.bandDAO = bandDAO;}
     }
 
     @PostMapping ("/bands")
-    Band createBand(@Valid @RequestBody Band newBand){
-    return bandDAO.createBand(newBand);
+    Band createBand(@Valid @RequestBody Band newBand, int MgrId){
+    return bandDAO.createBand(newBand, MgrId);
     }
 
     @DeleteMapping ("/bands/{bandId}")
