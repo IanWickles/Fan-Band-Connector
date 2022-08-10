@@ -43,11 +43,11 @@ public class JdbcBandDao implements BandDAO {
             return bands;
         }
 
-        public List<Band> getBandsByShow(String showTitle) {
+        public List<Band> getBandsByShow(int showId) {
             List<Band> bands = new ArrayList<>();
             String sql = "SELECT band_name FROM band JOIN show_band USING (band_id) WHERE show_id = ?;";
 
-            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, showTitle);
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, showId);
             while(results.next()) {
                 Band band = mapRowToBand(results);
                 bands.add(band);
