@@ -13,7 +13,6 @@ import javax.validation.Valid;
 
 @RestController
 @CrossOrigin
-// @PreAuthorize("isAuthenticated()")
 public class BandController {
 
 private BandDAO bandDAO;
@@ -25,22 +24,22 @@ public BandController (BandDAO bandDAO) {this.bandDAO = bandDAO;}
     return bandDAO.getAllBands();
 }
 
-    @GetMapping ("bands/{bandName}")
+    @GetMapping ("/bands/{bandName}")
     public List<Band> getBandsByName(@PathVariable String bandName) {
     return bandDAO.getBandsByName(bandName);
 }
 
-    @GetMapping ("bands/{genreName}")
+    @GetMapping ("/bands/{genreName}")
     public List<Band> getBandsByGenre(@PathVariable String genreName) {
     return bandDAO.getBandsByName(genreName);
     }
 
-    @GetMapping ("bands/{showId}")
+    @GetMapping ("/bands/{showId}")
     public List<Band> getBandsByShow(@PathVariable int showId) {
     return bandDAO.getBandsByShow(showId);
     }
 
-    @GetMapping ("bands/{bandName}+{genreName}")
+    @GetMapping ("/bands/{bandName}+{genreName}")
     public List<Band> getBandsByNameAndGenre(@PathVariable String bandName, @PathVariable String genreName) {
     return bandDAO.getBandsByNameAndGenre(bandName, genreName);
     }
@@ -50,7 +49,7 @@ public BandController (BandDAO bandDAO) {this.bandDAO = bandDAO;}
     return bandDAO.createBand(newBand);
     }
 
-    @DeleteMapping ("bands/{bandId}")
+    @DeleteMapping ("/bands/{bandId}")
     public boolean deleteBand(@PathVariable int bandId) {
     return bandDAO.deleteBand(bandId);
     }
