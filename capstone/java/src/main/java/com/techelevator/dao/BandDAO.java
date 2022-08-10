@@ -17,17 +17,17 @@ public interface BandDAO {
 
     List<Band> getBandsByGenre(String genreName);
 
-    List<Band> getBandsByShow(String showTitle);
+    List<Band> getBandsByShow(int showId);
 
     List<Band> getBandsByNameAndGenre(String bandName, String genreName);
 
 
 
-    Band createBand();
+    Band createBand(Band newBand);
 
     boolean deleteBand(int bandId);
 
-    Band updateBand(Band updatedBand, int bandId);
+    boolean updateBand(Band updatedBand, int mgrId);
 
 
 
