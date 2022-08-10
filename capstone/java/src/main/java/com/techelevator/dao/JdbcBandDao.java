@@ -19,7 +19,7 @@ public class JdbcBandDao implements BandDAO {
 
         public List<Band> getBandsByGenre(String genreName){
             List<Band>  bands = new ArrayList<>();
-            String sql = "SELECT band_name FROM band JOIN band_genre USING (band_id) JOIN genre USING (genre_id) WHERE genre_name = ?;";
+            String sql = "SELECT * FROM band JOIN band_genre USING (band_id) JOIN genre USING (genre_id) WHERE genre_name = ?;";
 
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql, genreName);
             while(results.next()) {
@@ -32,7 +32,7 @@ public class JdbcBandDao implements BandDAO {
 
         public List<Band>  getBandsByName(String bandName) {
             List<Band> bands = new ArrayList<>();
-            String sql = "SELECT band_name FROM band WHERE band_name = ?;";
+            String sql = "SELECT * FROM band WHERE band_name = ?;";
 
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql, bandName);
             while(results.next()) {
@@ -45,7 +45,7 @@ public class JdbcBandDao implements BandDAO {
 
         public List<Band> getBandsByShow(int showId) {
             List<Band> bands = new ArrayList<>();
-            String sql = "SELECT band_name FROM band JOIN show_band USING (band_id) WHERE show_id = ?;";
+            String sql = "SELECT * FROM band JOIN show_band USING (band_id) WHERE show_id = ?;";
 
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql, showId);
             while(results.next()) {
@@ -57,7 +57,7 @@ public class JdbcBandDao implements BandDAO {
 
         public List<Band> getAllBands() {
             List<Band> bands = new ArrayList<>();
-            String sql = "SELECT band_name FROM band;";
+            String sql = "SELECT * FROM band;";
 
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
             while(results.next()) {
@@ -69,7 +69,7 @@ public class JdbcBandDao implements BandDAO {
 
         public List<Band> getBandsByNameAndGenre(String bandName, String genreName) {
             List<Band> bands = new ArrayList<>();
-            String sql = "SELECT band_name FROM band JOIN band_genre USING (band_id) JOIN genre USING (genre_id) WHERE (genre_name = ?) AND (band_name = ?);";
+            String sql = "SELECT * FROM band JOIN band_genre USING (band_id) JOIN genre USING (genre_id) WHERE (genre_name = ?) AND (band_name = ?);";
 
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
             while(results.next()) {
@@ -113,7 +113,7 @@ public class JdbcBandDao implements BandDAO {
             band.setBandId(rs.getInt("band_id"));
             band.setBandName(rs.getString("band_name"));
             band.setBandDesc(rs.getString("band_description"));
-            band.setMembers(rs.getString("members"));
+            band.setMembers(rs.getString("band_member"));
             band.setMgrId(rs.getInt("manager_id"));
 
             return band;
