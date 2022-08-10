@@ -17,7 +17,7 @@ public interface BandDAO {
 
     List<Band> getBandsByGenre(String genreName);
 
-    List<Band> getBandsByShow(String showTitle);
+    List<Band> getBandsByShow(int showId);
 
     List<Band> getBandsByNameAndGenre(String bandName, String genreName);
 
@@ -27,7 +27,7 @@ public interface BandDAO {
 
     boolean deleteBand(int bandId);
 
-    boolean updateBand(Band updatedBand, int bandId);
+    boolean updateBand(Band updatedBand, int mgrId);
 
 
 
