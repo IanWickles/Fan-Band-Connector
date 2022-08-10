@@ -7,7 +7,7 @@ public class Venue {
     private String venueAddress;
     private String venueDesc;
 
-    public Venue(int venueId, String venueName, String venueAddress, String venueDesc) {
+    public Venue() {
         this.venueId = venueId;
         this.venueName = venueName;
         this.venueAddress = venueAddress;

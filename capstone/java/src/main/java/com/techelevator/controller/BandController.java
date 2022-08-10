@@ -13,7 +13,6 @@ import javax.validation.Valid;
 
 @RestController
 @CrossOrigin
-
 public class BandController {
 
 private BandDAO bandDAO;
