@@ -27,14 +27,14 @@ public class BandController {
         return bandDAO.getAllBands();
     }
 
-    @GetMapping("/bands/{bandId}")
-    public List<Band> getBandsByName(@PathVariable String bandId) {
-        return bandDAO.getBandsByName(bandId);
-    }
+    @GetMapping ("/bands/{bandId}")
+    public List<Band> getBandsById(@PathVariable int bandId) {
+    return bandDAO.getBandsById(bandId);
+}
 
-    @GetMapping("/bands/genres/{genreId}")
-    public List<Band> getBandsByGenre(@PathVariable String genreId) {
-        return bandDAO.getBandsByGenre(genreId);
+    @GetMapping ("/bands/genres/{genreId}")
+    public List<Band> getBandsByGenre(@PathVariable int genreId) {
+    return bandDAO.getBandsByGenre(genreId);
     }
 
     @GetMapping("/bands/shows/{showId}")
@@ -44,19 +44,19 @@ public class BandController {
 
     // above this line is 100% confirmed to work in Postman, below is untested
 
-    @GetMapping("/bands/{bandName}/{genreName}")
-    public List<Band> getBandsByNameAndGenre(@PathVariable String bandName, @PathVariable String genreName) {
-        return bandDAO.getBandsByNameAndGenre(bandName, genreName);
+    @GetMapping ("/bands/{bandId}/{genreId}")
+    public List<Band> getBandsByNameAndGenre(@PathVariable int bandId, @PathVariable int genreId) {
+    return bandDAO.getBandsByIdAndGenre(bandId, genreId);
     }
 
-    @PostMapping("/bands")
-    Band createBand(@Valid @RequestBody Band newBand, int MgrId) {
-        return bandDAO.createBand(newBand, MgrId);
+    @PostMapping ("/bands/newBand")
+    Band createBand(@Valid @RequestBody Band newBand, Integer MgrId){
+    return bandDAO.createBand(newBand, MgrId);
     }
 
-    @DeleteMapping("/bands/{bandId}")
-    public boolean deleteBand(@PathVariable int bandId) {
-        return bandDAO.deleteBand(bandId);
+    @DeleteMapping ("/bands/{bandId}")
+    public boolean deleteBand(@PathVariable Integer bandId) {
+    return bandDAO.deleteBand(bandId);
     }
 
     @PutMapping("/bands/{bandId}")  // takes in a bandID but provides a mgrId???

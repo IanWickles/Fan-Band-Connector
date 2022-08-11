@@ -13,19 +13,19 @@ public interface BandDAO {
 
     List<Band> getAllBands();
 
-    List<Band>  getBandsByName(String bandName);
+    List<Band>  getBandsById(int bandId);
 
-    List<Band> getBandsByGenre(String genreName);
+    List<Band> getBandsByGenre(int genreId);
 
     List<Band> getBandsByShow(int showId);
 
-    List<Band> getBandsByNameAndGenre(String bandName, String genreName);
+    List<Band> getBandsByIdAndGenre(int bandId, int genreId);
 
 
 
-    Band createBand(Band newBand, int MgrId);
+    Band createBand(Band newBand, Integer MgrId);
 
-    boolean deleteBand(int bandId);
+    boolean deleteBand(Integer bandId);
 
     boolean updateBand(Band updatedBand, int mgrId);
 

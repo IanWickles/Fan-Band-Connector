@@ -19,12 +19,12 @@ public class ShowController {
     public ShowController (ShowDAO showDao) {this.showDao = showDao;}
 
     @GetMapping ("/shows/venue/{venueId}")
-    List<Show> getShowsByVenue(@PathVariable String venueId) {
+    List<Show> getShowsByVenue(@PathVariable int venueId) {
         return showDao.getShowsByVenue(venueId);
     }
 
     @GetMapping ("/shows/bands/{bandId}")
-    List<Show> getShowsByBand(@PathVariable String bandId) {
+    List<Show> getShowsByBand(@PathVariable int bandId) {
         return showDao.getShowsByBand(bandId);
     }
 }
