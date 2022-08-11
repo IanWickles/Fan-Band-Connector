@@ -17,11 +17,11 @@ public class JdbcBandDao implements BandDAO {
             this.jdbcTemplate = jdbcTemplate;
         }
 
-        public List<Band> getBandsByGenre(String genreName){
+        public List<Band> getBandsByGenre(int genreId){
             List<Band>  bands = new ArrayList<>();
-            String sql = "SELECT * FROM band JOIN band_genre USING (band_id) JOIN genre USING (genre_id) WHERE genre_name = ?;";
+            String sql = "SELECT * FROM band JOIN band_genre USING (band_id) JOIN genre USING (genre_id) WHERE genre_id = ?;";
 
-            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, genreName);
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, genreId);
             while(results.next()) {
                 Band band = mapRowToBand(results);
                 bands.add(band);
@@ -30,11 +30,11 @@ public class JdbcBandDao implements BandDAO {
             return bands;
         }
 
-        public List<Band>  getBandsByName(String bandName) {
+        public List<Band>  getBandsById(int bandId) {
             List<Band> bands = new ArrayList<>();
-            String sql = "SELECT * FROM band WHERE band_name = ?;";
+            String sql = "SELECT * FROM band WHERE band_id = ?;";
 
-            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, bandName);
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, bandId);
             while(results.next()) {
                 Band band = mapRowToBand(results);
                 bands.add(band);
@@ -67,9 +67,9 @@ public class JdbcBandDao implements BandDAO {
             return bands;
         }
 
-        public List<Band> getBandsByNameAndGenre(String bandName, String genreName) {
+        public List<Band> getBandsByIdAndGenre(int bandId, int genreId) {
             List<Band> bands = new ArrayList<>();
-            String sql = "SELECT * FROM band JOIN band_genre USING (band_id) JOIN genre USING (genre_id) WHERE (genre_name = ?) AND (band_name = ?);";
+            String sql = "SELECT * FROM band JOIN band_genre USING (band_id) JOIN genre USING (genre_id) WHERE (genre_id = ?) AND (band_id = ?);";
 
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
             while(results.next()) {
@@ -79,9 +79,9 @@ public class JdbcBandDao implements BandDAO {
             return bands;
         }
 
-        public Band createBand(Band newBand, int MgrId) {  //not working, 500 internal server error
-            String sql = "INSERT INTO band VALUES (band_id, band_name, band_description, band_member, manager_id) " +
-                        "(default, ?, ?, ?, ?)";
+        public Band createBand(Band newBand, Integer MgrId) {  //not working, 500 internal server error
+            String sql = "INSERT INTO band VALUES (band_name, band_description, band_member, manager_id) " + //removed band_id from SQL String
+                        "VALUES (?, ?, ?, ?)";  //hm, how are we going to get the manager ID?
 
             //will need to be wrapped in Try/Catch
 
@@ -102,12 +102,24 @@ public class JdbcBandDao implements BandDAO {
             // add exception handling for changing managerId to a band that already has ownership
         }
 
-        public boolean deleteBand(int bandId) {
-            String sql = "DELETE FROM band WHERE band_id = ?";
-            return jdbcTemplate.update(sql, bandId) == 1;
-        }
 
-        private Band mapRowToBand (SqlRowSet rs) {
+    public boolean deleteBand(Integer bandId) {
+
+            //needs exception handling...
+
+        String sql = "DELETE FROM user_messages WHERE message_id = ANY(SELECT message_id FROM messages WHERE band_id = "+bandId+");"+
+                     "DELETE FROM messages WHERE band_id = "+bandId+"; "+
+                     "DELETE FROM band_genre WHERE band_id = "+bandId+"; "+
+                     "DELETE FROM show_band WHERE band_id = "+bandId+"; "+
+                     "DELETE FROM user_band WHERE band_id = "+bandId+"; "+
+                     "DELETE FROM band WHERE band_id = "+bandId+";";
+         return jdbcTemplate.update(sql) == 1; //if only 1 band deleted, it should return 1 row affected, 1 == 1;
+    }
+
+
+
+
+    private Band mapRowToBand (SqlRowSet rs) {
             Band band = new Band();
 
             band.setBandId(rs.getInt("band_id"));
