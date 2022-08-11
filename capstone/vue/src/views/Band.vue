@@ -1,5 +1,5 @@
 <template>
-  <band-details />
+  <band-details v-bind:bandId="parseInt($route.params.bandId)" />
 </template>
 <!--  
 // this is going to be the band(singular) profile page

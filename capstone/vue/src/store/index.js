@@ -20,26 +20,57 @@ export default new Vuex.Store({
   state: {
     token: currentToken || '',
     user: currentUser || {},
-    bands: {
-      band_id: 0,
-      name: "",
-      description: "",
-      bandMember: "",
-      manager_id: ""
+    bands: [],
+    activeBand: {
+      bandId: 0,
+      bandName: "",
+      bandDesc: "",
+      Members: "",
+      mgrId: ""
       //Add in any other field
-    }, venues: {
-      id: 0,
-      name: "",
-      description: ""
-    }, message: {
-      id: 0,
-      description: ""
+    },
+    venues: [],
+    activeVenues: {
+      venueId: 0,
+      venueName: "",
+      venueAddress: "",
+      venueDesc: ""
+    },
+    messages: [],
+    activeMessage: {
+      messageId: 0,
+      messageBody: "",
+      messageTimestamp: "",
+      bandId: "",
+    },
+    shows: [],
+    activeshow: {
+      showId: 0,
+      showTime: 0,
+      showTitle: "",
+      showDesc: "",
+      venueId: 0,
     },
   },
 
   mutations: {
     SET_BANDS(state, data) {
       state.bands = data;
+    },
+    SET_ACTIVE_BANDS(state, data) {
+      state.activeBand = data;
+    },
+    SET_BAND_SHOW(state, data) {
+      state.shows = data;
+    },
+    SET_VENUES(state, data) {
+      state.venues = data;
+    },
+    SET_ACTIVE_VENUES(state, data) {
+      state.activeVenue = data;
+    },
+    SET_VENUE_SHOW(state, data) {
+      state.shows = data;
     },
     SET_AUTH_TOKEN(state, token) {
       state.token = token;

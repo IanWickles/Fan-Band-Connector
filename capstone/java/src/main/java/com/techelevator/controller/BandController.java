@@ -16,52 +16,54 @@ import javax.validation.Valid;
 // @PreAuthorize("isAuthenticated()")
 public class BandController {
 
-private BandDAO bandDAO;
+    private BandDAO bandDAO;
 
-public BandController (BandDAO bandDAO) {this.bandDAO = bandDAO;}
-
-    @GetMapping ("/bands")
-    public List<Band> getAllBands(){
-    return bandDAO.getAllBands();
-}
-
-    @GetMapping ("/bands/{bandName}")
-    public List<Band> getBandsByName(@PathVariable String bandName) {
-    return bandDAO.getBandsByName(bandName);
-}
-
-    @GetMapping ("/bands/genres/{genreName}")
-    public List<Band> getBandsByGenre(@PathVariable String genreName) {
-    return bandDAO.getBandsByGenre(genreName);
+    public BandController(BandDAO bandDAO) {
+        this.bandDAO = bandDAO;
     }
 
-    @GetMapping ("/bands/shows/{showId}")
+    @GetMapping("/bands")
+    public List<Band> getAllBands() {
+        return bandDAO.getAllBands();
+    }
+
+    @GetMapping("/bands/{bandId}")
+    public List<Band> getBandsByName(@PathVariable String bandId) {
+        return bandDAO.getBandsByName(bandId);
+    }
+
+    @GetMapping("/bands/genres/{genreId}")
+    public List<Band> getBandsByGenre(@PathVariable String genreId) {
+        return bandDAO.getBandsByGenre(genreId);
+    }
+
+    @GetMapping("/bands/shows/{showId}")
     public List<Band> getBandsByShow(@PathVariable int showId) {
-    return bandDAO.getBandsByShow(showId);
+        return bandDAO.getBandsByShow(showId);
     }
 
     // above this line is 100% confirmed to work in Postman, below is untested
 
-    @GetMapping ("/bands/{bandName}/{genreName}")
+    @GetMapping("/bands/{bandName}/{genreName}")
     public List<Band> getBandsByNameAndGenre(@PathVariable String bandName, @PathVariable String genreName) {
-    return bandDAO.getBandsByNameAndGenre(bandName, genreName);
+        return bandDAO.getBandsByNameAndGenre(bandName, genreName);
     }
 
-    @PostMapping ("/bands")
-    Band createBand(@Valid @RequestBody Band newBand, int MgrId){
-    return bandDAO.createBand(newBand, MgrId);
+    @PostMapping("/bands")
+    Band createBand(@Valid @RequestBody Band newBand, int MgrId) {
+        return bandDAO.createBand(newBand, MgrId);
     }
 
-    @DeleteMapping ("/bands/{bandId}")
+    @DeleteMapping("/bands/{bandId}")
     public boolean deleteBand(@PathVariable int bandId) {
-    return bandDAO.deleteBand(bandId);
+        return bandDAO.deleteBand(bandId);
     }
 
-    @PutMapping ("/bands/{bandId}")  // takes in a bandID but provides a mgrId???
-    public boolean updateBand(@Valid @RequestBody Band updatedBand, @PathVariable int mgrId){
-    if (mgrId == updatedBand.getMgrId()) {
-    return bandDAO.updateBand(updatedBand, mgrId);}
-    else return false;
+    @PutMapping("/bands/{bandId}")  // takes in a bandID but provides a mgrId???
+    public boolean updateBand(@Valid @RequestBody Band updatedBand, @PathVariable int mgrId) {
+        if (mgrId == updatedBand.getMgrId()) {
+            return bandDAO.updateBand(updatedBand, mgrId);
+        } else return false;
     }
 
 

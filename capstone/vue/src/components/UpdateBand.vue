@@ -80,26 +80,17 @@
 
 <script>
 export default {
-  name: "add-book",
+  name: "update-band",
+  props: ["bandId"],
   data() {
     return {
-      newBand: {
-        id: "",
-        name: "",
-        bandMember: [],
-        genre: [],
-        description: "",
-        //Add in any other field
-      },
+      title: "",
     };
   },
   methods: {
-    addNewBand() {
-      this.$store.commit("ADD_BAND", this.newBand);
-
-      this.$router.push({ name: "home" });
-    },
+    updateBands() {},
   },
+  created() {},
 };
 </script>
 

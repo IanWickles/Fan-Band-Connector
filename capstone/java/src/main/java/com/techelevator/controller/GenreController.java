@@ -18,9 +18,9 @@ public class GenreController {
 
     private GenreController (GenreDAO genreDAO) {this.genreDAO = genreDAO;}
 
-    @GetMapping ("/genre/bands/{bandName}")
-    List<Genre> getGenresByBand(@PathVariable String bandName) {
-        return genreDAO.getGenresByBand(bandName);
+    @GetMapping ("/genre/bands/{bandId}")
+    List<Genre> getGenresByBand(@PathVariable String bandId) {
+        return genreDAO.getGenresByBand(bandId);
     }
 
 

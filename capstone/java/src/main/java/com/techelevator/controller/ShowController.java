@@ -18,13 +18,13 @@ public class ShowController {
 
     public ShowController (ShowDAO showDao) {this.showDao = showDao;}
 
-    @GetMapping ("/shows/venue/{venueName}")
-    List<Show> getShowsByVenue(@PathVariable String venueName) {
-        return showDao.getShowsByVenue(venueName);
+    @GetMapping ("/shows/venue/{venueId}")
+    List<Show> getShowsByVenue(@PathVariable String venueId) {
+        return showDao.getShowsByVenue(venueId);
     }
 
-    @GetMapping ("/shows/bands/{bandName}")
-    List<Show> getShowsByBand(@PathVariable String bandName) {
-        return showDao.getShowsByBand(bandName);
+    @GetMapping ("/shows/bands/{bandId}")
+    List<Show> getShowsByBand(@PathVariable String bandId) {
+        return showDao.getShowsByBand(bandId);
     }
 }

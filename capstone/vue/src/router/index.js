@@ -7,10 +7,11 @@ import Register from '../views/Register.vue'
 import store from '../store/index'
 import NewBand from '../views/NewBand.vue'
 import Band from '../views/Band.vue'
-import Search from '../views/Search.vue'
+import AllBands from '../views/AllBands.vue'
 import Profile from '../views/Profile.vue'
 import Venue from '../views/Venue.vue'
-
+import NotFound from '../views/NotFound.vue'
+import AllVenues from '../views/AllVenues.vue'
 Vue.use(Router)
 
 /**
@@ -31,7 +32,7 @@ const router = new Router({
       name: 'home',
       component: Home,
       meta: {
-        requiresAuth: true
+        requiresAuth: false
       }
     },
     {
@@ -59,33 +60,49 @@ const router = new Router({
       }
     },
     {
-      path: "/search",
-      name: "search",
-      component: Search,
+      path: "/bands",
+      name: "bands",
+      component: AllBands,
       meta: {
         requiresAuth: false
-      }
-    },
-    {
-      path: "/new-band",
-      name: "new-band",
-      component: NewBand,
-      meta: {
-        requiresAuth: true
-      }
-    },
-    {
-      path: "/:userId",
-      name: "profile",
-      component: Profile,
-      meta: {
-        requiresAuth: true
       }
     },
     {
       path: "/bands/:bandId",
       name: "band",
       component: Band,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    // {
+    //   path: "/bands/edit/:bandId",
+    //   name: "update-band",
+    //   component: EditBand,
+    //   meta: {
+    //     requiresAuth: false
+    //   }
+    // },
+    {
+      path: "/new-band",
+      name: "new-band",
+      component: NewBand,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: "/profile/:userId",
+      name: "profile",
+      component: Profile,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: "/venues",
+      name: "venues",
+      component: AllVenues,
       meta: {
         requiresAuth: false
       }
@@ -97,6 +114,12 @@ const router = new Router({
       meta: {
         requiresAuth: false
       }
+    },
+    {
+      path: "/notfound",
+      name: "not-found",
+      component: NotFound,
+      requiresAuth: false
     },
   ]
 })
