@@ -1,21 +1,27 @@
 import axios from 'axios';
 
+// const http = axios.create({
+//     baseURL: "http://localhost:9000"
+// });
+
+const http = axios;
+
 export default {
 
     list() {
-        return axios.get('/bands');
+        return http.get('/bands');
     },
 
     get(id) {
-        return axios.get(`/bands/${id}`);
+        return http.get(`/bands/${id}`);
     },
     addBand(band) {
-        return axios.post('/bands', band);
+        return http.post('/bands', band);
     },
     updateBand(band) {
-        return axios.put(`/bands/${band.id}`, band);
+        return http.put(`/bands/${band.id}`, band);
     },
     deleteBand(bandId) {
-        return axios.delete(`/bands/${bandId}`);
+        return http.delete(`/bands/${bandId}`);
     },
 }

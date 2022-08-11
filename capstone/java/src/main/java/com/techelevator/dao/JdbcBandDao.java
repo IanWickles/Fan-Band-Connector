@@ -79,13 +79,13 @@ public class JdbcBandDao implements BandDAO {
             return bands;
         }
 
-        public Band createBand(Band newBand) {     //maybe also take in a userId??
+        public Band createBand(Band newBand, int MgrId) {  //not working, 500 internal server error
             String sql = "INSERT INTO band VALUES (band_id, band_name, band_description, band_member, manager_id) " +
-                        "(default, ?, ?, ?, ?)"; //does manager ID need to be a subquery??
+                        "(default, ?, ?, ?, ?)";
 
             //will need to be wrapped in Try/Catch
 
-            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, newBand.getBandName(), newBand.getBandDesc(), newBand.getMembers(), newBand.getMgrId()); //should this take in a userId or getMgrId??
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, newBand.getBandName(), newBand.getBandDesc(), newBand.getMembers(), MgrId);
             if (results.next()) {
                 int id = newBand.getBandId();
                 newBand.setBandId(id);

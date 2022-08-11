@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
-@RestController
 @CrossOrigin
-
+@RestController
+// @PreAuthorize("isAuthenticated()")
 public class BandController {
 
 private BandDAO bandDAO;
@@ -30,24 +30,26 @@ public BandController (BandDAO bandDAO) {this.bandDAO = bandDAO;}
     return bandDAO.getBandsByName(bandName);
 }
 
-    @GetMapping ("/bands/{genreName}")
+    @GetMapping ("/bands/genres/{genreName}")
     public List<Band> getBandsByGenre(@PathVariable String genreName) {
-    return bandDAO.getBandsByName(genreName);
+    return bandDAO.getBandsByGenre(genreName);
     }
 
-    @GetMapping ("/bands/{showId}")
+    @GetMapping ("/bands/shows/{showId}")
     public List<Band> getBandsByShow(@PathVariable int showId) {
     return bandDAO.getBandsByShow(showId);
     }
 
-    @GetMapping ("/bands/{bandName}+{genreName}")
+    // above this line is 100% confirmed to work in Postman, below is untested
+
+    @GetMapping ("/bands/{bandName}/{genreName}")
     public List<Band> getBandsByNameAndGenre(@PathVariable String bandName, @PathVariable String genreName) {
     return bandDAO.getBandsByNameAndGenre(bandName, genreName);
     }
 
     @PostMapping ("/bands")
-    Band createBand(@Valid @RequestBody Band newBand){
-    return bandDAO.createBand(newBand);
+    Band createBand(@Valid @RequestBody Band newBand, int MgrId){
+    return bandDAO.createBand(newBand, MgrId);
     }
 
     @DeleteMapping ("/bands/{bandId}")

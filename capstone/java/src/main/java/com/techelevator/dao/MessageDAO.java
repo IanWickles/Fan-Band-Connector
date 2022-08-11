@@ -6,10 +6,14 @@ import java.util.List;
 
 public interface MessageDAO {
 
-    List<Message> getMessages(int userId);
+    List<Message> getMessagesOfCurrentUser(int userId);
 
-    // messageFans()
+    List<Message> sortMessagesByDate();
 
-    void deleteMessage(int messageId);
+    List <Message> sortMessagesByBandName();
+
+    Boolean sendMessageToFollowers(Message newMessage,int mgrId);
+
+   // void deleteMessage(int messageId);
 
 }
