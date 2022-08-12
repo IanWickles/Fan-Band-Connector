@@ -13,6 +13,11 @@ INSERT INTO users (username,password_hash,role,email_address) VALUES ('Eric','$2
 INSERT INTO users (username,password_hash,role,email_address) VALUES ('Mario','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_MANAGER', 'M.Palmisano@gmail.com');
 INSERT INTO users (username,password_hash,role,email_address) VALUES ('Justin','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_MANAGER', 'J.Aliperti@gmail.com');
 INSERT INTO users (username,password_hash,role,email_address) VALUES ('George','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_MANAGER', 'G.Porter@gmail.com');
+INSERT INTO users (username,password_hash,role,email_address) VALUES ('userTest1','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER','testingUser1@gmail.com');
+INSERT INTO users (username,password_hash,role,email_address) VALUES ('userTest2','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER','testingUser2@gmail.com');
+INSERT INTO users (username,password_hash,role,email_address) VALUES ('userTest3','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER','testingUser3@gmail.com');
+INSERT INTO users (username,password_hash,role,email_address) VALUES ('userTest4','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER','testingUser4@gmail.com');
+INSERT INTO users (username,password_hash,role,email_address) VALUES ('userTest5','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER','testingUser5@gmail.com');
 
 
 INSERT INTO band (band_name, band_description, band_member, manager_id) VALUES ('Feufollet', 'Feufollet is an Americana/Cajun band from Lafayette, Louisiana.', 'Philippe Billeaudeaux, Kelli Jones-Savoy, Chris Segura, Chris Stafford, Mike Stafford, Andrew Toups', (select user_id from users where email_address = 'P.Billeaudeaux@gmail.com'));

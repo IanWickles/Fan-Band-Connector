@@ -6,8 +6,8 @@ export default {
         return axios.get('/venues');
     },
 
-    get(id) {
-        return axios.get(`/venues/${id}`);
+    get(venueId) {
+        return axios.get(`/venues/${venueId}`);
     },
     addVenue(venue) {
         return axios.post('/venues', venue);

@@ -7,6 +7,6 @@ public interface VenueDao {
 
     List<Venue> getAllVenues();
 
-    List<Venue> getVenueByName(String venueName);
+    List<Venue> getVenueById(int venueId);
 
 }

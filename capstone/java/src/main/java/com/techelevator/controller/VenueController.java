@@ -24,9 +24,9 @@ public class VenueController {
         return venueDao.getAllVenues();
     }
 
-    @GetMapping("/venues/{venueName}")
-    List<Venue> getVenueByName(@PathVariable String venueName) {
-        return venueDao.getVenueByName(venueName);
+    @GetMapping("/venues/{venueId}")
+    List<Venue> getVenueById(@PathVariable int venueId) {
+        return venueDao.getVenueById(venueId);
     }
 
 }

@@ -1,21 +1,21 @@
 <!--blanket nav to home|search|login/logout-->
 
 <template>
-  <div class="container is-fluid" id="app">
-    <aside class="menu" id="nav">
-      <p class="menu-label">
-      <router-link v-bind:to="{ name: 'home' }">Home</router-link></p>
-      <p class="menu-label">
-      <router-link v-bind:to="{ name: 'search' }">Search</router-link></p>
-      <p class="menu-label">
+  <div id="app">
+    <div id="nav">
+      <router-link v-bind:to="{ name: 'home' }">Home</router-link> |
+      <router-link v-bind:to="{ name: 'bands' }">Bands</router-link> |
+      <router-link v-bind:to="{ name: 'venues' }">Venues</router-link> |
+      <router-link v-bind:to="{ name: 'profile' }">Profile</router-link>
+      |
       <router-link
-        v-if="$store.state.token != null"
         v-bind:to="{ name: 'login' }"
+        v-if="($store.state.token = 'token')"
         >Login</router-link
       >
       <router-link
         v-bind:to="{ name: 'logout' }"
-        v-if="$store.state.token != ''"
+        v-if="$store.state.token != 'token'"
         >Logout</router-link
       ></p>
     </aside>

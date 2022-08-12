@@ -17,10 +17,10 @@ public class JdbcShowDao implements ShowDAO {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    public List<Show> getShowsByVenue(String venueName) {
+    public List<Show> getShowsByVenue(int venueId) {
         List<Show> shows = new LinkedList<>();
-        String sql = "SELECT * FROM show JOIN venue USING (venue_id) WHERE venue_name = ?;";
-        SqlRowSet results =jdbcTemplate.queryForRowSet(sql, venueName);
+        String sql = "SELECT * FROM show JOIN venue USING (venue_id) WHERE venue_id = ?;";
+        SqlRowSet results =jdbcTemplate.queryForRowSet(sql, venueId);
 
         while (results.next()) {
             Show show = mapShowToRowSet(results);
@@ -29,10 +29,10 @@ public class JdbcShowDao implements ShowDAO {
         return shows;
     }
 
-    public List<Show> getShowsByBand(String bandName){
+    public List<Show> getShowsByBand(int bandId){
         List<Show> shows = new LinkedList<>();
-        String sql = "SELECT * FROM show JOIN show_band USING (show_id) JOIN band USING (band_id) WHERE band_name = ?;";
-        SqlRowSet results =jdbcTemplate.queryForRowSet(sql, bandName);
+        String sql = "SELECT * FROM show JOIN show_band USING (show_id) JOIN band USING (band_id) WHERE band_id = ?;";
+        SqlRowSet results =jdbcTemplate.queryForRowSet(sql, bandId);
 
         while (results.next()) {
             Show show = mapShowToRowSet(results);
