@@ -7,9 +7,9 @@
             <td>
               <router-link
                 v-bind:to="{ name: 'band', params: { bandId: band.bandId } }"
-                >{{ band.bandName }}</router-link
               >
-              <!-- <router-link v-bind:to="{ name: 'profile' }"> -->
+                {{ band.bandName }}
+              </router-link>
             </td>
             <!-- <h2 class="description">{{ band.bandDesc }}</h2> -->
             <!-- <h2 class="band-members">{{ band.members }}</h2> -->

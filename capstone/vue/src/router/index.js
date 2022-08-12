@@ -84,7 +84,7 @@ const router = new Router({
     //   }
     // },
     {
-      path: "/bands/new-band",
+      path: "/new-band",
       name: "new-band",
       component: NewBand,
       meta: {
