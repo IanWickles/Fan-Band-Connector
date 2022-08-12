@@ -20,9 +20,9 @@ public interface BandDao {
 
 
 
-    boolean createBand(Band newBand, int managerId);
+    Band createBand(Band newBand);
 
-    boolean deleteBand(int bandId);
+    boolean deleteBand(Band bandToDelete, int bandId);
 
     boolean updateBand(Band bandToUpdate, int managerId);
 

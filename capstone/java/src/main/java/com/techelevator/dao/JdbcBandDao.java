@@ -34,7 +34,7 @@ public class JdbcBandDao implements BandDao {
         String sql = "SELECT * FROM band WHERE band_id = ?;";
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, bandId);
-        if (!results.next()) {
+        if (results.next()) {
             band = mapRowToBand(results);
         }
         return band;
@@ -77,29 +77,16 @@ public class JdbcBandDao implements BandDao {
         return bands;
     }
 
-    public boolean deleteBand(int bandId) {
-
-            //needs exception handling...
-
-        String sql = "DELETE FROM user_messages WHERE message_id = ANY(SELECT message_id FROM messages WHERE band_id = "+bandId+");"+
-                     "DELETE FROM messages WHERE band_id = "+bandId+"; "+
-                     "DELETE FROM band_genre WHERE band_id = "+bandId+"; "+
-                     "DELETE FROM show_band WHERE band_id = "+bandId+"; "+
-                     "DELETE FROM user_band WHERE band_id = "+bandId+"; "+
-                     "DELETE FROM band WHERE band_id = "+bandId+";";
-         return jdbcTemplate.update(sql) == 1; //if only 1 band deleted, it should return 1 row affected, 1 == 1;
-    }
-
-    public boolean createBand(Band newBand, int managerId) {
-        String sql = "INSERT INTO band VALUES (band_name, band_description, band_member, manager_id) " +
-                "VALUES (?, ?, ?, ?);";
-        try {
-            jdbcTemplate.queryForRowSet(sql, newBand.getBandName(), newBand.getBandDesc(), newBand.getMembers(), managerId);
-        } catch (Exception e) {
+    public Band createBand(Band newBand) {
+        String sql = "INSERT INTO band (band_name, band_description, band_member, manager_id) " +
+                "VALUES (?, ?, ?, ?) RETURNING band_id;";
+        try{
+            Integer newId = jdbcTemplate.queryForObject(sql, Integer.class, newBand.getBandName(), newBand.getBandDesc(), newBand.getMembers(), newBand.getMgrId());
+            return getBandById(newId);
+        } catch (Exception e){
             e.printStackTrace();
-            return false;
         }
-        return true;
+        return null;
     }
 
     public boolean updateBand(Band bandToUpdate, int bandId) {
@@ -113,22 +100,21 @@ public class JdbcBandDao implements BandDao {
         return true;
     }
 
-//    public boolean deleteBand(Band bandToDelete, int bandId) {
-//        String sql = "DELETE FROM user_messages WHERE message_id = ANY(SELECT message_id FROM messages WHERE band_id = " + bandId + ");" +
-//                "DELETE FROM messages WHERE band_id = " + bandId + "; " +
-//                "DELETE FROM band_genre WHERE band_id = " + bandId + "; " +
-//                "DELETE FROM show_band WHERE band_id = " + bandId + "; " +
-//                "DELETE FROM user_band WHERE band_id = " + bandId + "; " +
-//                "DELETE FROM band WHERE band_id = " + bandId + ";";
-//        try {
-//            jdbcTemplate.update(sql);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            return false;
-//        }
-//        return true;
-//    }
-
+    public boolean deleteBand(Band bandToDelete, int bandId) {
+        String sql = "DELETE FROM user_messages WHERE message_id = ANY(SELECT message_id FROM messages WHERE band_id = " + bandId + ");" +
+                "DELETE FROM messages WHERE band_id = " + bandId + "; " +
+                "DELETE FROM band_genre WHERE band_id = " + bandId + "; " +
+                "DELETE FROM show_band WHERE band_id = " + bandId + "; " +
+                "DELETE FROM user_band WHERE band_id = " + bandId + "; " +
+                "DELETE FROM band WHERE band_id = " + bandId + ";";
+        try {
+            jdbcTemplate.update(sql);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
 
     private Band mapRowToBand(SqlRowSet rs) {
         Band band = new Band();
