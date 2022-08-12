@@ -62,15 +62,15 @@ public class BandController {
     return bandDao.deleteBand(bandId);
     }
 
-    @DeleteMapping("/bands/{bandId}")
-    public boolean deleteBand(Band bandToDelete, Principal user, @PathVariable int bandId) {
-        int currentManagerId = userDao.findIdByUsername(user.getName());
-        if (currentManagerId == bandToDelete.getMgrId()) {
-            return bandDao.deleteBand(bandToDelete, bandId);
-        } else {
-            return false;
-        }
-
-    }
+//    @DeleteMapping("/bands/{bandId}")
+//    public boolean deleteBand(Band bandToDelete, Principal user, @PathVariable int bandId) {
+//        int currentManagerId = userDao.findIdByUsername(user.getName());
+//        if (currentManagerId == bandToDelete.getMgrId()) {
+//            return bandDao.deleteBand(bandToDelete, bandId);
+//        } else {
+//            return false;
+//        }
+//
+//    }
 
 }
