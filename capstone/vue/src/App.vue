@@ -2,9 +2,12 @@
 
 <template>
   <div class="container is-fluid" id="app">
-    <div id="nav">
-      <router-link v-bind:to="{ name: 'home' }">Home</router-link> |
-      <router-link v-bind:to="{ name: 'search' }">Search</router-link> |
+    <aside class="menu" id="nav">
+      <p class="menu-label">
+      <router-link v-bind:to="{ name: 'home' }">Home</router-link></p>
+      <p class="menu-label">
+      <router-link v-bind:to="{ name: 'search' }">Search</router-link></p>
+      <p class="menu-label">
       <router-link
         v-if="$store.state.token != null"
         v-bind:to="{ name: 'login' }"
@@ -14,9 +17,11 @@
         v-bind:to="{ name: 'logout' }"
         v-if="$store.state.token != ''"
         >Logout</router-link
-      >
-    </div>
+      ></p>
+    </aside>
     <router-view />
   </div>
 </template>
-<style></style>
+<style>
+
+  </style>
