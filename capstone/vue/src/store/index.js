@@ -65,7 +65,7 @@ export default new Vuex.Store({
     SET_VENUES(state, data) {
       state.venues = data;
     },
-    SET_ACTIVE_VENUES(state, data) {
+    SET_ACTIVE_VENUE(state, data) {
       state.activeVenue = data;
     },
     SET_VENUE_SHOW(state, data) {
