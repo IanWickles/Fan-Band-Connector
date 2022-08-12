@@ -1,12 +1,8 @@
 <template>
   <div>
     <h1>{{ this.$store.state.activeBand.title }}</h1>
-    <!-- <div
-      v-for="band in this.$store.state.activeBand"
-      v-bind:key="band.bandId"
-      class="band-container"
-    > -->
-    <h1 class="name">Name: {{ band.bandName }}</h1>
+    <h1 class="name">{{ this.$store.state.activeBand.bandName }}</h1>
+    <h2>Who Dat</h2>
     <h2 class="description">{{ band.bandDesc }}</h2>
     <h2 class="band-members">{{ band.members }}</h2>
     <!-- <h2 class="genre">{{ band.genre }}</h2> -->
@@ -16,7 +12,6 @@
         >
       </div> -->
   </div>
-  <!-- </div> -->
 </template>
 
 <script>
@@ -38,6 +33,8 @@ export default {
       .get(this.bandId)
       .then((response) => {
         this.$store.commit("SET_ACTIVE_BAND", response.data);
+        console.log(this.$store.state.activeBand);
+        console.log(this.$store);
       })
       .catch((error) => {
         if (error.response.status == 404) {
@@ -48,4 +45,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+div {
+  margin: 10px;
+}
+</style>

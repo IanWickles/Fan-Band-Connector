@@ -18,4 +18,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+template {
+  margin: 10px;
+}
+</style>

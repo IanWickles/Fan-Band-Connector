@@ -3,10 +3,8 @@ package com.techelevator.controller;
 import com.techelevator.dao.BandDAO;
 import com.techelevator.model.Band;
 
-import java.security.Principal;
 import java.util.List;
 
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -28,8 +26,8 @@ public class BandController {
     }
 
     @GetMapping ("/bands/{bandId}")
-    public List<Band> getBandsById(@PathVariable int bandId) {
-    return bandDAO.getBandsById(bandId);
+    public Band getBandsById(@PathVariable int bandId) {
+    return bandDAO.getBandById(bandId);
 }
 
     @GetMapping ("/bands/genres/{genreId}")

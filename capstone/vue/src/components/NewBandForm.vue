@@ -66,7 +66,7 @@
     </div>
 
     <div class="field">
-      <label class="label">Description</label>
+      <label class="label">Who Dat:</label>
       <div class="control">
         <textarea class="textarea" placeholder="Description"></textarea>
       </div>

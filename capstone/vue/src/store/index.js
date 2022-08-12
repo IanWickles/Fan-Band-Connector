@@ -27,10 +27,9 @@ export default new Vuex.Store({
       bandDesc: "",
       Members: "",
       mgrId: ""
-      //Add in any other field
     },
     venues: [],
-    activeVenues: {
+    activeVenue: {
       venueId: 0,
       venueName: "",
       venueAddress: "",
@@ -44,7 +43,7 @@ export default new Vuex.Store({
       bandId: "",
     },
     shows: [],
-    activeshow: {
+    activeShow: {
       showId: 0,
       showTime: 0,
       showTitle: "",
@@ -57,7 +56,7 @@ export default new Vuex.Store({
     SET_BANDS(state, data) {
       state.bands = data;
     },
-    SET_ACTIVE_BANDS(state, data) {
+    SET_ACTIVE_BAND(state, data) {
       state.activeBand = data;
     },
     SET_BAND_SHOW(state, data) {
