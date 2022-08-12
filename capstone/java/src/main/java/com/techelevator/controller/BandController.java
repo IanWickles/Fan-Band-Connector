@@ -2,6 +2,7 @@ package com.techelevator.controller;
 
 
 import com.techelevator.dao.BandDao;
+import com.techelevator.dao.UserDao;
 import com.techelevator.model.Band;
 
 import java.security.Principal;
@@ -17,6 +18,7 @@ import javax.validation.Valid;
 public class BandController {
 
     private BandDao bandDao;
+    private UserDao userDao;
 
     public BandController(BandDao bandDao) {
         this.bandDao = bandDao;
@@ -46,20 +48,20 @@ public class BandController {
 
     @GetMapping("/bands/{bandId}/{genreId}")
     public List<Band> getBandsByIdAndGenre(@PathVariable int bandId, @PathVariable int genreId) {
-        return bandDAO.getBandsByIdAndGenre(bandId, genreId);
+        return bandDao.getBandsByIdAndGenre(bandId, genreId);
     }
 
     @PostMapping("/bands/newBand")
     boolean createBand(@RequestBody Band newBand, Principal user) {
         int managerId = userDao.findIdByUsername(user.getName());
-        return bandDAO.createBand(newBand, managerId);
+        return bandDao.createBand(newBand, managerId);
     }
 
     @PutMapping("/bands/{bandId}")
     public boolean updateBand(@RequestBody Band bandToUpdate, Principal user, @PathVariable int bandId) {
         int currentManagerId = userDao.findIdByUsername(user.getName());
         if (currentManagerId == bandToUpdate.getMgrId()) {
-            return bandDAO.updateBand(bandToUpdate, bandId);
+            return bandDao.updateBand(bandToUpdate, bandId);
         } else {
             return false;
         }
@@ -69,7 +71,7 @@ public class BandController {
     public boolean deleteBand(Band bandToDelete, Principal user, @PathVariable int bandId) {
         int currentManagerId = userDao.findIdByUsername(user.getName());
         if (currentManagerId == bandToDelete.getMgrId()) {
-            return bandDAO.deleteBand(bandToDelete, bandId);
+            return bandDao.deleteBand(bandToDelete, bandId);
         } else {
             return false;
         }
