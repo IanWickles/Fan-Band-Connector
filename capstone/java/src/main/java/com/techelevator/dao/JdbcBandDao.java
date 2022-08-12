@@ -74,7 +74,19 @@ public class JdbcBandDao implements BandDao {
             Band band = mapRowToBand(results);
             bands.add(band);
         }
-        return bands;
+
+
+    public boolean deleteBand(int bandId) {
+
+            //needs exception handling...
+
+        String sql = "DELETE FROM user_messages WHERE message_id = ANY(SELECT message_id FROM messages WHERE band_id = "+bandId+");"+
+                     "DELETE FROM messages WHERE band_id = "+bandId+"; "+
+                     "DELETE FROM band_genre WHERE band_id = "+bandId+"; "+
+                     "DELETE FROM show_band WHERE band_id = "+bandId+"; "+
+                     "DELETE FROM user_band WHERE band_id = "+bandId+"; "+
+                     "DELETE FROM band WHERE band_id = "+bandId+";";
+         return jdbcTemplate.update(sql) == 1; //if only 1 band deleted, it should return 1 row affected, 1 == 1;
     }
 
     public boolean createBand(Band newBand, int managerId) {

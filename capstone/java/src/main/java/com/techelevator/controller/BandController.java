@@ -57,14 +57,9 @@ public class BandController {
         return bandDao.createBand(newBand, managerId);
     }
 
-    @PutMapping("/bands/{bandId}")
-    public boolean updateBand(@RequestBody Band bandToUpdate, Principal user, @PathVariable int bandId) {
-        int currentManagerId = userDao.findIdByUsername(user.getName());
-        if (currentManagerId == bandToUpdate.getMgrId()) {
-            return bandDao.updateBand(bandToUpdate, bandId);
-        } else {
-            return false;
-        }
+    @DeleteMapping ("/bands/{bandId}")
+    public boolean deleteBand(@PathVariable int bandId) {
+    return bandDao.deleteBand(bandId);
     }
 
     @DeleteMapping("/bands/{bandId}")
