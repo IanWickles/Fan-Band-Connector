@@ -1,6 +1,7 @@
 package com.techelevator.controller;
 
-import com.techelevator.dao.GenreDAO;
+
+import com.techelevator.dao.GenreDao;
 import com.techelevator.model.Genre;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,14 +15,14 @@ import java.util.List;
 // @PreAuthorize("isAuthenticated()")
 public class GenreController {
 
-    GenreDAO genreDAO;
+    GenreDao genreDao;
 
-    private GenreController (GenreDAO genreDAO) {this.genreDAO = genreDAO;}
+    private GenreController (GenreDao genreDAO) {this.genreDao = genreDao;}
 
     //Not working suddenly...
     @GetMapping ("/genre/bands/{bandId}")
     List<Genre> getGenresByBand(@PathVariable int bandId) {
-        return genreDAO.getGenresByBand(bandId);
+        return genreDao.getGenresByBand(bandId);
     }
 
 

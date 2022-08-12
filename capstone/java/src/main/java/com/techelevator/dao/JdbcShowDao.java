@@ -9,7 +9,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 @Component
-public class JdbcShowDao implements ShowDAO {
+public class JdbcShowDao implements ShowDao {
 
     private JdbcTemplate jdbcTemplate;
 

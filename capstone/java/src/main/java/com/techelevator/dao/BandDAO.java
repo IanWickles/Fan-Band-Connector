@@ -4,7 +4,7 @@ import com.techelevator.model.Band;
 
 import java.util.List;
 
-public interface BandDAO {
+public interface BandDao {
 
     // List<User> getBandFollowers(int bandId); // probably needs moved to User DAO
 

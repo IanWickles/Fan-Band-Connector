@@ -1,7 +1,7 @@
 package com.techelevator.controller;
 
-import com.techelevator.dao.BandDAO;
-import com.techelevator.dao.UserDao;
+
+import com.techelevator.dao.BandDao;
 import com.techelevator.model.Band;
 
 import java.security.Principal;
@@ -16,31 +16,30 @@ import javax.validation.Valid;
 // @PreAuthorize("isAuthenticated()")
 public class BandController {
 
-    private BandDAO bandDAO;
-    private UserDao userDao;
+    private BandDao bandDao;
 
-    public BandController(BandDAO bandDAO) {
-        this.bandDAO = bandDAO;
+    public BandController(BandDao bandDao) {
+        this.bandDao = bandDao;
     }
 
     @GetMapping("/bands")
     public List<Band> getAllBands() {
-        return bandDAO.getAllBands();
+        return bandDao.getAllBands();
     }
 
     @GetMapping("/bands/{bandId}")
     public Band getBandsById(@PathVariable int bandId) {
-        return bandDAO.getBandById(bandId);
-    }
+    return bandDao.getBandById(bandId);
+}
 
     @GetMapping("/bands/genres/{genreId}")
     public List<Band> getBandsByGenre(@PathVariable int genreId) {
-        return bandDAO.getBandsByGenre(genreId);
+    return bandDao.getBandsByGenre(genreId);
     }
 
     @GetMapping("/bands/shows/{showId}")
     public List<Band> getBandsByShow(@PathVariable int showId) {
-        return bandDAO.getBandsByShow(showId);
+        return bandDao.getBandsByShow(showId);
     }
 
     // above this line is 100% confirmed to work in Postman, below is untested
