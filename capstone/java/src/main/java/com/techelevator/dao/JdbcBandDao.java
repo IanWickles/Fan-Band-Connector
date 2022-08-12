@@ -103,7 +103,7 @@ public class JdbcBandDao implements BandDao {
         }
 
 
-    public boolean deleteBand(Integer bandId) {
+    public boolean deleteBand(int bandId) {
 
             //needs exception handling...
 

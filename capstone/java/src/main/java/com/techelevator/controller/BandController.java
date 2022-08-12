@@ -54,7 +54,7 @@ public class BandController {
     }
 
     @DeleteMapping ("/bands/{bandId}")
-    public boolean deleteBand(@PathVariable Integer bandId) {
+    public boolean deleteBand(@PathVariable int bandId) {
     return bandDao.deleteBand(bandId);
     }
 

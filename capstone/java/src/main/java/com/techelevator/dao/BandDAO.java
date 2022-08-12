@@ -22,7 +22,7 @@ public interface BandDao {
 
     Band createBand(Band newBand, Integer MgrId);
 
-    boolean deleteBand(Integer bandId);
+    boolean deleteBand(int bandId);
 
     boolean updateBand(Band updatedBand, int mgrId);
 
