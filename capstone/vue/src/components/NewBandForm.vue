@@ -2,12 +2,7 @@
   <form class="new-band-form" v-on:submit.prevent>
     <div>
       <label for="name-input"> Band Name: </label>
-      <input
-        class="name-input"
-        type="text"
-        placeholder="Name"
-        v-model="band.bandName"
-      />
+      <input class="name-input" type="text" placeholder="Name" />
     </div>
     <div>
       <label for="bandMember-input"> Member: </label>
@@ -80,7 +75,7 @@
 
 <script>
 export default {
-  name: "add-book",
+  name: "add-band",
   data() {
     return {
       newBand: {
@@ -89,14 +84,12 @@ export default {
         bandMember: [],
         genre: [],
         description: "",
-        //Add in any other field
       },
     };
   },
   methods: {
     addNewBand() {
       this.$store.commit("ADD_BAND", this.newBand);
-
       this.$router.push({ name: "home" });
     },
   },
