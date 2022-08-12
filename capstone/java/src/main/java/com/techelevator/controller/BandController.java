@@ -1,6 +1,7 @@
 package com.techelevator.controller;
 
-import com.techelevator.dao.BandDAO;
+
+import com.techelevator.dao.BandDao;
 import com.techelevator.model.Band;
 
 import java.util.List;
@@ -14,53 +15,53 @@ import javax.validation.Valid;
 // @PreAuthorize("isAuthenticated()")
 public class BandController {
 
-    private BandDAO bandDAO;
+    private BandDao bandDao;
 
-    public BandController(BandDAO bandDAO) {
-        this.bandDAO = bandDAO;
+    public BandController(BandDao bandDao) {
+        this.bandDao = bandDao;
     }
 
     @GetMapping("/bands")
     public List<Band> getAllBands() {
-        return bandDAO.getAllBands();
+        return bandDao.getAllBands();
     }
 
     @GetMapping ("/bands/{bandId}")
     public Band getBandsById(@PathVariable int bandId) {
-    return bandDAO.getBandById(bandId);
+    return bandDao.getBandById(bandId);
 }
 
     @GetMapping ("/bands/genres/{genreId}")
     public List<Band> getBandsByGenre(@PathVariable int genreId) {
-    return bandDAO.getBandsByGenre(genreId);
+    return bandDao.getBandsByGenre(genreId);
     }
 
     @GetMapping("/bands/shows/{showId}")
     public List<Band> getBandsByShow(@PathVariable int showId) {
-        return bandDAO.getBandsByShow(showId);
+        return bandDao.getBandsByShow(showId);
     }
 
     // above this line is 100% confirmed to work in Postman, below is untested
 
     @GetMapping ("/bands/{bandId}/{genreId}")
-    public List<Band> getBandsByNameAndGenre(@PathVariable int bandId, @PathVariable int genreId) {
-    return bandDAO.getBandsByIdAndGenre(bandId, genreId);
+    public List<Band> getBandsByIdAndGenre(@PathVariable int bandId, @PathVariable int genreId) {
+    return bandDao.getBandsByIdAndGenre(bandId, genreId);
     }
 
     @PostMapping ("/bands/newBand")
     Band createBand(@Valid @RequestBody Band newBand, Integer MgrId){
-    return bandDAO.createBand(newBand, MgrId);
+    return bandDao.createBand(newBand, MgrId);
     }
 
     @DeleteMapping ("/bands/{bandId}")
     public boolean deleteBand(@PathVariable Integer bandId) {
-    return bandDAO.deleteBand(bandId);
+    return bandDao.deleteBand(bandId);
     }
 
     @PutMapping("/bands/{bandId}")  // takes in a bandID but provides a mgrId???
     public boolean updateBand(@Valid @RequestBody Band updatedBand, @PathVariable int mgrId) {
         if (mgrId == updatedBand.getMgrId()) {
-            return bandDAO.updateBand(updatedBand, mgrId);
+            return bandDao.updateBand(updatedBand, mgrId);
         } else return false;
     }
 
