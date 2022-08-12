@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface GenreDAO {
 
-    List<Genre> getGenresByBand(String bandName);
+    List<Genre> getGenresByBand(int bandId);
 
 
 

@@ -17,12 +17,12 @@ public class JdbcGenreDAO implements GenreDAO{
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    public List<Genre> getGenresByBand(String bandName) {
+    public List<Genre> getGenresByBand(int bandId) {
 
         List<Genre> genres = new ArrayList<>();
-        String sql = "SELECT * FROM genre JOIN band_genre USING (genre_id) JOIN band USING (band_id) WHERE band_name = ?;";
+        String sql = "SELECT * FROM genre JOIN band_genre USING (genre_id) JOIN band USING (band_id) WHERE band_id = ?;";
 
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, bandName);
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, bandId);
         while (results.next()){
         Genre genre = mapRowToGenre(results);
         genres.add(genre);

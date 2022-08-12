@@ -28,11 +28,11 @@ public class JdbcVenueDao implements VenueDao{
 
         return venues;}
 
-    public List<Venue> getVenueByName(String venueName){
+    public List<Venue> getVenueById(int venueId){
         List<Venue> venues = new ArrayList<>();
-        String sql = "SELECT * FROM venue WHERE venue_name = ?;";
+        String sql = "SELECT * FROM venue WHERE venue_id = ?;";
 
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, venueName);
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, venueId);
         while (results.next()) {
             Venue v = mapRowToVenue(results);
             venues.add(v);
