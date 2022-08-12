@@ -3,10 +3,8 @@ package com.techelevator.controller;
 import com.techelevator.dao.BandDAO;
 import com.techelevator.model.Band;
 
-import java.security.Principal;
 import java.util.List;
 
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -16,18 +14,20 @@ import javax.validation.Valid;
 // @PreAuthorize("isAuthenticated()")
 public class BandController {
 
-private BandDAO bandDAO;
+    private BandDAO bandDAO;
 
-public BandController (BandDAO bandDAO) {this.bandDAO = bandDAO;}
+    public BandController(BandDAO bandDAO) {
+        this.bandDAO = bandDAO;
+    }
 
-    @GetMapping ("/bands")
-    public List<Band> getAllBands(){
-    return bandDAO.getAllBands();
-}
+    @GetMapping("/bands")
+    public List<Band> getAllBands() {
+        return bandDAO.getAllBands();
+    }
 
     @GetMapping ("/bands/{bandId}")
-    public List<Band> getBandsById(@PathVariable int bandId) {
-    return bandDAO.getBandsById(bandId);
+    public Band getBandsById(@PathVariable int bandId) {
+    return bandDAO.getBandById(bandId);
 }
 
     @GetMapping ("/bands/genres/{genreId}")
@@ -35,9 +35,9 @@ public BandController (BandDAO bandDAO) {this.bandDAO = bandDAO;}
     return bandDAO.getBandsByGenre(genreId);
     }
 
-    @GetMapping ("/bands/shows/{showId}")
+    @GetMapping("/bands/shows/{showId}")
     public List<Band> getBandsByShow(@PathVariable int showId) {
-    return bandDAO.getBandsByShow(showId);
+        return bandDAO.getBandsByShow(showId);
     }
 
     // above this line is 100% confirmed to work in Postman, below is untested
@@ -57,11 +57,11 @@ public BandController (BandDAO bandDAO) {this.bandDAO = bandDAO;}
     return bandDAO.deleteBand(bandId);
     }
 
-    @PutMapping ("/bands/{bandId}")  // takes in a bandID but provides a mgrId???
-    public boolean updateBand(@Valid @RequestBody Band updatedBand, @PathVariable int mgrId){
-    if (mgrId == updatedBand.getMgrId()) {
-    return bandDAO.updateBand(updatedBand, mgrId);}
-    else return false;
+    @PutMapping("/bands/{bandId}")  // takes in a bandID but provides a mgrId???
+    public boolean updateBand(@Valid @RequestBody Band updatedBand, @PathVariable int mgrId) {
+        if (mgrId == updatedBand.getMgrId()) {
+            return bandDAO.updateBand(updatedBand, mgrId);
+        } else return false;
     }
 
 

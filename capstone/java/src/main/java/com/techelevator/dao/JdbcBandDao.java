@@ -30,17 +30,17 @@ public class JdbcBandDao implements BandDAO {
             return bands;
         }
 
-        public List<Band>  getBandsById(int bandId) {
-            List<Band> bands = new ArrayList<>();
+        public Band getBandById(int bandId) {
             String sql = "SELECT * FROM band WHERE band_id = ?;";
 
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql, bandId);
-            while(results.next()) {
-                Band band = mapRowToBand(results);
-                bands.add(band);
+            if(!results.next())
+            {
+                // throw?
+                return null;
             }
-
-            return bands;
+            Band band = mapRowToBand(results);
+            return band;
         }
 
         public List<Band> getBandsByShow(int showId) {

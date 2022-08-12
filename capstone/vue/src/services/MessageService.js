@@ -6,16 +6,16 @@ export default {
         return axios.get('/messages');
     },
 
-    get(id) {
-        return axios.get(`/messages/${id}`);
+    get(messageId) {
+        return axios.get(`/messages/${messageId}`);
     },
-    addBand(band) {
-        return axios.post('/messages', band);
+    addBand(message) {
+        return axios.post('/messages', message);
     },
-    updateBand(band) {
-        return axios.put(`/messages/${band.id}`, band);
+    updateBand(message) {
+        return axios.put(`/messages/${message.id}`, message);
     },
-    deleteBand(bandId) {
-        return axios.delete(`/messages/${bandId}`);
+    deleteBand(messageId) {
+        return axios.delete(`/messages/${messageId}`);
     },
 }

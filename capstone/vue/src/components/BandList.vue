@@ -1,41 +1,40 @@
 <template>
   <div class="band-container">
     <div class="band">
-      <band
-        v-bind:band="band"
-        v-for="band in $store.state.bands"
-        v-bind:key="band.id"
-      />
+      <tbody>
+        <tr v-for="band in this.$store.state.bands" v-bind:key="band.bandId">
+          <div class="container">
+            <td>
+              <router-link
+                v-bind:to="{ name: 'band', params: { id: band.bandId } }"
+                >{{ band.bandName }}</router-link
+              >
+            </td>
+            <!-- <h2 class="description">{{ band.bandDesc }}</h2> -->
+            <!-- <h2 class="band-members">{{ band.members }}</h2> -->
+            <!-- <h2 class="genre">{{ band.genre }}</h2> -->
+          </div>
+        </tr>
+      </tbody>
     </div>
   </div>
 </template>
 
 <script>
-import Band from "@/components/Band.vue";
 import bandService from "@/services/BandService.js";
 
 export default {
   name: "band-list",
-  data() {
-    return {
-      bands: [],
-    };
+  methods: {
+    getBands() {
+      bandService.list().then((response) => {
+        this.$store.commit("SET_BANDS", response.data);
+      });
+    },
   },
   created() {
-    bandService.list().then((response) => {
-      this.bands = response.data;
-      this.$store.commit("SET_BANDS", this.bands);
-      this.isLoading = false;
-    });
+    this.getBands();
   },
-  components: { Band },
-  // methods: {
-  //   getBands() {
-  //     bandService.list().then((response) => {
-  //       this.bands = response.data;
-  //     });
-  //   },
-  // },
 };
 </script>
 

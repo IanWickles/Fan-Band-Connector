@@ -1,9 +1,6 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.Band;
-import com.techelevator.model.Genre;
-import com.techelevator.model.Show;
-import com.techelevator.model.User;
 
 import java.util.List;
 
@@ -13,7 +10,7 @@ public interface BandDAO {
 
     List<Band> getAllBands();
 
-    List<Band>  getBandsById(int bandId);
+    Band getBandById(int bandId);
 
     List<Band> getBandsByGenre(int genreId);
 
