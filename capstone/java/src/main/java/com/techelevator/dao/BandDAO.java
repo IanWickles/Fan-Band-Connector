@@ -18,15 +18,6 @@ public interface BandDao {
 
     List<Band> getBandsByIdAndGenre(int bandId, int genreId);
 
-<<<<<<< HEAD
-
-
-    Band createBand(Band newBand, Integer MgrId);
-
-    boolean deleteBand(int bandId);
-
-    boolean updateBand(Band updatedBand, int mgrId);
-=======
     Band createBand(Band newBand);
 
     boolean updateBand(Band bandToUpdate, int bandId);
@@ -35,11 +26,17 @@ public interface BandDao {
 
     int findIdByBandName (String bandName);
 
-
->>>>>>> f9e5a7a80b8e492d9279415b7dfec6cfc7c469c1
-
-
-
-
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
