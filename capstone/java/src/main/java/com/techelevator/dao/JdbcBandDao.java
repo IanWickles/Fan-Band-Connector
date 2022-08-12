@@ -80,7 +80,7 @@ public class JdbcBandDao implements BandDao {
         }
 
         public Band createBand(Band newBand, Integer MgrId) {  //not working, 500 internal server error
-            String sql = "INSERT INTO band VALUES (band_name, band_description, band_member, manager_id) " + //removed band_id from SQL String
+            String sql = "INSERT INTO band (band_name, band_description, band_member, manager_id) " + //removed band_id from SQL String
                         "VALUES (?, ?, ?, ?)";  //hm, how are we going to get the manager ID?
 
             //will need to be wrapped in Try/Catch
