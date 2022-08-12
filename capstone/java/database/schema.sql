@@ -19,6 +19,7 @@ CREATE TABLE public.band
     band_name character varying(200) COLLATE pg_catalog."default" NOT NULL,
     band_description character varying(1000) COLLATE pg_catalog."default" NOT NULL,
     band_member character varying(1000) COLLATE pg_catalog."default" NOT NULL,
+    band_image character varying(5000) COLLATE pg_catalog."default" NOT NULL,
     manager_id integer NOT NULL,
     CONSTRAINT band_id PRIMARY KEY (band_id),
     CONSTRAINT manager_id FOREIGN KEY (manager_id)
