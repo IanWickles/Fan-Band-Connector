@@ -9,11 +9,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class JdbcGenreDAO implements GenreDAO{
+public class JdbcGenreDao implements GenreDao{
 
     JdbcTemplate jdbcTemplate;
 
-    public  JdbcGenreDAO(JdbcTemplate jdbcTemplate) {
+    public  JdbcGenreDao(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
 

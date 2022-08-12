@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class JdbcBandDao implements BandDAO {
+public class JdbcBandDao implements BandDao {
 
         JdbcTemplate jdbcTemplate;
 

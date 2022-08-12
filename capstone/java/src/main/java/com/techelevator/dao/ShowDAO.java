@@ -3,7 +3,7 @@ package com.techelevator.dao;
 import com.techelevator.model.Show;
 import java.util.List;
 
-public interface ShowDAO {
+public interface ShowDao {
 
     List<Show> getShowsByVenue(int venueId);
 
