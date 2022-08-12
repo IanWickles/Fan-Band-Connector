@@ -43,7 +43,7 @@ public class BandController {
     // above this line is 100% confirmed to work in Postman, below is untested
 
     @GetMapping ("/bands/{bandId}/{genreId}")
-    public List<Band> getBandsByNameAndGenre(@PathVariable int bandId, @PathVariable int genreId) {
+    public List<Band> getBandsByIdAndGenre(@PathVariable int bandId, @PathVariable int genreId) {
     return bandDAO.getBandsByIdAndGenre(bandId, genreId);
     }
 
