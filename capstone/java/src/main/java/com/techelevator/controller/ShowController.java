@@ -1,6 +1,7 @@
 package com.techelevator.controller;
 
-import com.techelevator.dao.ShowDAO;
+
+import com.techelevator.dao.ShowDao;
 import com.techelevator.model.Show;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,9 +15,9 @@ import java.util.List;
 // @PreAuthorize("isAuthenticated()")
 public class ShowController {
 
-    private ShowDAO showDao;
+    private ShowDao showDao;
 
-    public ShowController (ShowDAO showDao) {this.showDao = showDao;}
+    public ShowController (ShowDao showDao) {this.showDao = showDao;}
 
     @GetMapping ("/shows/venue/{venueId}")
     List<Show> getShowsByVenue(@PathVariable int venueId) {
