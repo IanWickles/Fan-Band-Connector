@@ -33,8 +33,6 @@ export default {
       .get(this.bandId)
       .then((response) => {
         this.$store.commit("SET_ACTIVE_BAND", response.data);
-        console.log(this.$store.state.activeBand);
-        console.log(this.$store);
       })
       .catch((error) => {
         if (error.response.status == 404) {
