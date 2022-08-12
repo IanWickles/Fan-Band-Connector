@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class JdbcMessageDao implements MessageDAO {
+public class JdbcMessageDao implements MessageDao {
 
         JdbcTemplate jdbcTemplate;
 

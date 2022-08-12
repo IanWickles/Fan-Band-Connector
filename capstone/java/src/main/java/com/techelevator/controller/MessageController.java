@@ -1,7 +1,6 @@
 package com.techelevator.controller;
 
-import com.techelevator.dao.BandDAO;
-import com.techelevator.dao.MessageDAO;
+import com.techelevator.dao.MessageDao;
 import com.techelevator.model.Message;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,12 +15,12 @@ import java.util.List;
 
 public class MessageController {
 
-    private MessageDAO messageDAO;
+    private MessageDao messageDao;
 
-    public MessageController(MessageDAO messageDAO) {this.messageDAO = messageDAO;}
+    public MessageController(MessageDao messageDAO) {this.messageDao = messageDao;}
 
     @GetMapping("/inbox/{userId}")
     public List<Message> getMessagesOfCurrentUser(@PathVariable int userId) {
-        return messageDAO.getMessagesOfCurrentUser(userId);
+        return messageDao.getMessagesOfCurrentUser(userId);
     }
 }

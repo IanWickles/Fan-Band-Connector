@@ -4,7 +4,7 @@ import com.techelevator.model.Message;
 
 import java.util.List;
 
-public interface MessageDAO {
+public interface MessageDao {
 
     List<Message> getMessagesOfCurrentUser(int userId);
 
