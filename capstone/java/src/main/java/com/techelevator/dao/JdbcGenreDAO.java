@@ -30,6 +30,19 @@ public class JdbcGenreDao implements GenreDao{
         return genres;
     }
 
+    @Override
+    public boolean addGenreToBand(int bandId, int genreId) {
+        String sql = "INSERT INTO band_genre (band_id, genre_id) VALUES (?, ?)";
+        try{
+            jdbcTemplate.queryForRowSet(sql, bandId, genreId);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
+
     private Genre mapRowToGenre(SqlRowSet rs) {
         Genre genre = new Genre();
 

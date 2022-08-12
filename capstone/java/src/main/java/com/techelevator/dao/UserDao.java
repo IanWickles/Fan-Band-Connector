@@ -17,8 +17,10 @@ public interface UserDao {
 
     boolean create(String username, String password, String role, String userEmail);
 
+
     List<User> getFollowersByBand(int bandId);
 
-    boolean followBand(String bandName); //maybe void??
-    boolean unfollowBand(String bandName); //maybe void??
+    void followBand(int userId, int bandId);
+
+    void unfollowBand(int userId, int bandId);
 }
