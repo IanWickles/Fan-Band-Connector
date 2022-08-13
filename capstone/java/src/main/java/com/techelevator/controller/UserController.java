@@ -22,8 +22,8 @@ public class UserController {
     }
 
     @GetMapping("/bands/{bandId}/followers")
-    public List<User> getFollowersByBand (@PathVariable int bandID) {
-        return userDao.getFollowersByBand(bandID);
+    public List<User> getFollowersByBand (@PathVariable int bandId) {
+        return userDao.getFollowersByBand(bandId);
     }
 
 }
