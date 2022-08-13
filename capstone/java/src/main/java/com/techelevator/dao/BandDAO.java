@@ -29,19 +29,3 @@ public interface BandDao {
     int findIdByBandName (String bandName);
 
 }
-<<<<<<< HEAD
-
-
-
-
-
-
-
-
-
-
-
-
-
-=======
->>>>>>> be9afdab9579f5929743aafb8dd54454263b6201
