@@ -1,18 +1,37 @@
 <template>
   <div class="band-container">
+    <input
+      class="input is-rounded"
+      v-model="input"
+      name="byBand"
+      type="text"
+      placeholder="Search by band"
+    />
+    <input
+      class="input is-rounded"
+      name="byGenre"
+      type="text"
+      placeholder="Search by genre"
+    />
+    <h1>Bands:</h1>
     <div class="band">
       <tbody>
         <tr v-for="band in this.$store.state.bands" v-bind:key="band.bandId">
           <div class="container">
             <td>
-              <router-link
-                v-bind:to="{ name: 'band', params: { bandId: band.bandId } }"
-              >
+              <strong>
                 {{ band.bandName }}
-              </router-link>
+              </strong>
             </td>
-            <!-- <h2 class="description">{{ band.bandDesc }}</h2> -->
-            <!-- <h2 class="band-members">{{ band.members }}</h2> -->
+            <router-link
+              v-bind:to="{ name: 'band', params: { bandId: band.bandId } }"
+            >
+              <figure class="image is-128x128">
+                <img :src="band.bandImage" />
+              </figure>
+            </router-link>
+            <h2 class="description">{{ band.bandDesc }}</h2>
+            <!--<h2 class="band-members">{{ band.members }}</h2> -->
             <!-- <h2 class="genre">{{ band.genre }}</h2> -->
           </div>
         </tr>

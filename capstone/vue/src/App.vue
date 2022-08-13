@@ -2,24 +2,28 @@
 
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link v-bind:to="{ name: 'home' }">Home</router-link> |
-      <router-link v-bind:to="{ name: 'bands' }">Bands</router-link> |
-      <router-link v-bind:to="{ name: 'venues' }">Venues</router-link> |
-      <router-link v-bind:to="{ name: 'profile' }">Profile</router-link>
-      |
-      <router-link
+    <nav class="navbar" align="right">
+      <router-link class = "navbar-item" v-bind:to="{ name: 'home' }">Home</router-link>
+      <router-link class = "navbar-item" v-bind:to="{ name: 'bands' }">Bands</router-link>
+      <router-link class = "navbar-item" v-bind:to="{ name: 'venues' }">Venues</router-link>
+      <router-link class = "navbar-item" v-bind:to="{ name: 'shows' }">Shows</router-link>
+      <router-link class = "navbar-item" v-bind:to="{ name: 'profile' }">Profile</router-link>
+      <router-link class = "navbar-item"
         v-bind:to="{ name: 'login' }"
-        v-if="($store.state.token = 'token')"
+        v-if="($store.state.token == 'token')"
         >Login</router-link
       >
-      <router-link
+      <router-link class = "navbar-item has-background-link"
         v-bind:to="{ name: 'logout' }"
         v-if="$store.state.token != 'token'"
         >Logout</router-link
       >
-    </div>
+    </nav>
     <router-view />
   </div>
 </template>
-<style></style>
+<style>
+nav {
+  align: right;
+}
+</style>
