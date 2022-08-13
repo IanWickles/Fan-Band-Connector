@@ -49,6 +49,6 @@ div {
   margin: 10px;
 }
 img {
-  /*height: 500px;*/
+  height: 500px;
 }
 </style>
