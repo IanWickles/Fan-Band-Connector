@@ -24,7 +24,7 @@ public class GenreController {
         return genreDao.getAllGenres();
     }
 
-    @GetMapping("/genres/details/{genreId}") //WORKING: Postman confirmed
+    @GetMapping("/genres/{genreId}") //WORKING: Postman confirmed
     public Genre getGenreById(@PathVariable int genreId) {
         return genreDao.getGenreByID(genreId);
     }
