@@ -30,9 +30,15 @@ public class BandController {
     }
 
     @GetMapping("/bands/{bandId}") //WORKING: Postman confirmed
+<<<<<<< HEAD
     public Band getBandsById(@PathVariable int bandId) {
         return bandDao.getBandById(bandId);
     }
+=======
+    public Band getBandById(@PathVariable int bandId) {
+    return bandDao.getBandById(bandId);
+}
+>>>>>>> a62952eabf0512d8aaf585ce9e19986ca5c8f514
 
     @GetMapping("bands/search/{bandName}") //WORKING: Postman confirmed
     public List<Band> getBandsByName(@PathVariable String bandName) {return bandDao.getBandsByName(bandName);}

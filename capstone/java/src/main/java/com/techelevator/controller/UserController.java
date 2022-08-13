@@ -17,7 +17,7 @@ public class UserController {
         this.userDao = userDao;
     }
 
-    @GetMapping("/bands/{bandId}/followers")
+    @GetMapping("/bands/{bandId}/followers") //WORKING: Postman confirmed
     public List<User> getFollowersByBand (@PathVariable int bandId) {
         return userDao.getFollowersByBand(bandId);
     }

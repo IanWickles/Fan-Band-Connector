@@ -160,4 +160,21 @@ INSERT INTO user_messages (user_id, message_id) VALUES ('11', '8');
 INSERT INTO user_messages (user_id, message_id) VALUES ('12', '9');
 INSERT INTO user_messages (user_id, message_id) VALUES ('13', '10');
 
+INSERT INTO photo (photo_url) VALUES ('https://tinyurl.com/4z95wpvu');
+INSERT INTO photo (photo_url) VALUES ('https://tinyurl.com/5n7mj2dj');
+INSERT INTO photo (photo_url) VALUES ('https://tinyurl.com/4c3jx2ew');
+INSERT INTO photo (photo_url) VALUES ('https://tinyurl.com/yc379892');
+INSERT INTO photo (photo_url) VALUES ('https://tinyurl.com/yk6jdc44');
+
+INSERT INTO band_photo VALUES ('1', '1');
+INSERT INTO band_photo VALUES ('1', '2');
+INSERT INTO band_photo VALUES ('1', '3');
+INSERT INTO band_photo VALUES ('1', '4');
+INSERT INTO band_photo VALUES ('1', '5');
+INSERT INTO band_photo VALUES ('2', '1');
+INSERT INTO band_photo VALUES ('2', '2');
+INSERT INTO band_photo VALUES ('2', '3');
+INSERT INTO band_photo VALUES ('2', '4');
+INSERT INTO band_photo VALUES ('2', '5');
+
 COMMIT TRANSACTION;
