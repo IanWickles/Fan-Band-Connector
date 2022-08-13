@@ -93,22 +93,26 @@ public class JdbcUserDao implements UserDao {
             users.add(user);
         }
         return users;
-
-        //needs implemented
     }
 
     @Override
-    public boolean followBand(String bandName) {
-        return false;
-
-        //needs implemented
+    public void followBand(int userId, int bandId) {
+        String sql = "INSERT INTO user_band (user_id, band_id) VALUES (?, ?)";
+        try{
+            jdbcTemplate.update(sql, userId, bandId);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
-    public boolean unfollowBand(String bandName) {
-        return false;
-
-        //needs implemented
+    public void unfollowBand(int userId, int bandId) {
+        String sql = "DELETE FROM user_band WHERE user_id = ? AND band_ID = ?";
+        try{
+            jdbcTemplate.update(sql, userId, bandId);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private User mapRowToUser(SqlRowSet rs) {

@@ -24,45 +24,49 @@ public class BandController {
         this.bandDao = bandDao;
     }
 
-    @GetMapping("/bands")
+    @GetMapping("/bands") //WORKING: Postman confirmed
     public List<Band> getAllBands() {
         return bandDao.getAllBands();
     }
 
-    @GetMapping("/bands/{bandId}")
+    @GetMapping("/bands/{bandId}") //WORKING: Postman confirmed
     public Band getBandsById(@PathVariable int bandId) {
         return bandDao.getBandById(bandId);
     }
 
-    @GetMapping("/bands/genres/{genreId}")
-    public List<Band> getBandsByGenre(@PathVariable int genreId) {
-        return bandDao.getBandsByGenre(genreId);
+    @GetMapping("bands/search/{bandName}") //WORKING: Postman confirmed
+    public List<Band> getBandsByName(@PathVariable String bandName) {return bandDao.getBandsByName(bandName);}
+
+    @GetMapping("/bands/genres/{genreName}") //WORKING: Postman confirmed
+    public List<Band> getBandsByGenre(@PathVariable String genreName) {
+    return bandDao.getBandsByGenre(genreName);
     }
 
-    @GetMapping("/bands/shows/{showId}")
-    public List<Band> getBandsByShow(@PathVariable int showId) {
-        return bandDao.getBandsByShow(showId);
+    @GetMapping("/bands/shows/{showTitle}") //WORKING: Postman confirmed
+    public List<Band> getBandsByShow(@PathVariable String showTitle) {
+        return bandDao.getBandsByShow(showTitle);
     }
 
-    @GetMapping("/bands/{bandId}/{genreId}")
+    @GetMapping("/bands/{bandId}/{genreId}") //NOT WORKING: Do we even need??
     public List<Band> getBandsByIdAndGenre(@PathVariable int bandId, @PathVariable int genreId) {
         return bandDao.getBandsByIdAndGenre(bandId, genreId);
     }
 
-    @PostMapping("/bands/newband")
+    @PostMapping("/bands/newband") //WORKING: Postman confirmed as-is, but add Principal user later.
     Band createBand(@RequestBody Band newBand, Principal user) {
         //int managerId = userDao.findIdByUsername(user.getName());
         return bandDao.createBand(newBand);
     }
 
-    @PutMapping("/bands/{bandId}")
+    @PutMapping("/bands/{bandId}") //WORKING: Postman confirmed as-is, but add Principal user later.
     public boolean updateBand(@RequestBody Band bandToUpdate, Principal user, @PathVariable int bandId) {
-//        if (mgrId == updatedBand.getMgrId()) {
-        return bandDao.updateBand(bandToUpdate, bandId);
+//        int currentManagerId = userDao.findIdByUsername(user.getName());
+//        if (currentManagerId == bandToUpdate.getMgrId()) {
+            return bandDao.updateBand(bandToUpdate, bandId);
 //        } else return false;
     }
 
-    @DeleteMapping("/bands/{bandId}")
+    @DeleteMapping("/bands/{bandId}") //WORKING: Postman confirmed as-is, but add Principal user later.
     public boolean deleteBand(Band bandToDelete, Principal user, @PathVariable int bandId) {
 //        int currentManagerId = userDao.findIdByUsername(user.getName());
 //        if (currentManagerId == bandToDelete.getMgrId()) {
