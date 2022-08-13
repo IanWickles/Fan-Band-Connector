@@ -1,5 +1,5 @@
 <template>
-  <div class="band-container">
+  <div :style="{'background-image':'url(https://images.pexels.com/photos/1545505/pexels-photo-1545505.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2)'}" class="band-container">
     <input
       class="input is-rounded"
       v-model="input"
@@ -13,24 +13,24 @@
       type="text"
       placeholder="Search by genre"
     />
-    <h1>Bands:</h1>
     <div class="band">
       <tbody>
         <tr v-for="band in this.$store.state.bands" v-bind:key="band.bandId">
-          <div class="container">
+          <div class="card">
             <td>
               <strong>
-                {{ band.bandName }}
+              <h1 class = "card-header-title is-size-2">  {{ band.bandName }} </h1>
               </strong>
             </td>
             <router-link
               v-bind:to="{ name: 'band', params: { bandId: band.bandId } }"
-            >
-              <figure class="image is-128x128">
+            ><div class="card-image">
+              <figure class="image is-4x3">
                 <img :src="band.bandImage" />
               </figure>
+              </div>
             </router-link>
-            <h2 class="description">{{ band.bandDesc }}</h2>
+            <div class="card-content">{{ band.bandDesc }}</div>
             <!--<h2 class="band-members">{{ band.members }}</h2> -->
             <!-- <h2 class="genre">{{ band.genre }}</h2> -->
           </div>
@@ -58,4 +58,5 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+</style>
