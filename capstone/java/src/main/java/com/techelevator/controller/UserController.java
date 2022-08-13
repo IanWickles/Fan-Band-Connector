@@ -24,13 +24,16 @@ public class UserController {
         return userDao.getFollowersByBand(bandId);
     }
 
-    @PostMapping("/bands/{bandId}/follow")
+    @PostMapping("/bands/{bandId}/follow") //WORKING: Postman confirmed
     public void followBand (@PathVariable int bandId, Principal user) {
         User currentUser = userDao.findByUsername(user.getName());
         int userId = currentUser.getId();
         userDao.followBand(userId, bandId);}
 
-    @DeleteMapping("/bands/{bandId}/unfollow")
-    public void unfollowBand(int userId, @PathVariable int bandId) {userDao.unfollowBand(userId, bandId);}
+    @DeleteMapping("/bands/{bandId}/unfollow") //WORKING: Postman confirmed
+    public void unfollowBand(@PathVariable int bandId, Principal user) {
+        User currentUser = userDao.findByUsername(user.getName());
+        int userId = currentUser.getId();
+        userDao.unfollowBand(userId, bandId);}
 
 }

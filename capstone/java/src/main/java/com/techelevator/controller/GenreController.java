@@ -24,7 +24,7 @@ public class GenreController {
         return genreDao.getAllGenres();
     }
 
-    @GetMapping("/genres/details/{genreId}") //WORKING: Postman confirmed
+    @GetMapping("/genres/{genreId}") //WORKING: Postman confirmed
     public Genre getGenreById(@PathVariable int genreId) {
         return genreDao.getGenreByID(genreId);
     }
@@ -45,9 +45,12 @@ public class GenreController {
     }
 
     @PostMapping("/genres/bands/{bandId}")
-    public void addGenreToBand (int genreId, @PathVariable int bandId) {
-        genreDao.addGenreToBand(genreId, bandId);
+    public void addGenreToBand (@PathVariable int bandId, @RequestBody int genreId) {
+        genreDao.addGenreToBand(bandId, genreId);
     }
+
+    @DeleteMapping("/genres/bands/{bandId}")
+    public void removeGenreFromBand(@PathVariable int bandId, @RequestBody int genreId) {genreDao.removeGenreFromBand(bandId, genreId);}
 
 
 }
