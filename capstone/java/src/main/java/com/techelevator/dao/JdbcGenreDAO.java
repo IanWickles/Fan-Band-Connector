@@ -84,20 +84,20 @@ public class JdbcGenreDao implements GenreDao{
     }
 
     @Override
-    public void addGenreToBand(int genreId, int bandId) {
-        String sql = "INSERT INTO band_genre (genre_id, band_id) VALUES (?, ?)";
+    public void addGenreToBand(int bandId, int genreId) {
+        String sql = "INSERT INTO band_genre (band_id, genre_id) VALUES (?, ?)";
         try{
-            jdbcTemplate.update(sql, genreId, bandId);
+            jdbcTemplate.update(sql, bandId, genreId);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     @Override
-    public void removeGenreFromBand(int genreId, int bandId) {
-        String sql = "DELETE FROM band_genre WHERE genre_id = ? AND band_ID = ?";
+    public void removeGenreFromBand(int bandId, int genreId) {
+        String sql = "DELETE FROM band_genre WHERE band_id = ? AND genre_ID = ?";
         try{
-            jdbcTemplate.update(sql, genreId, bandId);
+            jdbcTemplate.update(sql, bandId, genreId);
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -25,7 +25,7 @@ public class VenueController {
         return venueDao.getAllVenues();
     }
 
-    @GetMapping("/venues/details/{venueId}") //WORKING: Postman confirmed
+    @GetMapping("/venues/{venueId}") //WORKING: Postman confirmed
     Venue getVenueById(@PathVariable int venueId) {
         return venueDao.getVenueById(venueId);
     }

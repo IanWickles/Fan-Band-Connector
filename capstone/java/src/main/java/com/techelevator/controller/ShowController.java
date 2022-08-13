@@ -26,7 +26,7 @@ public class ShowController {
         return showDao.getAllShows();
     }
 
-    @GetMapping("/shows/details/{showId}") //WORKING: Postman confirmed
+    @GetMapping("/shows/{showId}") //WORKING: Postman confirmed
     public Show getShowById(@PathVariable int showId) {
         return showDao.getShowByID(showId);
     }
