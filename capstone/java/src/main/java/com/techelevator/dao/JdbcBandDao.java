@@ -42,11 +42,26 @@ public class JdbcBandDao implements BandDao {
         return band;
     }
 
-    public List<Band> getBandsByGenre(int genreId) {
-        List<Band> bands = new ArrayList<>();
-        String sql = "SELECT * FROM band JOIN band_genre USING (band_id) JOIN genre USING (genre_id) WHERE genre_id = ?;";
+    @Override
+    public List<Band> getBandsByName(String bandName) {
+        List<Band> bands =new ArrayList<>();
+        if(!bandName.isEmpty()) {
+            String sql = "select * from band where band_name ILIKE ?;";
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, "%" + bandName + "%");
+            while (results.next()) {
+                Band band = mapRowToBand(results);
+                bands.add(band);
+            }
+        }
+        return bands;
+    }
 
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, genreId);
+
+    public List<Band> getBandsByGenre(String genreName) {
+        List<Band> bands = new ArrayList<>();
+        String sql = "SELECT * FROM band JOIN band_genre USING (band_id) JOIN genre USING (genre_id) WHERE genre_name ILIKE ?;";
+
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, "%" + genreName + "%");
         while (results.next()) {
             Band band = mapRowToBand(results);
             bands.add(band);
@@ -55,11 +70,11 @@ public class JdbcBandDao implements BandDao {
         return bands;
     }
 
-    public List<Band> getBandsByShow(int showId) {
+    public List<Band> getBandsByShow(String showTitle) {
         List<Band> bands = new ArrayList<>();
-        String sql = "SELECT * FROM band JOIN show_band USING (band_id) WHERE show_id = ?;";
+        String sql = "SELECT * FROM band JOIN show_band USING (band_id) JOIN show USING (show_id) WHERE show_title ILIKE ?;";
 
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, showId);
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, "%" + showTitle + "%");
         while (results.next()) {
             Band band = mapRowToBand(results);
             bands.add(band);
@@ -123,7 +138,7 @@ public class JdbcBandDao implements BandDao {
 
         int bandId;
         try {
-            bandId = jdbcTemplate.queryForObject("select band_id from band where band_name ILIKE ?", int.class, bandName);
+            bandId = jdbcTemplate.queryForObject("select band_id from band where band_name ILIKE ?", int.class, "%" + bandName + "%");
         } catch (EmptyResultDataAccessException e) {
             throw new UsernameNotFoundException("Band " + bandName + " was not found.");
         }

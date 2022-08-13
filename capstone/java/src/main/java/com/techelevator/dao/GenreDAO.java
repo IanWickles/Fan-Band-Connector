@@ -8,6 +8,8 @@ public interface GenreDao {
 
     List<Genre> getGenresByBand(int bandId);
 
+    public boolean addGenreToBand(int bandId, int genreId);
+
 
 
 
