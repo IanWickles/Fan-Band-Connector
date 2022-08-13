@@ -18,8 +18,6 @@ public interface BandDao {
 
     List<Band> getBandsByShow(String showTitle);
 
-    List<Band> getBandsByIdAndGenre(int bandId, int genreId);
-
     Band createBand(Band newBand);
 
     boolean updateBand(Band bandToUpdate, int bandId);
