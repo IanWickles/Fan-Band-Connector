@@ -1,9 +1,16 @@
 package com.techelevator.dao;
 
+import com.techelevator.model.Band;
 import com.techelevator.model.Show;
 import java.util.List;
 
 public interface ShowDao {
+
+    List<Show> getAllShows();
+
+    Show getShowByID(int showId);
+
+    List<Show> getShowsByTitle(String showTitle);
 
     List<Show> getShowsByVenue(int venueId);
 

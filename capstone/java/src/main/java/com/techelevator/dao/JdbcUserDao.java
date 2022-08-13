@@ -83,32 +83,36 @@ public class JdbcUserDao implements UserDao {
         return jdbcTemplate.update(insertUserSql, username, password_hash, ssRole, userEmail) == 1;
     }
 
-    public List<User> getFollowersByBand(String bandName) {
+    public List<User> getFollowersByBand(int bandId) {
         List<User> users = new ArrayList<>();
-        String sql = "SELECT username from users JOIN user_band USING (user_id) JOIN band USING (band_id) WHERE band_name = ?;";
+        String sql = "SELECT * from users JOIN user_band USING (user_id) JOIN band USING (band_id) WHERE band_id = ?;";
 
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, bandName);
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, bandId);
         while(results.next()) {
             User user = mapRowToUser(results);
             users.add(user);
         }
         return users;
-
-        //needs implemented
     }
 
     @Override
-    public boolean followBand(String bandName) {
-        return false;
-
-        //needs implemented
+    public void followBand(int userId, int bandId) {
+        String sql = "INSERT INTO user_band (user_id, band_id) VALUES (?, ?)";
+        try{
+            jdbcTemplate.update(sql, userId, bandId);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
-    public boolean unfollowBand(String bandName) {
-        return false;
-
-        //needs implemented
+    public void unfollowBand(int userId, int bandId) {
+        String sql = "DELETE FROM user_band WHERE user_id = ? AND band_ID = ?";
+        try{
+            jdbcTemplate.update(sql, userId, bandId);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private User mapRowToUser(SqlRowSet rs) {
