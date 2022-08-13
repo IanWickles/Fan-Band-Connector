@@ -2,7 +2,7 @@
 
 <template>
   <div id="app">
-    <nav class="navbar" align="right">
+    <nav class="navbar is-pulled-right">
       <router-link class = "navbar-item" v-bind:to="{ name: 'home' }">Home</router-link>
       <router-link class = "navbar-item" v-bind:to="{ name: 'bands' }">Bands</router-link>
       <router-link class = "navbar-item" v-bind:to="{ name: 'venues' }">Venues</router-link>

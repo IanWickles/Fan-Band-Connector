@@ -56,14 +56,16 @@ public class BandController {
         return bandDao.getBandsByShow(showTitle);
     }
 
-    @PostMapping("/bands/newband") //WORKING: Postman confirmed, current user_id is set as the new band's manager_id no matter what they put in
+    @PostMapping("/bands/newband")
+    //WORKING: Postman confirmed, current user_id is set as the new band's manager_id no matter what they put in
     public Band createBand(@Valid @RequestBody Band newBand, Principal user) {
         int currentUserId = userDao.findIdByUsername(user.getName());
         newBand.setMgrId(currentUserId);
         return bandDao.createBand(newBand);
     }
 
-    @PutMapping("/bands/{bandId}") //WORKING: Postman confirmed, can only change band details if current user_id matches band's manager_id
+    @PutMapping("/bands/{bandId}")
+    //WORKING: Postman confirmed, can only change band details if current user_id matches band's manager_id
     public boolean updateBand(@Valid @RequestBody Band bandToUpdate, Principal user, @PathVariable int bandId) {
         Band band = bandDao.getBandById(bandId);
         int currentManagerId = band.getMgrId();
@@ -73,17 +75,8 @@ public class BandController {
         } else return false;
     }
 
-<<<<<<< HEAD
-    @DeleteMapping("/bands/{bandId}") //WORKING: Postman confirmed as-is, but add Principal user later.
-    public boolean deleteBand(Band bandToDelete, Principal user, @PathVariable int bandId) {
-//        int currentManagerId = userDao.findIdByUsername(user.getName());
-//        if (currentManagerId == bandToDelete.getMgrId()) {
-        return bandDao.deleteBand(bandToDelete, bandId);
-//        } else {
-//            return false;
-//        }
-=======
-    @DeleteMapping("/bands/{bandId}") //WORKING: Postman confirmed, can only delete band if current user_id matches band's manager_id
+    @DeleteMapping("/bands/{bandId}")
+    //WORKING: Postman confirmed, can only delete band if current user_id matches band's manager_id
     public boolean deleteBand(@Valid Band bandToDelete, Principal user, @PathVariable int bandId) {
         Band band = bandDao.getBandById(bandId);
         int currentManagerId = band.getMgrId();
@@ -93,8 +86,8 @@ public class BandController {
         } else {
             return false;
         }
->>>>>>> 818997cb4c86afc18f8ecf37b818be57aabd00db
     }
-
-
 }
+
+
+
