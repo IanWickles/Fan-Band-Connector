@@ -4,6 +4,7 @@ package com.techelevator.controller;
 import com.techelevator.dao.GenreDao;
 import com.techelevator.model.Band;
 import com.techelevator.model.Genre;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
@@ -11,12 +12,12 @@ import java.util.List;
 
 @CrossOrigin
 @RestController
-// @PreAuthorize("isAuthenticated()")
+@PreAuthorize("isAuthenticated()")
 public class GenreController {
 
     GenreDao genreDao;
 
-    private GenreController (GenreDao genreDao) {this.genreDao = genreDao;}
+    public GenreController (GenreDao genreDao) {this.genreDao = genreDao;}
 
     @GetMapping("/genres") //WORKING: Postman confirmed
     public List<Genre> getAllGenres() {
@@ -41,6 +42,11 @@ public class GenreController {
     @DeleteMapping("/genres/{genreId}") //WORKING: Postman confirmed
     public boolean deleteGenre (Genre genreToDelete, @PathVariable int genreId) {
         return genreDao.deleteGenre(genreToDelete, genreId);
+    }
+
+    @PostMapping("/genres/bands/{bandId}")
+    public void addGenreToBand (int genreId, @PathVariable int bandId) {
+        genreDao.addGenreToBand(genreId, bandId);
     }
 
 
