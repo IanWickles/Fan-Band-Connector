@@ -22,12 +22,12 @@ public class JdbcMessageDao implements MessageDao {
     @Override
     public List<Message> getMessagesOfCurrentUser(int userId) {
         List<Message> messages = new ArrayList<>();
-        String sql = "select message_id, message_body, message_timestamp, band_id from user_messages\n" +
-                "join messages using(message_id)\n" +
-                "join band using(band_id)\n" +
-                "where user_id = ?;";
+        String sql = "select * from messages \n" +
+                "join band using (band_id) \n" +
+                "join user_band using (band_id) \n" +
+                "where user_id = " + userId + ";";
 
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while (results.next()) {
             Message message = mapRowToMessage(results);
             messages.add(message);

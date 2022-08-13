@@ -31,6 +31,9 @@ public class UserController {
         userDao.followBand(userId, bandId);}
 
     @DeleteMapping("/bands/{bandId}/unfollow")
-    public void unfollowBand(int userId, @PathVariable int bandId) {userDao.unfollowBand(userId, bandId);}
+    public void unfollowBand(@PathVariable int bandId, Principal user) {
+        User currentUser = userDao.findByUsername(user.getName());
+        int userId = currentUser.getId();
+        userDao.unfollowBand(userId, bandId);}
 
 }
