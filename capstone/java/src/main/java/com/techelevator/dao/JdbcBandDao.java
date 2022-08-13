@@ -82,18 +82,6 @@ public class JdbcBandDao implements BandDao {
         return bands;
     }
 
-    public List<Band> getBandsByIdAndGenre(int bandId, int genreId) {
-        List<Band> bands = new ArrayList<>();
-        String sql = "SELECT * FROM band JOIN band_genre USING (band_id) JOIN genre USING (genre_id) WHERE (genre_id = ?) AND (band_id = ?);";
-
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
-        while (results.next()) {
-            Band band = mapRowToBand(results);
-            bands.add(band);
-        }
-        return bands;
-    }
-
     public Band createBand(Band newBand) {
         String sql = "INSERT INTO band (band_name, band_description, band_member, band_image, manager_id) " +
                 "VALUES (?, ?, ?, ?, ?) RETURNING band_id;";
@@ -123,6 +111,7 @@ public class JdbcBandDao implements BandDao {
                 "DELETE FROM band_genre WHERE band_id = " + bandId + "; " +
                 "DELETE FROM show_band WHERE band_id = " + bandId + "; " +
                 "DELETE FROM user_band WHERE band_id = " + bandId + "; " +
+                "DELETE FROM band_photo WHERE band_id = " + bandId + "; " +
                 "DELETE FROM band WHERE band_id = " + bandId + ";";
         try {
             jdbcTemplate.update(sql);

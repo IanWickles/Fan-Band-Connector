@@ -3,6 +3,7 @@ package com.techelevator.controller;
 import com.techelevator.dao.MessageDao;
 import com.techelevator.dao.UserDao;
 import com.techelevator.model.Message;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,7 +13,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
-// @PreAuthorize("isAuthenticated()")
+@PreAuthorize("isAuthenticated()")
 
 public class MessageController {
 
