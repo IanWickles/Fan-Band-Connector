@@ -7,6 +7,7 @@ public class RegisterUserDTO {
     @NotEmpty
     private String username;
     @NotEmpty
+    @ValidPassword
     private String password;
     @NotEmpty
     private String confirmPassword;
