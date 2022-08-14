@@ -1,15 +1,14 @@
-html, body {
-    height: 100%;
-}
 body {
     background-color: aqua;
-    background-image: url(jazzfest.jpg);
+    background-image: url(jazzfest4.jpg);
     background-size: 100% 100%;
+    background-attachment: fixed;
 }
 #content {
     background-color: #f0f8ffbb;
     border-radius: 12px;
     margin: 10vh 10vw;
+    margin-right: calc(10vw + 125px);
 }
 :root {
     --backgroundColor: rgba(246, 241, 209);

@@ -46,14 +46,34 @@
 
 
 <style>
-.navbar {
-  display: flex;
-  flex-grow: 5;
-}
   #nav {
     display: grid;
     grid-template-columns: auto 1fr;
     align-items: center;
+    grid-area: navbar;
+    border-radius: 10px;
+    background-color: #ffffffaa;
+    position: fixed;
+    right: 0;
+    top: 175px;
+    height: calc(100vh - 200px);
+  }
+  #nav:hover {
+    background-color: #ffffff;
+  }
+  #nav ul {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-evenly;
+    font-size: x-large;
+  }
+  #nav.collapsed ul {
+    height: auto;
+  }
+  #nav.collapsed {
+    align-self: start;
+    height: auto;
   }
   .navbar.collapsed li div {
     display: none;
@@ -69,8 +89,21 @@
   #titleBar {
     height: 150px;
     text-align: right;
+    grid-area: header;
   }
   #titleBar img {
     height: 95%;
+  }
+  #content {
+    grid-area: content;
+    align-self: start;
+  }
+  #app {
+    display: grid;
+    grid-template-areas:
+      "header header"
+      "content navbar";
+    grid-template-rows: auto 1fr;
+    height: 100%;
   }
 </style>
