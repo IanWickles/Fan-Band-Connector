@@ -105,5 +105,7 @@
       "content navbar";
     grid-template-rows: auto 1fr;
     height: 100%;
+    min-height: 100vh;
+    margin: 0;
   }
 </style>
