@@ -2,12 +2,10 @@ package com.techelevator.controller;
 
 
 import com.techelevator.dao.GenreDao;
-import com.techelevator.model.Band;
 import com.techelevator.model.Genre;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
-import java.security.Principal;
 import java.util.List;
 
 @CrossOrigin

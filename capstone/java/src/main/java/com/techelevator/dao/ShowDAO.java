@@ -1,6 +1,5 @@
 package com.techelevator.dao;
 
-import com.techelevator.model.Band;
 import com.techelevator.model.Show;
 import java.util.List;
 

@@ -14,8 +14,17 @@
         placeholder="Username"
         v-model="user.username"
         required
-        autofocus
-      />
+        autofocus/>
+        <br>
+        <label for="email" class="sr-only">Email</label>
+        <input
+        type="email"
+        id="email"
+        class="form-control"
+        placeholder="Email"
+        v-model="user.userEmail"
+        required
+        autofocus/>
       <br>
       <label for="password" class="sr-only">Password</label>
       <input
@@ -54,6 +63,7 @@ export default {
     return {
       user: {
         username: "",
+        userEmail: "",
         password: "",
         confirmPassword: "",
         role: "user",
