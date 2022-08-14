@@ -6,8 +6,7 @@
       <router-link v-bind:to="{ name: 'home' }">Home</router-link> |
       <router-link v-bind:to="{ name: 'bands' }">Bands</router-link> |
       <router-link v-bind:to="{ name: 'venues' }">Venues</router-link> |
-      <router-link v-bind:to="{ name: 'profile' }">Profile</router-link>
-      |
+      <router-link v-bind:to="{ name: 'profile' }">Profile</router-link> |
       <router-link
         v-bind:to="{ name: 'login' }"
         v-if="($store.state.token = 'token')"
@@ -16,12 +15,13 @@
       <router-link
         v-bind:to="{ name: 'logout' }"
         v-if="$store.state.token != 'token'"
-        >Logout</router-link
-      ></p>
-    </aside>
+        >Logout</router-link>
+    </div>
     <router-view />
   </div>
 </template>
 <style>
-
-  </style>
+  #nav {
+    text-align: right;
+  }
+</style>
