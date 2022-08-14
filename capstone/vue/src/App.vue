@@ -46,6 +46,10 @@
 
 
 <style>
+.navbar {
+  display: flex;
+  flex-grow: 5;
+}
   #nav {
     display: grid;
     grid-template-columns: auto 1fr;
