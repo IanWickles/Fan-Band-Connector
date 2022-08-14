@@ -65,7 +65,9 @@ public class BandController {
         int currentUserId = userDao.findIdByUsername(user.getName());
         if (currentUserId == currentManagerId) {
             return bandDao.updateBand(bandToUpdate, bandId);
-        } else return false;
+        } else {
+            return false;
+        }
     }
 
     @DeleteMapping("/bands/{bandId}") //WORKING: Postman confirmed, can only delete band if current user_id matches band's manager_id
