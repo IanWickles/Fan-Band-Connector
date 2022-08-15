@@ -1,5 +1,6 @@
 <template>
   <div :style="{'background-image':'url(https://images.pexels.com/photos/3353055/pexels-photo-3353055.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2)'}" class="band-container">
+    <button class="big-button"><router-link v-bind:to="{ name: 'new-band' }">Create a New Band!</router-link></button>
     <input
       class="input is-rounded"
       v-model="input"
