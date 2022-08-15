@@ -45,10 +45,12 @@
         required
       />
       <br>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">
+      <router-link :to="{ name: 'login' }">Have an account?</router-link>
+      <br>
+      <button class="big-button" type="submit">
         Create Account
       </button><br>
-      <router-link :to="{ name: 'login' }">Have an account?</router-link>
+      
       
     </form>
   </div>
