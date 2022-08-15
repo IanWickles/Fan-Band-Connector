@@ -1,5 +1,3 @@
-<!--blanket nav to home|search|login/logout-->
-
 <template>
   <div id="app">
     <div id="titleBar">
