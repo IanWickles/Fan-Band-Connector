@@ -88,8 +88,7 @@ public class JdbcMessageDao implements MessageDao {
         String sql = "begin transaction;\n" +
                 "\n" +
                 "INSERT INTO messages(message_body, message_timestamp, band_id)\n" +
-                "VALUES (?, CURRENT_TIMESTAMP, " + bandId + ")\n" +
-                "returning message_id;\n" +
+                "VALUES (?, CURRENT_TIMESTAMP, " + bandId + ");\n" +
                 "\n" +
                 "INSERT INTO user_messages (user_id, message_id)\n" +
                 "SELECT\n" +
@@ -100,7 +99,7 @@ public class JdbcMessageDao implements MessageDao {
                 "\n" +
                 "commit transaction;";
         try{
-            jdbcTemplate.queryForObject(sql, Integer.class, newMessage.getMessageBody());
+            jdbcTemplate.update(sql, newMessage.getMessageBody());
         } catch (Exception e){
             e.printStackTrace();
             return false;

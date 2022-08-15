@@ -12,6 +12,7 @@
       <ul>
         <li class="navbar-item"><router-link v-bind:to="{ name: 'home' }"><i class="fa-solid fa-house"></i> <div>Home</div></router-link></li>
         <li class="navbar-item"><router-link v-bind:to="{ name: 'bands' }"><i class="fa-solid fa-guitar"></i> <div>Bands</div></router-link></li>
+        <li class = "navbar-item"><router-link v-bind:to="{ name: 'shows' }"><i class="fa-solid fa-guitar"></i><div>Shows</div></router-link></li>
         <li class="navbar-item"><router-link v-bind:to="{ name: 'venues' }"><i class="fa-solid fa-building"></i> <div>Venues</div></router-link></li>
         <li class="navbar-item" v-if="loggedIn"><router-link v-bind:to="{ name: 'profile' }"><i class="fa-solid fa-user"></i> <div>Profile</div></router-link></li>
         <li class="navbar-item" v-if="loggedIn"><router-link v-bind:to="{ name: 'logout' }"><i class="fa-solid fa-right-from-bracket"></i> <div>Logout</div></router-link></li>
