@@ -91,5 +91,8 @@ export default new Vuex.Store({
     ADD_BAND(state, band) {
       state.bands.push(band)
     },
+    SET_MESSAGES(state, data){
+      state.messages = data;
+    }
   }
 })

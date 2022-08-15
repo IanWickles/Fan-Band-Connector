@@ -14,7 +14,7 @@
 <script>
 import BandList from "../components/BandList.vue";
 export default {
-  components: { BandList },
+  components: { BandList},
 };
 </script>
 
