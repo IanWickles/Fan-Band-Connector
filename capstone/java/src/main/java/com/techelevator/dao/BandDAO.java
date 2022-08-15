@@ -12,13 +12,11 @@ public interface BandDao {
 
     Band getBandById(int bandId);
 
-    List<Band> getBandsByName(String searchTerm);
+    List<Band> getBandsByName(String bandName);
 
     List<Band> getBandsByGenre(String genreName);
 
     List<Band> getBandsByShow(String showTitle);
-
-    List<Band> getBandsByIdAndGenre(int bandId, int genreId);
 
     Band createBand(Band newBand);
 

@@ -8,20 +8,22 @@ import com.techelevator.model.Band;
 import java.security.Principal;
 import java.util.List;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
 @CrossOrigin
 @RestController
-// @PreAuthorize("isAuthenticated()")
+@PreAuthorize("isAuthenticated()")
 public class BandController {
 
     private BandDao bandDao;
     private UserDao userDao;
 
-    public BandController(BandDao bandDao) {
+    public BandController(BandDao bandDao, UserDao userDao) {
         this.bandDao = bandDao;
+        this.userDao = userDao;
     }
 
     @GetMapping("/bands") //WORKING: Postman confirmed
@@ -30,16 +32,23 @@ public class BandController {
     }
 
     @GetMapping("/bands/{bandId}") //WORKING: Postman confirmed
+
     public Band getBandsById(@PathVariable int bandId) {
-    return bandDao.getBandById(bandId);
-}
+        return bandDao.getBandById(bandId);
+    }
+
+    public Band getBandById(@PathVariable int bandId) {
+        return bandDao.getBandById(bandId);
+    }
 
     @GetMapping("bands/search/{bandName}") //WORKING: Postman confirmed
-    public List<Band> getBandsByName(@PathVariable String bandName) {return bandDao.getBandsByName(bandName);}
+    public List<Band> getBandsByName(@PathVariable String bandName) {
+        return bandDao.getBandsByName(bandName);
+    }
 
     @GetMapping("/bands/genres/{genreName}") //WORKING: Postman confirmed
     public List<Band> getBandsByGenre(@PathVariable String genreName) {
-    return bandDao.getBandsByGenre(genreName);
+        return bandDao.getBandsByGenre(genreName);
     }
 
     @GetMapping("/bands/shows/{showTitle}") //WORKING: Postman confirmed
@@ -47,34 +56,40 @@ public class BandController {
         return bandDao.getBandsByShow(showTitle);
     }
 
-    @GetMapping("/bands/{bandId}/{genreId}") //NOT WORKING: Do we even need??
-    public List<Band> getBandsByIdAndGenre(@PathVariable int bandId, @PathVariable int genreId) {
-        return bandDao.getBandsByIdAndGenre(bandId, genreId);
-    }
-
-    @PostMapping("/bands/newband") //WORKING: Postman confirmed as-is, but add Principal user later.
-    Band createBand(@RequestBody Band newBand, Principal user) {
-        //int managerId = userDao.findIdByUsername(user.getName());
+    @PostMapping("/bands/newband")
+    //WORKING: Postman confirmed, current user_id is set as the new band's manager_id no matter what they put in
+    public Band createBand(@Valid @RequestBody Band newBand, Principal user) {
+        int currentUserId = userDao.findIdByUsername(user.getName());
+        newBand.setMgrId(currentUserId);
         return bandDao.createBand(newBand);
     }
 
-    @PutMapping("/bands/{bandId}") //WORKING: Postman confirmed as-is, but add Principal user later.
-    public boolean updateBand(@RequestBody Band bandToUpdate, Principal user, @PathVariable int bandId) {
-//        int currentManagerId = userDao.findIdByUsername(user.getName());
-//        if (currentManagerId == bandToUpdate.getMgrId()) {
+    @PutMapping("/bands/{bandId}")
+    //WORKING: Postman confirmed, can only change band details if current user_id matches band's manager_id
+    public boolean updateBand(@Valid @RequestBody Band bandToUpdate, Principal user, @PathVariable int bandId) {
+        Band band = bandDao.getBandById(bandId);
+        int currentManagerId = band.getMgrId();
+        int currentUserId = userDao.findIdByUsername(user.getName());
+        if (currentUserId == currentManagerId) {
             return bandDao.updateBand(bandToUpdate, bandId);
-//        } else return false;
+        } else {
+            return false;
+        }
     }
 
-    @DeleteMapping("/bands/{bandId}") //WORKING: Postman confirmed as-is, but add Principal user later.
-    public boolean deleteBand(Band bandToDelete, Principal user, @PathVariable int bandId) {
-//        int currentManagerId = userDao.findIdByUsername(user.getName());
-//        if (currentManagerId == bandToDelete.getMgrId()) {
+    @DeleteMapping("/bands/{bandId}")
+    //WORKING: Postman confirmed, can only delete band if current user_id matches band's manager_id
+    public boolean deleteBand(@Valid Band bandToDelete, Principal user, @PathVariable int bandId) {
+        Band band = bandDao.getBandById(bandId);
+        int currentManagerId = band.getMgrId();
+        int currentUserId = userDao.findIdByUsername(user.getName());
+        if (currentUserId == currentManagerId) {
             return bandDao.deleteBand(bandToDelete, bandId);
-//        } else {
-//            return false;
-//        }
+        } else {
+            return false;
+        }
     }
-
-
 }
+
+
+

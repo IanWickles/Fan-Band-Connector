@@ -3,7 +3,7 @@
     <form class="form-signin" @submit.prevent="login">
       <h1 class="h3 mb-3 font-weight-normal">Please Sign In</h1>
       <div class="alert alert-danger" role="alert" v-if="invalidCredentials">
-        Invalid username and password!
+        Invalid username or password!
       </div>
       <div
         class="alert alert-success"
@@ -22,6 +22,7 @@
         required
         autofocus
       />
+      <br>
       <label for="password" class="sr-only">Password</label>
       <input
         type="password"
@@ -31,8 +32,10 @@
         v-model="user.password"
         required
       />
+      <br>
+      <button type="submit">Sign in</button><br>
       <router-link :to="{ name: 'register' }">Need an account?</router-link>
-      <button type="submit">Sign in</button>
+      
     </form>
   </div>
 </template>
@@ -74,3 +77,8 @@ export default {
   },
 };
 </script>
+<style>
+  .text-center {
+    text-align: center;
+  }
+</style>

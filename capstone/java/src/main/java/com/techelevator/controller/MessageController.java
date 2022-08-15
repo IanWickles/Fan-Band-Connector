@@ -1,28 +1,51 @@
 package com.techelevator.controller;
 
+import com.techelevator.dao.BandDao;
 import com.techelevator.dao.MessageDao;
 import com.techelevator.dao.UserDao;
+import com.techelevator.model.Band;
 import com.techelevator.model.Message;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import com.techelevator.model.User;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import java.security.Principal;
 import java.util.List;
 
 @RestController
 @CrossOrigin
-// @PreAuthorize("isAuthenticated()")
+@PreAuthorize("isAuthenticated()")
 
 public class MessageController {
 
     private MessageDao messageDao;
     private UserDao userDao;
+    private BandDao bandDao;
 
-    public MessageController(MessageDao messageDao) {this.messageDao = messageDao;}
+    public MessageController(MessageDao messageDao, UserDao userDao, BandDao bandDao) {
+        this.messageDao = messageDao;
+        this.userDao = userDao;
+        this.bandDao = bandDao;
+    }
 
-    @GetMapping("/inbox/{userId}")
-    public List<Message> getMessagesOfCurrentUser(@PathVariable int userId) {
+    @GetMapping("/inbox")
+    public List<Message> getMessagesOfCurrentUser(@Valid Principal user) {
+        User currentUser = userDao.findByUsername(user.getName());
+        int userId = currentUser.getId();
         return messageDao.getMessagesOfCurrentUser(userId);
+    }
+
+    @PostMapping("/bands/{bandId}/newmessage")
+    public boolean sendMessageToFollowers(@RequestBody Message newMessage, @Valid Principal user, @PathVariable int bandId) {
+        Band band = bandDao.getBandById(bandId);
+        int currentManagerId = band.getMgrId();
+        User currentUser = userDao.findByUsername(user.getName());
+        int currentUserId = currentUser.getId();
+        if (currentUserId == currentManagerId) {
+            return messageDao.sendMessageToFollowers(newMessage, currentUserId, bandId);
+        } else {
+            return false;
+        }
     }
 }

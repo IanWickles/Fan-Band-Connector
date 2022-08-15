@@ -6,9 +6,19 @@ import java.util.List;
 
 public interface GenreDao {
 
-    List<Genre> getGenresByBand(int bandId);
+    List<Genre> getAllGenres();
 
-    public boolean addGenreToBand(int bandId, int genreId);
+    Genre getGenreByID (int genreId);
+
+    List<Genre> getGenresByBand(String bandName);
+
+    Genre createGenre(Genre newGenre);
+
+    boolean deleteGenre(Genre genreToDelete, int genreID);
+
+    public void addGenreToBand(int bandId, int genreId);
+
+    public void removeGenreFromBand(int bandId, int genreId);
 
 
 
