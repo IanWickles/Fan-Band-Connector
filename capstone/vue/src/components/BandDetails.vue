@@ -1,10 +1,10 @@
 <template>
   <div>
-    <h1>{{ this.$store.state.activeBand.title }}</h1>
     <h1 class="name">{{ this.$store.state.activeBand.bandName }}</h1>
-    <img :src="band.bandImage" />
-    <h2>Who Dat</h2>
+    <figure class="thisimage"><img :src="band.bandImage" /></figure>
+    <h1>Who Dat</h1>
     <h2 class="description">{{ band.bandDesc }}</h2>
+    <h1>Members:</h1>
     <h2 class="band-members">{{ band.members }}</h2>
     <!-- <h2 class="genre">{{ band.genre }}</h2> -->
     <!-- <div>
@@ -45,10 +45,15 @@ export default {
 </script>
 
 <style>
-div {
-  margin: 10px;
+.description {
+  text-align: center;
 }
-img {
-  height: 500px;
+.band-members {
+  text-align: center;
+}
+.thisimage {
+  display: block;
+  margin: auto;
+  max-width: 60%;
 }
 </style>
