@@ -1,7 +1,6 @@
 <template>
   <div>
     <section>
-      <h1>Musicians</h1>
       <band-list />
     </section>
   </div>

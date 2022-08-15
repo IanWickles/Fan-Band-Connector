@@ -2,7 +2,6 @@ package com.techelevator.controller;
 
 
 import com.techelevator.dao.ShowDao;
-import com.techelevator.model.Band;
 import com.techelevator.model.Show;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;

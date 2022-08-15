@@ -1,6 +1,5 @@
 package com.techelevator.dao;
 
-import com.techelevator.model.Band;
 import com.techelevator.model.Genre;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
@@ -10,11 +9,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class JdbcGenreDao implements GenreDao{
+public class JdbcGenreDao implements GenreDao {
 
     JdbcTemplate jdbcTemplate;
 
-    public  JdbcGenreDao(JdbcTemplate jdbcTemplate) {
+    public JdbcGenreDao(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
 

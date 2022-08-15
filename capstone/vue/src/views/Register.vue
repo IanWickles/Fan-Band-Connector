@@ -14,8 +14,18 @@
         placeholder="Username"
         v-model="user.username"
         required
-        autofocus
-      />
+        autofocus/>
+        <br>
+        <label for="email" class="sr-only">Email</label>
+        <input
+        type="email"
+        id="email"
+        class="form-control"
+        placeholder="Email"
+        v-model="user.userEmail"
+        required
+        autofocus/>
+      <br>
       <label for="password" class="sr-only">Password</label>
       <input
         type="password"
@@ -25,6 +35,7 @@
         v-model="user.password"
         required
       />
+      <br>
       <input
         type="password"
         id="confirmPassword"
@@ -33,10 +44,12 @@
         v-model="user.confirmPassword"
         required
       />
-      <router-link :to="{ name: 'login' }">Have an account?</router-link>
+      <br>
       <button class="btn btn-lg btn-primary btn-block" type="submit">
         Create Account
-      </button>
+      </button><br>
+      <router-link :to="{ name: 'login' }">Have an account?</router-link>
+      
     </form>
   </div>
 </template>
@@ -50,6 +63,7 @@ export default {
     return {
       user: {
         username: "",
+        userEmail: "",
         password: "",
         confirmPassword: "",
         role: "user",
@@ -78,7 +92,7 @@ export default {
             const response = error.response;
             this.registrationErrors = true;
             if (response.status === 400) {
-              this.registrationErrorMsg = "Bad Request: Validation Errors";
+              this.registrationErrorMsg = response.data;
             }
           });
       }
@@ -90,5 +104,8 @@ export default {
   },
 };
 </script>
-
-<style></style>
+<style>
+  .text-center {
+    text-align: center;
+  }
+</style>
