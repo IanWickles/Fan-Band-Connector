@@ -1,5 +1,18 @@
 <template>
-  <div class="band-container">
+  <div :style="{'background-image':'url(https://images.pexels.com/photos/3353055/pexels-photo-3353055.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2)'}" class="band-container">
+    <input
+      class="input is-rounded"
+      v-model="input"
+      name="byBand"
+      type="text"
+      placeholder="Search by band"
+    />
+    <input
+      class="input is-rounded"
+      name="byGenre"
+      type="text"
+      placeholder="Search by genre"
+    />
     <div class="band">
       <tbody>
         <tr v-for="band in this.$store.state.bands" v-bind:key="band.bandId">
@@ -53,4 +66,8 @@ export default {
 .card-content {
   color: white;
 }
+/*.image {
+  height: 360px;
+  max-width: 360px;
+}*/
 </style>

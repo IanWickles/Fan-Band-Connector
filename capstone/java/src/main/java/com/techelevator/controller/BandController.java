@@ -32,6 +32,11 @@ public class BandController {
     }
 
     @GetMapping("/bands/{bandId}") //WORKING: Postman confirmed
+
+    public Band getBandsById(@PathVariable int bandId) {
+        return bandDao.getBandById(bandId);
+    }
+
     public Band getBandById(@PathVariable int bandId) {
         return bandDao.getBandById(bandId);
     }
@@ -51,24 +56,29 @@ public class BandController {
         return bandDao.getBandsByShow(showTitle);
     }
 
-    @PostMapping("/bands/newband") //WORKING: Postman confirmed, current user_id is set as the new band's manager_id no matter what they put in
+    @PostMapping("/bands/newband")
+    //WORKING: Postman confirmed, current user_id is set as the new band's manager_id no matter what they put in
     public Band createBand(@Valid @RequestBody Band newBand, Principal user) {
         int currentUserId = userDao.findIdByUsername(user.getName());
         newBand.setMgrId(currentUserId);
         return bandDao.createBand(newBand);
     }
 
-    @PutMapping("/bands/{bandId}") //WORKING: Postman confirmed, can only change band details if current user_id matches band's manager_id
+    @PutMapping("/bands/{bandId}")
+    //WORKING: Postman confirmed, can only change band details if current user_id matches band's manager_id
     public boolean updateBand(@Valid @RequestBody Band bandToUpdate, Principal user, @PathVariable int bandId) {
         Band band = bandDao.getBandById(bandId);
         int currentManagerId = band.getMgrId();
         int currentUserId = userDao.findIdByUsername(user.getName());
         if (currentUserId == currentManagerId) {
             return bandDao.updateBand(bandToUpdate, bandId);
-        } else return false;
+        } else {
+            return false;
+        }
     }
 
-    @DeleteMapping("/bands/{bandId}") //WORKING: Postman confirmed, can only delete band if current user_id matches band's manager_id
+    @DeleteMapping("/bands/{bandId}")
+    //WORKING: Postman confirmed, can only delete band if current user_id matches band's manager_id
     public boolean deleteBand(@Valid Band bandToDelete, Principal user, @PathVariable int bandId) {
         Band band = bandDao.getBandById(bandId);
         int currentManagerId = band.getMgrId();
@@ -79,6 +89,7 @@ public class BandController {
             return false;
         }
     }
-
-
 }
+
+
+
