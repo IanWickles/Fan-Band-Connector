@@ -5,11 +5,14 @@
     <button>Manage Band</button></div><br>
     <h1 class="user-inbox">Inbox</h1>
     <div class="inbox-content">
-    Blah blah blah from Blah blah | <button>Read</button> | <button>Delete</button>
+    <message-list />
+     <button>Read</button> | <button>Delete</button>
     <br>
     Blah blah blah from Blah blah | <button>Read</button> | <button>Delete</button><br>
     Blah blah blah from Blah blah | <button>Read</button> | <button>Delete</button>
+    
     </div>
+    
     <br>
     <h1 class="band-list">Followed Bands</h1>
     </div>
@@ -21,10 +24,10 @@
 // sort button, by band/date
 -->
 <script>
-//import MessageList from "../components/MessageList.vue";
+import MessageList from "../components/MessageList.vue";
 import UserDetails from "../components/UserDetails.vue";
 export default {
-  components: { UserDetails },
+  components: { UserDetails, MessageList },
 };
 </script>
 <style>
