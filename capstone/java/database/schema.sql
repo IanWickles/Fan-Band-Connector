@@ -119,6 +119,7 @@ CREATE TABLE public.venue
     venue_name character varying(200) COLLATE pg_catalog."default" NOT NULL,
     venue_address character varying(200) COLLATE pg_catalog."default" NOT NULL,
     venue_description character varying(1000) COLLATE pg_catalog."default" NOT NULL,
+    venue_map character varying(1000) COLLATE pg_catalog."default" NOT NULL,
     CONSTRAINT venue_pkey PRIMARY KEY (venue_id)
 )
 

@@ -6,12 +6,14 @@ public class Venue {
     private String venueName;
     private String venueAddress;
     private String venueDesc;
+    private String venueMap;
 
     public Venue() {
         this.venueId = venueId;
         this.venueName = venueName;
         this.venueAddress = venueAddress;
         this.venueDesc = venueDesc;
+        this.venueMap = venueMap;
     }
 
     public int getVenueId() {
@@ -44,5 +46,13 @@ public class Venue {
 
     public void setVenueDesc(String venueDesc) {
         this.venueDesc = venueDesc;
+    }
+
+    public String getVenueMap() {
+        return venueMap;
+    }
+
+    public void setVenueMap(String venueMap) {
+        this.venueMap = venueMap;
     }
 }

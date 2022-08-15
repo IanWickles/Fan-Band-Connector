@@ -89,6 +89,12 @@ public class BandController {
             return false;
         }
     }
+
+    @GetMapping("/following")
+    public List<Band> getBandsFollowed(@Valid Principal user) {
+        int currentUserId = userDao.findIdByUsername(user.getName());
+        return bandDao.getBandsFollowed(currentUserId);
+    }
 }
 
 

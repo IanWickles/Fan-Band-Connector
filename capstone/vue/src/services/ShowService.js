@@ -34,4 +34,10 @@ export default {
     deleteBandShow(showId) {
         return axios.delete(`/bands/${showId}`);
     },
+    list() {
+        return axios.get('/shows');
+    },
+    get(showId) {
+        return axios.get(`/shows/${showId}`);
+    },
 }
