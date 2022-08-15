@@ -1,11 +1,22 @@
 <template>
   <div>
     <h1 class="name">{{ this.$store.state.activeBand.bandName }}</h1>
+    <div class="managerhub">
+    <button class="manageredit">Edit</button> |
+    <button class="managershow">Post Show</button>
+    </div>
     <figure class="thisimage"><img :src="band.bandImage" /></figure>
     <h1>Who Dat</h1>
     <h2 class="description">{{ band.bandDesc }}</h2>
     <h1>Members:</h1>
     <h2 class="band-members">{{ band.members }}</h2>
+    <div class="userhub">
+      <button class="big-button">Follow</button>
+      <!--Make this follow/unfollow -->
+      </div>
+      <br>
+      <h1>Photo Gallery</h1>
+      insert photo gallery here
     <!-- <h2 class="genre">{{ band.genre }}</h2> -->
     <!-- <div>
         <router-link :to="{ name: '', params: { id: band.id } }"
@@ -45,6 +56,12 @@ export default {
 </script>
 
 <style>
+.managerhub {
+  text-align: center;
+}
+.userhub {
+  text-align: center;
+}
 .description {
   text-align: center;
 }
