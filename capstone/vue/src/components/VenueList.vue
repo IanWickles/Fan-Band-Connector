@@ -1,5 +1,12 @@
 <template>
   <div class="venue-container">
+    <input
+      class="input is-rounded"
+      v-model="input"
+      name="byTitle"
+      type="text"
+      placeholder="Search by venue"
+    />
     <div class="venue">
       <tbody>
         <tr
@@ -9,7 +16,7 @@
           <div class="container">
             <td>
               <router-link
-                v-bind:to="{ name: 'venue', params: { id: venue.venueName } }"
+                v-bind:to="{ name: 'venue', params: { venueId: venue.venueId } }"
                 >{{ venue.venueName }}</router-link
               >
             </td>

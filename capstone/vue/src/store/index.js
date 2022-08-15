@@ -34,7 +34,8 @@ export default new Vuex.Store({
       venueId: 0,
       venueName: "",
       venueAddress: "",
-      venueDesc: ""
+      venueDesc: "",
+      venueMap: ""
     },
     messages: [],
     activeMessage: {
@@ -49,7 +50,7 @@ export default new Vuex.Store({
       showTime: 0,
       showTitle: "",
       showDesc: "",
-      venueId: 0,
+      venueId: 0
     },
   },
 
@@ -68,6 +69,12 @@ export default new Vuex.Store({
     },
     SET_ACTIVE_VENUE(state, data) {
       state.activeVenue = data;
+    },
+    SET_SHOWS(state, data) {
+      state.shows = data;
+    },
+    SET_ACTIVE_SHOW(state, data) {
+      state.activeShow = data;
     },
     SET_VENUE_SHOW(state, data) {
       state.shows = data;
