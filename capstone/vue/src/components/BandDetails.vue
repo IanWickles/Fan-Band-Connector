@@ -2,6 +2,7 @@
   <div>
     <h1>{{ this.$store.state.activeBand.title }}</h1>
     <h1 class="name">{{ this.$store.state.activeBand.bandName }}</h1>
+    <img :src="band.bandImage" />
     <h2>Who Dat</h2>
     <h2 class="description">{{ band.bandDesc }}</h2>
     <h2 class="band-members">{{ band.members }}</h2>
@@ -46,5 +47,8 @@ export default {
 <style>
 div {
   margin: 10px;
+}
+img {
+  height: 500px;
 }
 </style>

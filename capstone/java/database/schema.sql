@@ -19,6 +19,7 @@ CREATE TABLE public.band
     band_name character varying(200) COLLATE pg_catalog."default" NOT NULL,
     band_description character varying(1000) COLLATE pg_catalog."default" NOT NULL,
     band_member character varying(1000) COLLATE pg_catalog."default" NOT NULL,
+    band_image character varying(5000) COLLATE pg_catalog."default" NOT NULL,
     manager_id integer NOT NULL,
     CONSTRAINT band_id PRIMARY KEY (band_id),
     CONSTRAINT manager_id FOREIGN KEY (manager_id)
@@ -38,7 +39,7 @@ DROP TABLE IF EXISTS public.genre;
 CREATE TABLE public.genre
 (
     genre_id  serial,--integer NOT NULL DEFAULT nextval('genre_genre_id_seq'::regclass),
-    genre_name character varying(100) COLLATE pg_catalog."default" NOT NULL,
+    genre_name character varying(100) COLLATE pg_catalog."default" UNIQUE NOT NULL,
     CONSTRAINT genre_pkey PRIMARY KEY (genre_id)
 )
 
@@ -188,6 +189,41 @@ CREATE TABLE public.user_messages
 TABLESPACE pg_default;
 
 ALTER TABLE IF EXISTS public.band_genre
+    OWNER to postgres;
+
+DROP TABLE IF EXISTS public.photo;
+
+CREATE TABLE public.photo
+(
+    photo_id  serial,--integer NOT NULL DEFAULT nextval('genre_genre_id_seq'::regclass),
+    photo_url character varying(2000) COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT photo_pkey PRIMARY KEY (photo_id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.photo
+    OWNER to postgres;
+
+DROP TABLE IF EXISTS public.band_photo;
+
+CREATE TABLE public.band_photo
+(
+    band_id integer NOT NULL,
+    photo_id integer NOT NULL,
+    CONSTRAINT band_id FOREIGN KEY (band_id)
+        REFERENCES public.band (band_id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION,
+    CONSTRAINT photo_id FOREIGN KEY (photo_id)
+        REFERENCES public.photo (photo_id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.band_photo
     OWNER to postgres;
 
 COMMIT TRANSACTION;

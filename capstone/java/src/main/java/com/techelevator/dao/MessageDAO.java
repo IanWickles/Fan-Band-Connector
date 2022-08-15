@@ -8,11 +8,13 @@ public interface MessageDao {
 
     List<Message> getMessagesOfCurrentUser(int userId);
 
+    Message getMessageById(int messageId);
+
     List<Message> sortMessagesByDate();
 
     List <Message> sortMessagesByBandName();
 
-    Boolean sendMessageToFollowers(Message newMessage,int mgrId);
+    boolean sendMessageToFollowers(Message newMessage, int mgrId, int bandId);
 
    // void deleteMessage(int messageId);
 

@@ -12,22 +12,18 @@ public interface BandDao {
 
     Band getBandById(int bandId);
 
-    List<Band> getBandsByGenre(int genreId);
+    List<Band> getBandsByName(String bandName);
 
-    List<Band> getBandsByShow(int showId);
+    List<Band> getBandsByGenre(String genreName);
 
-    List<Band> getBandsByIdAndGenre(int bandId, int genreId);
-
-
+    List<Band> getBandsByShow(String showTitle);
 
     Band createBand(Band newBand);
 
+    boolean updateBand(Band bandToUpdate, int bandId);
+
     boolean deleteBand(Band bandToDelete, int bandId);
 
-    boolean updateBand(Band bandToUpdate, int managerId);
-
-
-
-
+    int findIdByBandName (String bandName);
 
 }

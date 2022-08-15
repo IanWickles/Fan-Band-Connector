@@ -1,5 +1,6 @@
 package com.techelevator.dao;
 
+import com.techelevator.model.Band;
 import com.techelevator.model.Venue;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
@@ -28,18 +29,32 @@ public class JdbcVenueDao implements VenueDao{
 
         return venues;}
 
-    public List<Venue> getVenueById(int venueId){
-        List<Venue> venues = new ArrayList<>();
+    public Venue getVenueById(int venueId){
+        Venue venue = new Venue();
         String sql = "SELECT * FROM venue WHERE venue_id = ?;";
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, venueId);
-        while (results.next()) {
-            Venue v = mapRowToVenue(results);
-            venues.add(v);
+        if (results.next()) {
+            venue = mapRowToVenue(results);
         }
 
+        return venue;
+    }
+
+    @Override
+    public List<Venue> getVenuesByName(String venueName) {
+        List<Venue> venues =new ArrayList<>();
+        if(!venueName.isEmpty()) {
+            String sql = "select * from venue where venue_name ILIKE ?;";
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, "%" + venueName + "%");
+            while (results.next()) {
+                Venue venue = mapRowToVenue(results);
+                venues.add(venue);
+            }
+        }
         return venues;
     }
+
 
     private Venue mapRowToVenue (SqlRowSet rs) {
         Venue venue = new Venue();

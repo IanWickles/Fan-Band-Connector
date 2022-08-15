@@ -5,6 +5,12 @@ import java.util.List;
 
 public interface ShowDao {
 
+    List<Show> getAllShows();
+
+    Show getShowByID(int showId);
+
+    List<Show> getShowsByTitle(String showTitle);
+
     List<Show> getShowsByVenue(int venueId);
 
     List<Show> getShowsByBand(int bandId);
