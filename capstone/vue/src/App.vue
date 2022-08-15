@@ -8,15 +8,16 @@
       <router-link v-bind:to="{ name: 'venues' }">Venues</router-link> |
       <router-link v-bind:to="{ name: 'profile' }">Profile</router-link>
       |
-      <router-link
-        v-bind:to="{ name: 'login' }"
-        v-if="($store.state.token = 'token')"
-        >Login</router-link
-      >
+
       <router-link
         v-bind:to="{ name: 'logout' }"
         v-if="$store.state.token != 'token'"
         >Logout</router-link
+      >
+      <router-link
+        v-bind:to="{ name: 'login' }"
+        v-if="$store.state.token == null"
+        >Login</router-link
       >
     </div>
     <router-view />
