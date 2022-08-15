@@ -30,6 +30,7 @@ export default {
   components: { UserDetails, MessageList },
 };
 </script>
+<<<<<<< HEAD
 <style>
 .inbox-content {
   text-align: center;
@@ -38,3 +39,7 @@ export default {
   text-align: center;
 }
 </style>
+=======
+
+<style></style>
+>>>>>>> 73b752da4074846a8edd17544b06454db1149cd2
