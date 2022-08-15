@@ -33,7 +33,7 @@
         required
       />
       <br>
-      <button type="submit">Sign in</button><br>
+      <button class="big-button" type="submit">Sign in</button><br>
       <router-link :to="{ name: 'register' }">Need an account?</router-link>
       
     </form>
