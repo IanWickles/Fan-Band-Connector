@@ -122,6 +122,19 @@ public class JdbcBandDao implements BandDao {
         return true;
     }
 
+    @Override
+    public List<Band> getBandsFollowed(int userId) {
+        List<Band> bands = new ArrayList<>();
+        String sql = "SELECT * FROM band JOIN user_band using (band_id) where user_id = " + userId + ";";
+
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+        while(results.next()) {
+            Band band = mapRowToBand(results);
+            bands.add(band);
+        }
+        return bands;
+    }
+
     public int findIdByBandName(String bandName) {
         if (bandName == null) throw new IllegalArgumentException("Band Name cannot be null");
 
