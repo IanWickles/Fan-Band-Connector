@@ -52,6 +52,7 @@ export default new Vuex.Store({
       showDesc: "",
       venueId: 0
     },
+    followed: [],
   },
 
   mutations: {
@@ -98,5 +99,8 @@ export default new Vuex.Store({
     ADD_BAND(state, band) {
       state.bands.push(band)
     },
+    SET_FOLLOWED(state, followed) {
+      state.followed = followed;
+    }
   }
 })

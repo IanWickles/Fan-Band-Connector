@@ -9,6 +9,9 @@ export default {
     },
     followBand(bandId) {
         return axios.post(`/bands/${bandId}/follow`);
+    },
+    getFollowedBands() {
+        return axios.get('/following');
     }
 
 }

@@ -1,7 +1,9 @@
 <template>
   <div>
     <h1 class="name">Hello, {{ this.$store.state.user.username }}!</h1>
-    </div>
+    <h3>Followed bands:</h3>
+    <router-link tag="div" v-for="followedBand in followedBands" :key="followedBand.bandId" :to="{ name: 'band', params: { bandId: followedBand.bandId } }"><img :src="followedBand.bandImage" class="followed-band-image" />{{ followedBand.bandName }}</router-link>
+  </div>
 </template>
 
 <script>
@@ -16,6 +18,9 @@ export default {
     user() {
       return this.$store.state.activeUser;
     },
+    followedBands() {
+        return this.$store.state.followed;
+    }
   },
   methods: {},
   created() {
@@ -29,9 +34,14 @@ export default {
           this.$router.push({ name: "not-found" });
         }
       });
+    userService.getFollowedBands().then((response) => {
+        this.$store.commit("SET_FOLLOWED", response.data);
+    })
   },
 };
 </script>
 <style>
-
+.followed-band-image {
+    width: 100px;
+}
 </style>
