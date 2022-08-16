@@ -114,7 +114,9 @@ public class JdbcMessageDao implements MessageDao {
         message.setMessageBody(rs.getString("message_body"));
         message.setMessageTimestamp(rs.getDate("message_timestamp"));
         message.setBandId(rs.getInt("band_id"));
-
+        try{
+            message.setBandName(rs.getString("band_name"));
+        } catch (Exception e){}
         return message;
     }
 }
