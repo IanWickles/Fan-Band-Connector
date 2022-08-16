@@ -1,8 +1,8 @@
 <template>
-  <form class="new-band-form" v-on:submit.prevent>
+  <form class="new-band-form" v-on:submit.prevent="addNewBand">
     <div>
       <label for="name-input"> Band Name: </label>
-      <input class="name-input" type="text" placeholder="Name" />
+      <input class="name-input" type="text" placeholder="Name" v-model="band.bandName"/>
     </div>
     <div>
       <label for="bandMember-input"> Members: </label>

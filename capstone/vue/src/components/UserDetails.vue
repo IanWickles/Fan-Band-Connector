@@ -5,7 +5,6 @@
 </template>
 
 <script>
-<<<<<<< HEAD
 import userService from "@/services/UserService.js";
 
 export default {
@@ -32,8 +31,6 @@ export default {
       });
   },
 };
-=======
->>>>>>> 73b752da4074846a8edd17544b06454db1149cd2
 </script>
 <style>
 

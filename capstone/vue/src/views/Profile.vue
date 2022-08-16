@@ -6,11 +6,6 @@
     <h1 class="user-inbox">Inbox</h1>
     <div class="inbox-content">
     <message-list />
-     <button>Read</button> | <button>Delete</button>
-    <br>
-    Blah blah blah from Blah blah | <button>Read</button> | <button>Delete</button><br>
-    Blah blah blah from Blah blah | <button>Read</button> | <button>Delete</button>
-    
     </div>
     
     <br>
@@ -30,7 +25,6 @@ export default {
   components: { UserDetails, MessageList },
 };
 </script>
-<<<<<<< HEAD
 <style>
 .inbox-content {
   text-align: center;
@@ -39,7 +33,3 @@ export default {
   text-align: center;
 }
 </style>
-=======
-
-<style></style>
->>>>>>> 73b752da4074846a8edd17544b06454db1149cd2

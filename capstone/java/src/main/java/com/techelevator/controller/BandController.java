@@ -32,7 +32,6 @@ public class BandController {
     }
 
     @GetMapping("/bands/{bandId}") //WORKING: Postman confirmed
-
     public Band getBandsById(@PathVariable int bandId) {
         return bandDao.getBandById(bandId);
     }
