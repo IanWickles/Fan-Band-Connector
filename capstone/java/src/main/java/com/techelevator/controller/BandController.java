@@ -15,7 +15,6 @@ import javax.validation.Valid;
 
 @CrossOrigin
 @RestController
-@PreAuthorize("isAuthenticated()")
 public class BandController {
 
     private BandDao bandDao;
@@ -31,31 +30,36 @@ public class BandController {
         return bandDao.getAllBands();
     }
 
+    @PreAuthorize("isAuthenticated()")
     @GetMapping("/bands/{bandId}") //WORKING: Postman confirmed
     public Band getBandsById(@PathVariable int bandId) {
         return bandDao.getBandById(bandId);
     }
 
-    public Band getBandById(@PathVariable int bandId) {
-        return bandDao.getBandById(bandId);
-    }
-
+    @PreAuthorize("isAuthenticated()")
     @GetMapping("bands/search/{bandName}") //WORKING: Postman confirmed
     public List<Band> getBandsByName(@PathVariable String bandName) {
         return bandDao.getBandsByName(bandName);
     }
 
+    @PreAuthorize("isAuthenticated()")
     @GetMapping("/bands/genres/{genreName}") //WORKING: Postman confirmed
     public List<Band> getBandsByGenre(@PathVariable String genreName) {
         return bandDao.getBandsByGenre(genreName);
     }
 
+    @PreAuthorize("isAuthenticated()")
     @GetMapping("/bands/shows/{showTitle}") //WORKING: Postman confirmed
     public List<Band> getBandsByShow(@PathVariable String showTitle) {
         return bandDao.getBandsByShow(showTitle);
     }
 
+<<<<<<< HEAD
     @PostMapping("/new-band")
+=======
+    @PreAuthorize("isAuthenticated()")
+    @PostMapping("/bands/newband")
+>>>>>>> 6b98fc25583b1d86b8310201efb06ce1120aa288
     //WORKING: Postman confirmed, current user_id is set as the new band's manager_id no matter what they put in
     public Band createBand(@Valid @RequestBody Band newBand, Principal user) {
         int currentUserId = userDao.findIdByUsername(user.getName());
@@ -63,6 +67,7 @@ public class BandController {
         return bandDao.createBand(newBand);
     }
 
+    @PreAuthorize("isAuthenticated()")
     @PutMapping("/bands/{bandId}")
     //WORKING: Postman confirmed, can only change band details if current user_id matches band's manager_id
     public boolean updateBand(@Valid @RequestBody Band bandToUpdate, Principal user, @PathVariable int bandId) {
@@ -76,6 +81,7 @@ public class BandController {
         }
     }
 
+    @PreAuthorize("isAuthenticated()")
     @DeleteMapping("/bands/{bandId}")
     //WORKING: Postman confirmed, can only delete band if current user_id matches band's manager_id
     public boolean deleteBand(@Valid Band bandToDelete, Principal user, @PathVariable int bandId) {
@@ -89,6 +95,7 @@ public class BandController {
         }
     }
 
+    @PreAuthorize("isAuthenticated()")
     @GetMapping("/following")
     public List<Band> getBandsFollowed(@Valid Principal user) {
         int currentUserId = userDao.findIdByUsername(user.getName());

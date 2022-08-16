@@ -4,7 +4,7 @@
     <p class="mymessage">{{ message }}</p><br><br>
     <button class="big-button"><router-link v-bind:to="{ name: 'bands' }">Explore Bands</router-link></button>
     <button class="big-button"><router-link v-bind:to="{ name: 'venues' }">Explore Venues</router-link></button>
-    <button class="big-button"><router-link v-bind:to="{ name: 'shows' }">Explore Shows</router-link></button>
+    <button class="big-button"><router-link v-bind:to="{ name: 'shows' }">Explore Shows</router-link></button><br>
     <button class="big-button" v-if="loggedOut"><router-link v-bind:to="{ name: 'login' }">Login</router-link></button>
     <button class="big-button" v-if="loggedOut"><router-link v-bind:to="{ name: 'register' }"> Create an Account</router-link></button>
   </div>

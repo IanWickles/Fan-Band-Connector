@@ -52,6 +52,7 @@ export default new Vuex.Store({
       showDesc: "",
       venueId: 0
     },
+    followed: [],
   },
 
   mutations: {
@@ -100,6 +101,9 @@ export default new Vuex.Store({
     },
     SET_MESSAGES(state, data){
       state.messages = data;
+    },
+    SET_FOLLOWED(state, followed) {
+      state.followed = followed;
     }
   }
 })

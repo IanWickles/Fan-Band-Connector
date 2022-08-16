@@ -74,7 +74,7 @@ const router = new Router({
       name: "band",
       component: Band,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       }
     },
     // {
