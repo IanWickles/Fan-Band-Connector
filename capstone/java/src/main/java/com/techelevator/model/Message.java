@@ -8,6 +8,7 @@ public class Message {
     private String messageBody;
     private Date messageTimestamp;  //maybe revisit this??
     private int bandId;
+    private  String bandName;
 
     public Message(int messageId, String messageBody, Date messageTimestamp, int bandId) {
         this.messageId = messageId;
@@ -52,4 +53,11 @@ public class Message {
         this.bandId = bandId;
     }
 
+    public String getBandName() {
+        return bandName;
+    }
+
+    public void setBandName(String bandName) {
+        this.bandName = bandName;
+    }
 }
