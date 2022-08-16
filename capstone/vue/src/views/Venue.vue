@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <venue-details />
-  </div>
+  <venue-details v-bind:venueId="parseInt($route.params.venueId)" />
 </template>
 <!--
 //uses venueDetails

@@ -34,7 +34,8 @@ export default new Vuex.Store({
       venueId: 0,
       venueName: "",
       venueAddress: "",
-      venueDesc: ""
+      venueDesc: "",
+      venueMap: ""
     },
     messages: [],
     activeMessage: {
@@ -42,6 +43,7 @@ export default new Vuex.Store({
       messageBody: "",
       messageTimestamp: "",
       bandId: "",
+      bandName:""
     },
     shows: [],
     activeShow: {
@@ -49,8 +51,9 @@ export default new Vuex.Store({
       showTime: 0,
       showTitle: "",
       showDesc: "",
-      venueId: 0,
+      venueId: 0
     },
+    followed: [],
   },
 
   mutations: {
@@ -68,6 +71,12 @@ export default new Vuex.Store({
     },
     SET_ACTIVE_VENUE(state, data) {
       state.activeVenue = data;
+    },
+    SET_SHOWS(state, data) {
+      state.shows = data;
+    },
+    SET_ACTIVE_SHOW(state, data) {
+      state.activeShow = data;
     },
     SET_VENUE_SHOW(state, data) {
       state.shows = data;
@@ -91,5 +100,15 @@ export default new Vuex.Store({
     ADD_BAND(state, band) {
       state.bands.push(band)
     },
+    SET_MESSAGES(state, data){
+<<<<<<< HEAD
+      state.messages = data;},
+=======
+      state.messages = data;
+    },
+>>>>>>> 043e297ddd3849626f4dcdc73b2bd0bc07127d6c
+    SET_FOLLOWED(state, followed) {
+      state.followed = followed;
+    }
   }
 })

@@ -1,5 +1,26 @@
 <template>
   <div>
+    <h1 class="name">Bands</h1>
+    <div class="searchbar">
+      <!-- <input
+        class="input is-rounded"
+        v-model="input"
+        name="byBand"
+        type="text"
+        placeholder="Search by band"
+      />
+      <input
+        class="input is-rounded"
+        name="byGenre"
+        type="text"
+        placeholder="Search by genre"
+      /> -->
+      <button class="big-button">
+        <router-link v-bind:to="{ name: 'new-band' }"
+          >Create a New Band</router-link
+        >
+      </button>
+    </div>
     <band-list />
   </div>
 </template>
@@ -24,5 +45,9 @@ section {
 h1 {
   font-weight: bold;
   margin-bottom: 10px;
+}
+.searchbar {
+  margin-left: 10vw;
+  margin-right: 10vw;
 }
 </style>
