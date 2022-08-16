@@ -1,11 +1,23 @@
 <template>
   <div>
-    <h1>{{ this.$store.state.activeBand.title }}</h1>
     <h1 class="name">{{ this.$store.state.activeBand.bandName }}</h1>
-    <img :src="band.bandImage" />
-    <h2>Who Dat</h2>
+    <div class="managerhub">
+    <button class="manageredit">Edit</button> |
+    <button class="managershow">Post Show</button>
+    </div>
+    <figure class="thisimage"><img :src="band.bandImage" /></figure>
+    <h1>Who Dat</h1>
     <h2 class="description">{{ band.bandDesc }}</h2>
+    <h1>Members:</h1>
     <h2 class="band-members">{{ band.members }}</h2>
+    <div class="userhub">
+      <button class="big-button" @click="followBand" v-if="!isFollowing">Follow</button>
+      <button class="big-button" @click="unfollowBand" v-if="isFollowing">Unfollow</button>
+      <!--Make this follow/unfollow -->
+      </div>
+      <br>
+      <h1>Photo Gallery</h1>
+      insert photo gallery here
     <!-- <h2 class="genre">{{ band.genre }}</h2> -->
     <!-- <div>
         <router-link :to="{ name: '', params: { id: band.id } }"
@@ -17,6 +29,7 @@
 
 <script>
 import bandService from "@/services/BandService.js";
+import userService from "@/services/UserService.js";
 
 export default {
   name: "band-details",
@@ -27,8 +40,27 @@ export default {
     band() {
       return this.$store.state.activeBand;
     },
+    isFollowing() {
+      return this.$store.state.followed.find(band=>band.bandId==this.bandId)!=undefined;
+    }
   },
-  methods: {},
+  methods: {
+    followBand() {
+      userService.followBand(this.bandId).then(()=>{
+        this.updateFollowedList();
+      });
+    },
+    updateFollowedList() {
+      userService.getFollowedBands().then(followedResponse=>{
+        this.$store.commit("SET_FOLLOWED", followedResponse.data);
+      });
+    },
+    unfollowBand() {
+      userService.unfollowBand(this.bandId).then(()=>{
+        this.updateFollowedList();
+      });
+    }
+  },
   created() {
     bandService
       .get(this.bandId)
@@ -40,15 +72,27 @@ export default {
           this.$router.push({ name: "not-found" });
         }
       });
+      this.updateFollowedList();
   },
 };
 </script>
 
 <style>
-div {
-  margin: 10px;
+.managerhub {
+  text-align: center;
 }
-img {
-  height: 500px;
+.userhub {
+  text-align: center;
+}
+.description {
+  text-align: center;
+}
+.band-members {
+  text-align: center;
+}
+.thisimage {
+  display: block;
+  margin: auto;
+  max-width: 60%;
 }
 </style>

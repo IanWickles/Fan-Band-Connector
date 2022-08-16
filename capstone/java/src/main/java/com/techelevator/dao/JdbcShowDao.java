@@ -101,7 +101,7 @@ public class JdbcShowDao implements ShowDao {
 
 
         show.setShowId(rs.getInt("show_id"));
-        show.setShowTime(rs.getDate("show_time"));
+        show.setShowTime(rs.getTimestamp("show_time").toLocalDateTime());
         show.setShowTitle(rs.getString("show_title"));
         show.setShowDesc(rs.getString("show_description"));
         show.setVenueId(rs.getInt("venue_id"));

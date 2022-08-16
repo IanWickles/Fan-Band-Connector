@@ -24,6 +24,8 @@ public interface BandDao {
 
     boolean deleteBand(Band bandToDelete, int bandId);
 
+    List<Band> getBandsFollowed (int userId);
+
     int findIdByBandName (String bandName);
 
 }

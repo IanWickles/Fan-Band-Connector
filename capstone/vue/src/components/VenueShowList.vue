@@ -7,7 +7,6 @@
             <h2 class="title">{{ show.showTitle }}</h2>
             <h2 class="Time">{{ show.showTime }}</h2>
             <h2 class="description">{{ show.showDesc }}</h2>
-            <h2 class="Band">{{ venue.bandName }}</h2>
           </div>
         </tr>
       </tbody>

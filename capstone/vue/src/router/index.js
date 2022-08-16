@@ -12,6 +12,8 @@ import Profile from '../views/Profile.vue'
 import Venue from '../views/Venue.vue'
 import NotFound from '../views/NotFound.vue'
 import AllVenues from '../views/AllVenues.vue'
+import AllShows from '../views/AllShows.vue'
+import Show from '../views/Show.vue'
 Vue.use(Router)
 
 /**
@@ -72,7 +74,7 @@ const router = new Router({
       name: "band",
       component: Band,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       }
     },
     // {
@@ -92,6 +94,14 @@ const router = new Router({
       }
     },
     {
+      path: "/profile",
+      name: "profile",
+      component: Profile,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
       path: "/profile/:userId",
       name: "profile",
       component: Profile,
@@ -108,9 +118,25 @@ const router = new Router({
       }
     },
     {
+      path: "/shows",
+      name: "shows",
+      component: AllShows,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
       path: "/venues/:venueId",
       name: "venue",
       component: Venue,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: "/shows/:showId",
+      name: "show",
+      component: Show,
       meta: {
         requiresAuth: false
       }

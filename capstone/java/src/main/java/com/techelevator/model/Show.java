@@ -1,17 +1,19 @@
 package com.techelevator.model;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public class Show {
 
 
     private int showId;
-    private Date showTime;
+    private LocalDateTime showTime;
     private String showTitle;
     private String showDesc;
     private int venueId;
 
-    public Show(int showId, Date showTime, String showTitle, String showDesc, int venueId) {
+    public Show(int showId, LocalDateTime showTime, String showTitle, String showDesc, int venueId) {
         this.showId = showId;
         this.showTime = showTime;
         this.showTitle = showTitle;
@@ -34,11 +36,11 @@ public class Show {
         this.showId = showId;
     }
 
-    public Date getShowTime() {
+    public LocalDateTime getShowTime() {
         return showTime;
     }
 
-    public void setShowTime(Date showTime) {
+    public void setShowTime(LocalDateTime showTime) {
         this.showTime = showTime;
     }
 
