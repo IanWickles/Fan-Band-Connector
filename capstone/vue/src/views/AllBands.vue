@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h1 class="name">Bands</h1>
     <div class="searchbar">
     <input
       class="input is-rounded"

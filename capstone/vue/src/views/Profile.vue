@@ -3,6 +3,7 @@
     <user-details v-bind:userId="parseInt($route.params.userId)" />
     <div id="manager">
     <button>Manage Band</button></div><br>
+    <!-- if user is manager of a band, have this link to the band they manage, hide button if not a manager -->
     <h1 class="user-inbox">Inbox</h1>
     <div class="inbox-content">
     Blah blah blah from Blah blah | <button>Read</button> | <button>Delete</button>
