@@ -46,13 +46,18 @@ export default {
   },
   methods: {
     followBand() {
-      userService.followBand(this.bandId).then(response=>{
+      userService.followBand(this.bandId).then(()=>{
         this.updateFollowedList();
-      })
+      });
     },
     updateFollowedList() {
       userService.getFollowedBands().then(followedResponse=>{
         this.$store.commit("SET_FOLLOWED", followedResponse.data);
+      });
+    },
+    unfollowBand() {
+      userService.unfollowBand(this.bandId).then(()=>{
+        this.updateFollowedList();
       });
     }
   },

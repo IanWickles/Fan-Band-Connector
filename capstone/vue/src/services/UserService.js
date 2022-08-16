@@ -12,6 +12,9 @@ export default {
     },
     getFollowedBands() {
         return axios.get('/following');
+    },
+    unfollowBand(bandId) {
+        return axios.delete(`/bands/${bandId}/unfollow`);
     }
 
 }
