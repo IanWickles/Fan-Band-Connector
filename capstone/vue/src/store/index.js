@@ -27,7 +27,8 @@ export default new Vuex.Store({
       bandImage: "",
       bandDesc: "",
       Members: "",
-      mgrId: ""
+      mgrId: "",
+      genres: []
     },
     venues: [],
     activeVenue: {
@@ -54,6 +55,7 @@ export default new Vuex.Store({
       venueId: 0
     },
     followed: [],
+    genres: []
   },
 
   mutations: {
@@ -109,6 +111,12 @@ export default new Vuex.Store({
 >>>>>>> 043e297ddd3849626f4dcdc73b2bd0bc07127d6c
     SET_FOLLOWED(state, followed) {
       state.followed = followed;
+    },
+    SET_BAND_GENRES(state, genres) {
+      state.activeBand.genres = genres;
+    },
+    SET_GENRES(state, data) {
+      state.genres = data;
     }
   }
 })

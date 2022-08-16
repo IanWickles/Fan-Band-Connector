@@ -17,6 +17,10 @@
     />
     <button class="big-button"><router-link v-bind:to="{ name: 'new-band' }">Create a New Band</router-link></button>
     </div>
+    <div class="adminhub">
+      Manage genres
+      Manage bands
+      </div>
       <band-list />
   </div>
 </template>

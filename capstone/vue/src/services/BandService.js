@@ -18,4 +18,7 @@ export default {
     deleteBand(bandId) {
         return axios.delete(`/bands/${bandId}`);
     },
+    getBandGenres(bandId) {
+        return axios.get(`/genres/bands/${bandId}`);
+    }
 }
