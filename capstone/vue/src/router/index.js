@@ -64,7 +64,7 @@ const router = new Router({
       name: "bands",
       component: AllBands,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       }
     },
     {
@@ -72,7 +72,7 @@ const router = new Router({
       name: "band",
       component: Band,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       }
     },
     // {

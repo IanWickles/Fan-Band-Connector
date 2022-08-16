@@ -1,8 +1,6 @@
 <template>
   <div>
-    <section>
-      <band-list />
-    </section>
+    <band-list />
   </div>
 </template>
 <!--  
