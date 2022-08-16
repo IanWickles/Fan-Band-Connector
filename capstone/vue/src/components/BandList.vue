@@ -2,18 +2,19 @@
   <div>
     <input
       class="input is-rounded"
-      v-model="bands.name"
+      v-model="results.bandName"
       name="byBand"
       type="text"
       placeholder="Search by band"
     />
-    <input
+    <!-- <div class="item band" v-for="band in filteredList()" :key="band.bandName"> -->
+    <!--
+     <input
       class="input is-rounded"
-      v-model="bands.genre"
       name="byGenre"
       type="text"
       placeholder="Search by genre"
-    />
+     /> -->
 
     <div
       :style="{
@@ -38,11 +39,14 @@
               </div>
             </router-link>
             <div class="card-content">{{ band.bandDesc }}</div>
-            <!-- <h2 class="band-members">{{ band.members }}</h2> -->
             <!-- <h2 class="genre">{{ band.genre }}</h2> -->
           </div>
         </tr>
       </tbody>
+    </div>
+    <!-- </div> -->
+    <div class="item error" v-if="input && !filteredList().length">
+      <p>No results found!</p>
     </div>
   </div>
 </template>
@@ -52,41 +56,50 @@ import bandService from "@/services/BandService.js";
 
 export default {
   name: "band-list",
-data() {
+  setup() {},
+  data() {
     return {
-      bands: {
+      results: {
         bandId: 0,
-      bandName: "",
-      bandImage: "",
-      bandDesc: "",
-      Members: "",
-      mgrId: ""
+        bandName: "",
+        bandImage: "",
+        bandDesc: "",
+        Members: "",
+        mgrId: "",
       },
+    };
+  },
   methods: {
     getBands() {
       bandService.list().then((response) => {
         this.$store.commit("SET_BANDS", response.data);
       });
     },
-    filterBandList() {
-      let results = this.$store.state.bands;
-      if (this.$store.state.bands.name != "") {
-        results = results.filter((band) =>
-          band.name.toLowerCase().includes(this.filter.name.toLowerCase())
+    filterList() {
+      let bandList = this.$store.state.bands;
+      let results = "";
+
+      if (this.$store.state.bands.bandName != "") {
+        results = bandList.filter((band) =>
+          band.bandName
+            .toLowerCase()
+            .includes(this.results.bandName.toLowerCase())
         );
       }
-      // if (this.$store.state.bands.genre != "") {
-      //   results = results.filter((band) =>
-      //     band.genre.toLowerCase().includes(this.filter.genre.toLowerCase())
-      //   );
-      // }
+      return results;
     },
+    //  if (this.$store.state.bands.genre != "") {
+    //   results = results.filter((band) =>
+    //     band.genre.toLowerCase().includes(this.filter.genre.toLowerCase())
+    //   );
+    // }
   },
   created() {
     this.getBands();
   },
 };
 </script>
+
 <style>
 .card {
   padding: 20px;
