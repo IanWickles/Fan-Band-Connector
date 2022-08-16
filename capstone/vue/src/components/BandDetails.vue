@@ -11,7 +11,7 @@
     <h1>Members:</h1>
     <h2 class="band-members">{{ band.members }}</h2>
     <div class="userhub">
-      <button class="big-button">Follow</button>
+      <button class="big-button" @click="followBand">Follow</button>
       <!--Make this follow/unfollow -->
       </div>
       <br>
@@ -28,6 +28,7 @@
 
 <script>
 import bandService from "@/services/BandService.js";
+import userService from "@/services/UserService.js";
 
 export default {
   name: "band-details",
@@ -39,7 +40,11 @@ export default {
       return this.$store.state.activeBand;
     },
   },
-  methods: {},
+  methods: {
+    followBand() {
+      userService.followBand(this.bandId);
+    }
+  },
   created() {
     bandService
       .get(this.bandId)

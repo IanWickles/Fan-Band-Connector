@@ -7,5 +7,8 @@ export default {
     updateUser(user) {
         return axios.put(`/user/${user.id}`, user);
     },
+    followBand(bandId) {
+        return axios.post(`/bands/${bandId}/follow`);
+    }
 
 }
