@@ -36,7 +36,6 @@
     </div>
   </div>
 </template>
-
 <script>
 import messageService from "../services/MessageService";
 export default {
@@ -129,5 +128,4 @@ export default {
   },
 };
 </script>
-
 <style></style>

@@ -15,6 +15,7 @@
       type="text"
       placeholder="Search by genre"
     />
+    <button class="big-button"><router-link v-bind:to="{ name: 'new-band' }">Create a New Band</router-link></button>
     </div>
       <band-list />
   </div>
