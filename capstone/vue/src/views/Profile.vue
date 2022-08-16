@@ -6,11 +6,7 @@
     <!-- if user is manager of a band, have this link to the band they manage, hide button if not a manager -->
     <h1 class="user-inbox">Inbox</h1>
     <div class="inbox-content">
-<<<<<<< HEAD
-      <message-list />
-=======
     <message-list />
->>>>>>> 043e297ddd3849626f4dcdc73b2bd0bc07127d6c
     </div>
     
     <br>
@@ -24,12 +20,7 @@
 // sort button, by band/date
 -->
 <script>
-<<<<<<< HEAD
-import MessageList from '../components/MessageList.vue';
-//import MessageList from "../components/MessageList.vue";
-=======
 import MessageList from "../components/MessageList.vue";
->>>>>>> 043e297ddd3849626f4dcdc73b2bd0bc07127d6c
 import UserDetails from "../components/UserDetails.vue";
 export default {
   components: { UserDetails, MessageList },

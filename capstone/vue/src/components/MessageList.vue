@@ -2,7 +2,6 @@
   <div>
     <button
       v-on:click="
-        toggleSD();
         sortByDate();
       "
       class="button is-info is-outlined"
@@ -36,6 +35,7 @@
     </div>
   </div>
 </template>
+
 <script>
 import messageService from "../services/MessageService";
 export default {
@@ -97,6 +97,7 @@ export default {
       return 0;
     },
     compareDateDesc(a, b) {
+      //Descending
       if (a.messageTimestamp > b.messageTimestamp) {
         return -1;
       }
@@ -105,27 +106,14 @@ export default {
       }
       return 0;
     },
-    toggleSB() {
-      this.sb = !this.sb;
-    },
-    toggleSD() {
-      this.sd = !this.sd;
-    },
   },
   created() {
     this.getMessages();
   },
   computed: {
-    // sortedByBand: function compare(a, b) {
-    //   if (a.bandName.toLowerCase() < b.bandName.toLowerCase()) {
-    //     return -1;
-    //   }
-    //   if (a.bandName.toLowerCase() > b.bandName.toLowerCase()) {
-    //     return 1;
-    //   }
-    //   return 0;
-    // },
+   
   },
 };
 </script>
+
 <style></style>
