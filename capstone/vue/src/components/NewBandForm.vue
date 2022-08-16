@@ -1,12 +1,26 @@
 <template>
-  <form class="new-band-form" v-on:submit.prevent="addNewBand">
+  <form class="new-band-form" @submit.prevent="addNewBand">
     <div>
       <label for="name-input"> Band Name: </label>
-      <input class="name-input" type="text" placeholder="Name" v-model="band.bandName"/>
+      <input
+        type="text"
+        id="bandName" 
+        class="name-input" 
+        placeholder="Name"
+        
+        required 
+        autofocus
+       />
     </div>
     <div>
       <label for="bandMember-input"> Members: </label>
-      <input class="bandMember-input" type="text" placeholder="Name" />
+      <input  
+      type="text" 
+      id="bandMember"
+      class="bandMember-input"
+      placeholder="Name" 
+      
+      />
     </div>
 
     <div>
@@ -33,6 +47,8 @@
 </template>
 
 <script>
+
+
 export default {
   name: "add-band",
   data() {

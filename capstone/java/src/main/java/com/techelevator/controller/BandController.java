@@ -54,12 +54,8 @@ public class BandController {
         return bandDao.getBandsByShow(showTitle);
     }
 
-<<<<<<< HEAD
-    @PostMapping("/new-band")
-=======
     @PreAuthorize("isAuthenticated()")
     @PostMapping("/bands/newband")
->>>>>>> 6b98fc25583b1d86b8310201efb06ce1120aa288
     //WORKING: Postman confirmed, current user_id is set as the new band's manager_id no matter what they put in
     public Band createBand(@Valid @RequestBody Band newBand, Principal user) {
         int currentUserId = userDao.findIdByUsername(user.getName());
