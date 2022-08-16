@@ -78,7 +78,7 @@ export default {
         }
       });
       bandService.getBandGenres(this.bandId).then((response)=>{
-        this.$store.commit("SET_GENRES", response.data);
+        this.$store.commit("SET_BAND_GENRES", response.data);
       })
       this.updateFollowedList();
   },

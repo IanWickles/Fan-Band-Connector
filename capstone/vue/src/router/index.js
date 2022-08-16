@@ -14,6 +14,8 @@ import NotFound from '../views/NotFound.vue'
 import AllVenues from '../views/AllVenues.vue'
 import AllShows from '../views/AllShows.vue'
 import Show from '../views/Show.vue'
+import Genres from'../views/Genres.vue'
+//import { getOwnPropertySymbols } from 'core-js/core/object'
 Vue.use(Router)
 
 /**
@@ -85,6 +87,14 @@ const router = new Router({
     //     requiresAuth: false
     //   }
     // },
+    {
+      path: "/genres",
+      name: "genres",
+      component: Genres,
+      meta: {
+        requiresAuth: true
+      }
+    },
     {
       path: "/new-band",
       name: "new-band",
