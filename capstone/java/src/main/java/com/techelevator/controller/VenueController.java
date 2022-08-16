@@ -13,7 +13,6 @@ import java.util.List;
 
 @CrossOrigin
 @RestController
-@PreAuthorize("isAuthenticated()")
 public class VenueController {
 
     VenueDao venueDao;
