@@ -1,13 +1,5 @@
 <template>
   <div>
-    <input
-      class="input is-rounded"
-      v-model="results.bandName"
-      name="byBand"
-      type="text"
-      placeholder="Search by band"
-    />
-    <!-- <div class="item band" v-for="band in filteredList()" :key="band.bandName"> -->
     <!--
      <input
       class="input is-rounded"
@@ -24,7 +16,18 @@
       class="band-container"
     >
       <tbody>
-        <tr v-for="band in this.$store.state.bands" v-bind:key="band.bandId">
+        <tr>
+          <!-- <div class="item band" v-for="band in filteredList()" :key="band.bandName"> -->
+          <input
+            class="input is-rounded"
+            v-model="results.bandName"
+            name="byBand"
+            type="text"
+            placeholder="Search by band"
+          />
+        </tr>
+        <!-- <tr v-for="band in this.$store.state.bands" v-bind:key="band.bandId"> -->
+        <tr v-for="band in filteredList()" v-bind:key="band.bandId">
           <div class="card">
             <td>
               <h1>{{ band.bandName }}</h1>
@@ -45,9 +48,6 @@
       </tbody>
     </div>
     <!-- </div> -->
-    <div class="item error" v-if="input && !filteredList().length">
-      <p>No results found!</p>
-    </div>
   </div>
 </template>
 
@@ -77,16 +77,15 @@ export default {
     },
     filterList() {
       let bandList = this.$store.state.bands;
-      let results = "";
 
-      if (this.$store.state.bands.bandName != "") {
-        results = bandList.filter((band) =>
+      if (this.filter != "") {
+        bandList = bandList.filter((band) =>
           band.bandName
             .toLowerCase()
-            .includes(this.results.bandName.toLowerCase())
+            .includes(this.filter.bandName.toLowerCase())
         );
       }
-      return results;
+      return bandList;
     },
     //  if (this.$store.state.bands.genre != "") {
     //   results = results.filter((band) =>
