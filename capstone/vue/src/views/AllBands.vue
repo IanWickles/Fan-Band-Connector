@@ -15,6 +15,7 @@
       type="text"
       placeholder="Search by genre"
     />
+    <button class="big-button"><router-link v-bind:to="{ name: 'new-band' }">Create a New Band</router-link></button>
     </div>
     <div class="adminhub">
       Manage genres
@@ -32,7 +33,7 @@
 <script>
 import BandList from "../components/BandList.vue";
 export default {
-  components: { BandList },
+  components: { BandList},
 };
 </script>
 

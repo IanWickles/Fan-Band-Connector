@@ -2,8 +2,8 @@ import axios from 'axios';
 
 export default {
 
-    list() {
-        return axios.get('/messages');
+    messageList() {
+        return axios.get('/inbox');
     },
 
     get(messageId) {
