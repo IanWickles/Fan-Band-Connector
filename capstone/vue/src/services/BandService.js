@@ -10,7 +10,7 @@ export default {
         return axios.get(`/bands/${bandId}`);
     },
     addBand(band) {
-        return axios.post('/bands', band);
+        return axios.post('/bands/newband', band);
     },
     updateBand(band) {
         return axios.put(`/bands/${band.id}`, band);
