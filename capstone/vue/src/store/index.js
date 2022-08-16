@@ -43,7 +43,7 @@ export default new Vuex.Store({
       messageBody: "",
       messageTimestamp: "",
       bandId: "",
-      bandName:"",
+      bandName:""
     },
     shows: [],
     activeShow: {

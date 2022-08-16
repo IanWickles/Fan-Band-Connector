@@ -25,7 +25,8 @@ public class JdbcMessageDao implements MessageDao {
         String sql = "select * from messages \n" +
                 "join band using (band_id) \n" +
                 "join user_band using (band_id) \n" +
-                "where user_id = " + userId + ";";
+                "where user_id = " + userId + "\n"+
+                "ORDER BY message_timestamp DESC;";
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while (results.next()) {
