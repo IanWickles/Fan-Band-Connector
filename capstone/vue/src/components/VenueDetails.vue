@@ -50,4 +50,8 @@ div {
 .address {
   text-align: center;
 }
+iframe {
+  display: block;
+  margin: auto;
+}
 </style>

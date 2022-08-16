@@ -5,16 +5,19 @@
         <tr v-for="band in this.$store.state.bands" v-bind:key="band.bandId">
           <div class="card">
             <td>
-              <h1 class="card-header-title is-size-2">{{ band.bandName }}</h1>
-            </td>
-            <router-link
+              <router-link
               v-bind:to="{ name: 'band', params: { bandId: band.bandId } }"
-              ><div class="card-image">
-                <figure class="image">
+              ><h1 class="card-header-title is-size-2">{{ band.bandName }}</h1></router-link>
+            </td>
+            
+            <div class="card-image">
+                <router-link
+              v-bind:to="{ name: 'band', params: { bandId: band.bandId } }"
+              ><figure class="image">
                   <img :src="band.bandImage" />
-                </figure>
+                </figure></router-link>
               </div>
-            </router-link>
+            
             <div class="card-content">{{ band.bandDesc }}</div>
             <!-- <h2 class="band-members">{{ band.members }}</h2> -->
             <!-- <h2 class="genre">{{ band.genre }}</h2> -->

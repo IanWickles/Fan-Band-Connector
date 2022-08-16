@@ -35,9 +35,9 @@ public class GenreController {
         return genreDao.getGenreByID(genreId);
     }
 
-    @GetMapping ("/genre/bands/{bandName}") //WORKING: Postman confirmed
-    List<Genre> getGenresByBand(@PathVariable String bandName) {
-        return genreDao.getGenresByBand(bandName);
+    @GetMapping ("/genres/bands/{bandId}") //WORKING: Postman confirmed
+    List<Genre> getGenresByBandId(@PathVariable int bandId) {
+        return genreDao.getGenresByBandId(bandId);
     }
 
     @PreAuthorize("hasRole('ADMIN')")

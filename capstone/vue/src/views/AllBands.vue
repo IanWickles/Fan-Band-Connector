@@ -16,6 +16,10 @@
       placeholder="Search by genre"
     />
     </div>
+    <div class="adminhub">
+      Manage genres
+      Manage bands
+      </div>
       <band-list />
   </div>
 </template>
