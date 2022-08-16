@@ -1,24 +1,25 @@
 <template>
   <div>
-    <!--  <button v-on:click="sortByDate()" class="button is-info is-outlined" id="sortDate">Sort By Date</button> -->
+    <button v-on:click="sortByDate()" class="button is-info is-outlined" id="sortDate">Sort By Date</button>
     <button
       v-on:click="sortByBand()"
-      class="button is-success is-outlined"
+      class="button is-success"
       id="sortBand"
     >
       Sort by Band
     </button>
-    <tr
+    <div class="message is-warning"
       v-for="message in this.$store.state.messages"
       v-bind:key="message.messageId"
     >
-      From:
-      <h5 class="bandName">{{ message.bandName }}</h5>
-      <h3 class="msgBody">{{ message.messageBody }}</h3>
+      <h5 class="message-header">{{ message.bandName }}</h5>
+      
+      <h3 class="message-body"><i>{{ message.messageBody }}</i></h3>
+      
       <h4>{{ message.messageTimestamp }}</h4>
 
       <!--<button class="button is-danger">Delete</button>-->
-    </tr>
+    </div>
   </div>
 </template>
 
@@ -34,7 +35,8 @@ export default {
       });
     },
     sortByBand() {     
-      this.messages.sort(this.compare(this.messages.bandName));
+      // this.messages.sort(this.compare(this.messages.bandName));
+      this.$store.state.messages.sort(this.compareBand);
     },
     compareBand(a, b) {
       //Ascending
@@ -47,20 +49,9 @@ export default {
       return 0;
     },
 
-    //  sortByBand() {
-    //     compareBand(a,b) { //Ascending
-    //     if ( a.bandName.toLowerCase() < b.bandName.toLowerCase() ){
-    //       return -1;
-    //     }
-    //     if ( a.bandName.toLowerCase() > b.bandName.toLowerCase() ){
-    //       return 1;
-    //     }
-    //     return 0;
-    //     }
-    //     return this.data.messageList.sort(this.compareBand());
-    //   },
-
-    sortByDate() {},
+    sortByDate() {
+    this.$store.state.messages.sort(this.compareDate);
+},
 
     compareDate(a, b) {
       //Ascending
