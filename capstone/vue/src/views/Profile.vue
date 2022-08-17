@@ -1,21 +1,19 @@
 <template>
-<div>
+  <div>
     <user-details v-bind:userId="parseInt($route.params.userId)" />
     <div id="manager">
-    <button>Manage Band</button></div><br>
+      <button>Manage Band</button>
+    </div>
+    <br />
     <!-- if user is manager of a band, have this link to the band they manage, hide button if not a manager -->
     <h1 class="user-inbox">Inbox</h1>
     <div class="inbox-content">
-<<<<<<< HEAD
       <message-list />
-=======
-    <message-list />
->>>>>>> 043e297ddd3849626f4dcdc73b2bd0bc07127d6c
     </div>
-    
-    <br>
+
+    <br />
     <h1 class="band-list">Followed Bands</h1>
-    </div>
+  </div>
 </template>
 <!--
 //uses userDetails component
@@ -24,12 +22,7 @@
 // sort button, by band/date
 -->
 <script>
-<<<<<<< HEAD
-import MessageList from '../components/MessageList.vue';
-//import MessageList from "../components/MessageList.vue";
-=======
 import MessageList from "../components/MessageList.vue";
->>>>>>> 043e297ddd3849626f4dcdc73b2bd0bc07127d6c
 import UserDetails from "../components/UserDetails.vue";
 export default {
   components: { UserDetails, MessageList },
