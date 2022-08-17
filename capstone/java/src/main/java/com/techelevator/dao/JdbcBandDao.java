@@ -158,7 +158,7 @@ public class JdbcBandDao implements BandDao {
         band.setMembers(rs.getString("band_member"));
         band.setBandImage(rs.getString("band_image"));
         band.setMgrId(rs.getInt("manager_id"));
-//        band.setGenreName(rs.getString("genre_name"));
+
 
         return band;
     }

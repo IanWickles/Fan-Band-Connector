@@ -8,7 +8,7 @@ public class Band {
     private String members;
     private String bandImage;
     private int mgrId;
-//    private String genreName;
+
 
     public Band(int bandId, String bandName, String bandDesc, String members, String bandImage, int mgrId) {
         this.bandId = bandId;
@@ -18,16 +18,6 @@ public class Band {
         this.bandImage = bandImage;
         this.mgrId = mgrId;
     }
-    
-//    public Band(int bandId, String bandName, String bandDesc, String members, String bandImage, int mgrId, String genreName) {
-//        this.bandId = bandId;
-//        this.bandName = bandName;
-//        this.bandDesc = bandDesc;
-//        this.members = members;
-//        this.bandImage = bandImage;
-//        this.mgrId = mgrId;
-//        this.genreName =genreName;
-//    }
 
     public Band() {
 
@@ -81,8 +71,7 @@ public class Band {
         this.mgrId = mgrId;
     }
 
-    public void setGenreName(String genre_name) {
-    }
+
 }
 
 
