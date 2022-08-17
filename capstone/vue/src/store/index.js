@@ -44,7 +44,7 @@ export default new Vuex.Store({
       messageBody: "",
       messageTimestamp: "",
       bandId: "",
-      bandName:""
+      bandName: ""
     },
     shows: [],
     activeShow: {
@@ -102,7 +102,7 @@ export default new Vuex.Store({
     ADD_BAND(state, band) {
       state.bands.push(band)
     },
-    SET_MESSAGES(state, data){
+    SET_MESSAGES(state, data) {
       state.messages = data;
     },
     SET_FOLLOWED(state, followed) {
