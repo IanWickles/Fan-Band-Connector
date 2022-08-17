@@ -1,8 +1,6 @@
 <template>
   <div>
-    <h1>{{ this.$store.state.activeVenue.title }}</h1>
     <h1 class="name">{{ this.$store.state.activeVenue.venueName }}</h1>
-    <h2>Venue Address:</h2>
     <h2 class="address">{{ venue.venueAddress }}</h2>
     <br />
     <h2>About:</h2>
@@ -53,5 +51,12 @@ export default {
 <style>
 div {
   margin: 10px;
+}
+.address {
+  text-align: center;
+}
+iframe {
+  display: block;
+  margin: auto;
 }
 </style>

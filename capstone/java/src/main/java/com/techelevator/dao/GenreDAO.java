@@ -10,7 +10,7 @@ public interface GenreDao {
 
     Genre getGenreByID (int genreId);
 
-    List<Genre> getGenresByBand(String bandName);
+    List<Genre> getGenresByBandId(int bandId);
 
     Genre createGenre(Genre newGenre);
 

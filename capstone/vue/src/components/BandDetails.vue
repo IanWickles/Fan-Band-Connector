@@ -9,6 +9,9 @@
     <h1>Who Dat</h1>
     <h2 class="description">{{ band.bandDesc }}</h2>
     <h1>Members:</h1>
+    <ul>
+      <li v-for="genre in band.genres" :key="genre.genreId">{{ genre.genreName }}</li>
+      </ul>
     <h2 class="band-members">{{ band.members }}</h2>
     <div class="userhub">
       <button class="big-button" @click="followBand" v-if="!isFollowing">Follow</button>
@@ -18,7 +21,6 @@
       <br>
       <h1>Photo Gallery</h1>
       insert photo gallery here
-    <!-- <h2 class="genre">{{ band.genre }}</h2> -->
     <!-- <div>
         <router-link :to="{ name: '', params: { id: band.id } }"
           >Edit</router-link
@@ -42,6 +44,9 @@ export default {
     },
     isFollowing() {
       return this.$store.state.followed.find(band=>band.bandId==this.bandId)!=undefined;
+    },
+    genres() {
+      return this.$store.state.activeBand.genres;
     }
   },
   methods: {
@@ -59,7 +64,7 @@ export default {
       userService.unfollowBand(this.bandId).then(()=>{
         this.updateFollowedList();
       });
-    }
+    },
   },
   created() {
     bandService
@@ -72,6 +77,9 @@ export default {
           this.$router.push({ name: "not-found" });
         }
       });
+      bandService.getBandGenres(this.bandId).then((response)=>{
+        this.$store.commit("SET_BAND_GENRES", response.data);
+      })
       this.updateFollowedList();
   },
 };
