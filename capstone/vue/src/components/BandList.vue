@@ -1,21 +1,5 @@
 <template>
   <div>
-    <input
-      class="input is-rounded"
-      v-model="results.bandName"
-      name="byBand"
-      type="text"
-      placeholder="Search by band"
-    />
-    <!-- <div class="item band" v-for="band in filteredList()" :key="band.bandName"> -->
-    <!--
-     <input
-      class="input is-rounded"
-      name="byGenre"
-      type="text"
-      placeholder="Search by genre"
-     /> -->
-
     <div
       :style="{
         'background-image':
@@ -23,35 +7,55 @@
       }"
       class="band-container"
     >
-      <tbody>
-        <tr v-for="band in this.$store.state.bands" v-bind:key="band.bandId">
-          <div class="card">
-            <td>
+      <table class="item band">
+        <tr>
+          <td>
+            <input
+              id="band-filter"
+              class="input is-rounded"
+              v-model="filter.bandName"
+              name="byBand"
+              type="text"
+              placeholder="Search by band"
+            />
+          </td>
+          <td>
+            <input
+              class="input is-rounded"
+              name="byGenre"
+              type="text"
+              placeholder="Search by genre"
+            />
+          </td>
+        </tr>
+        <tbody>
+          <tr v-for="band in filteredList" :key="band.bandId">
+            <td class="card">
               <router-link
-                v-bind:to="{ name: 'band', params: { bandId: band.bandId } }"
-                ><h1 class="card-header-title is-size-2">
+                v-bind:to="{
+                  name: 'band',
+                  params: { bandId: band.bandId },
+                }"
+              >
+                <h1 class="card-header-title is-size-2">
                   {{ band.bandName }}
                 </h1></router-link
               >
-            </td>
-
-            <div class="card-image">
               <router-link
-                v-bind:to="{ name: 'band', params: { bandId: band.bandId } }"
+                v-bind:to="{
+                  name: 'band',
+                  params: { bandId: band.bandId },
+                }"
                 ><figure class="image">
                   <img :src="band.bandImage" /></figure
               ></router-link>
-            </div>
+              <div class="card-content">{{ band.bandDesc }}</div>
+            </td>
 
-            <div class="card-content">{{ band.bandDesc }}</div>
             <!-- <h2 class="genre">{{ band.genre }}</h2> -->
-          </div>
-        </tr>
-      </tbody>
-    </div>
-    <!-- </div> -->
-    <div class="item error" v-if="input && !filteredList().length">
-      <p>No results found!</p>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </template>
@@ -64,7 +68,7 @@ export default {
   setup() {},
   data() {
     return {
-      results: {
+      filter: {
         bandId: 0,
         bandName: "",
         bandImage: "",
@@ -74,34 +78,30 @@ export default {
       },
     };
   },
+  computed: {
+    filteredList() {
+      let bandList = this.$store.state.bands;
+      if (this.filter.bandName != "") {
+        bandList = bandList.filter((band) =>
+          band.bandName
+            .toLowerCase()
+            .includes(this.filter.bandName.toLowerCase())
+        );
+      }
+      //  if (this.$store.state.bands.genre != "") {
+      //   results = results.filter((band) =>
+      //     band.genre.toLowerCase().includes(this.filter.genre.toLowerCase())
+      //   );
+      // }
+      return bandList;
+    },
+  },
   methods: {
     getBands() {
       bandService.list().then((response) => {
         this.$store.commit("SET_BANDS", response.data);
       });
     },
-<<<<<<< Updated upstream
-    filteredList() {
-=======
-    filterList() {
->>>>>>> Stashed changes
-      let bandList = this.$store.state.bands;
-      let results = "";
-
-      if (this.$store.state.bands.bandName != "") {
-        results = bandList.filter((band) =>
-          band.bandName
-            .toLowerCase()
-            .includes(this.results.bandName.toLowerCase())
-        );
-      }
-      return results;
-    },
-    //  if (this.$store.state.bands.genre != "") {
-    //   results = results.filter((band) =>
-    //     band.genre.toLowerCase().includes(this.filter.genre.toLowerCase())
-    //   );
-    // }
   },
   created() {
     this.getBands();
@@ -119,6 +119,7 @@ export default {
   background-color: #cc9200;
   border-radius: 12px;
   background-image: url("https://www.transparenttextures.com/patterns/cardboard.png");
+  padding: 10px;
 }
 .card-header-title {
   color: white;
