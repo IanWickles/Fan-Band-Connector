@@ -60,6 +60,15 @@ public class JdbcGenreDao implements GenreDao {
     public Genre createGenre(Genre newGenre) {
         String sql = "INSERT INTO genre (genre_name) " +
                 "VALUES (?) RETURNING genre_id;";
+<<<<<<< Updated upstream
+
+        Integer newId = jdbcTemplate.queryForObject(sql, Integer.class, newGenre.getGenreName());
+        return getGenreByID(newId);
+    }
+
+    @Override
+    public boolean deleteGenre(int genreID) {
+=======
         try{
             Integer newId = jdbcTemplate.queryForObject(sql, Integer.class, newGenre.getGenreName());
             return getGenreByID(newId);
@@ -71,6 +80,7 @@ public class JdbcGenreDao implements GenreDao {
 
     @Override
     public boolean deleteGenre(Genre genreToDelete, int genreID) {
+>>>>>>> Stashed changes
         String sql = "DELETE FROM band_genre WHERE genre_id = ANY(SELECT genre_id FROM genre WHERE genre_id = " + genreID + ");" +
                 "DELETE FROM genre WHERE genre_id = " + genreID + ";";
         try {
