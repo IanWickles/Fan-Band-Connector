@@ -56,7 +56,7 @@
 
 <script>
 import bandService from "@/services/BandService.js";
-import genreService from "@/services/genreService.js";
+import genresService from "@/services/GenresService.js";
 
 export default {
   name: "band-list",
@@ -80,18 +80,15 @@ export default {
       });
     },
     getGenre() {
-      genreService.list().then((response) => {
+      genresService.list().then((response) => {
         this.$store.commit("SET_GENRES", response.data);
       });
     },
-
-    //  if (this.$store.state.bands.genre != "") {
-    //   results = results.filter((band) =>
-    //     band.genre.toLowerCase().includes(this.filter.genre.toLowerCase())
-    //   );
-    // }
   },
   computed: {
+    genres() {
+      return this.$store.state.activeBand.genres;
+    },
     filteredList() {
       let bandList = this.$store.state.bands;
 

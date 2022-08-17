@@ -1,26 +1,32 @@
 <template>
   <div>
     <h1 class="name">{{ this.$store.state.activeBand.bandName }}</h1>
-    <div class="managerhub">
-    <button class="manageredit">Edit</button> |
-    <button class="managershow">Post Show</button>
+    <div class="manager-hub">
+      <button class="manager-edit">Edit</button> |
+      <button class="manager-show">Post Show</button>
     </div>
-    <figure class="thisimage"><img :src="band.bandImage" /></figure>
+    <figure class="this-image"><img :src="band.bandImage" /></figure>
     <h1>Who Dat</h1>
     <h2 class="description">{{ band.bandDesc }}</h2>
     <h1>Members:</h1>
     <ul>
-      <li v-for="genre in band.genres" :key="genre.genreId">{{ genre.genreName }}</li>
-      </ul>
+      <li v-for="genre in band.genres" :key="genre.genreId">
+        {{ genre.genreName }}
+      </li>
+    </ul>
     <h2 class="band-members">{{ band.members }}</h2>
-    <div class="userhub">
-      <button class="big-button" @click="followBand" v-if="!isFollowing">Follow</button>
-      <button class="big-button" @click="unfollowBand" v-if="isFollowing">Unfollow</button>
+    <div class="user-hub">
+      <button class="big-button" @click="followBand" v-if="!isFollowing">
+        Follow
+      </button>
+      <button class="big-button" @click="unfollowBand" v-if="isFollowing">
+        Unfollow
+      </button>
       <!--Make this follow/unfollow -->
-      </div>
-      <br>
-      <h1>Photo Gallery</h1>
-      insert photo gallery here
+    </div>
+    <br />
+    <h1>Photo Gallery</h1>
+    insert photo gallery here
     <!-- <div>
         <router-link :to="{ name: '', params: { id: band.id } }"
           >Edit</router-link
@@ -43,25 +49,28 @@ export default {
       return this.$store.state.activeBand;
     },
     isFollowing() {
-      return this.$store.state.followed.find(band=>band.bandId==this.bandId)!=undefined;
+      return (
+        this.$store.state.followed.find((band) => band.bandId == this.bandId) !=
+        undefined
+      );
     },
     genres() {
       return this.$store.state.activeBand.genres;
-    }
+    },
   },
   methods: {
     followBand() {
-      userService.followBand(this.bandId).then(()=>{
+      userService.followBand(this.bandId).then(() => {
         this.updateFollowedList();
       });
     },
     updateFollowedList() {
-      userService.getFollowedBands().then(followedResponse=>{
+      userService.getFollowedBands().then((followedResponse) => {
         this.$store.commit("SET_FOLLOWED", followedResponse.data);
       });
     },
     unfollowBand() {
-      userService.unfollowBand(this.bandId).then(()=>{
+      userService.unfollowBand(this.bandId).then(() => {
         this.updateFollowedList();
       });
     },
@@ -77,19 +86,19 @@ export default {
           this.$router.push({ name: "not-found" });
         }
       });
-      bandService.getBandGenres(this.bandId).then((response)=>{
-        this.$store.commit("SET_BAND_GENRES", response.data);
-      })
-      this.updateFollowedList();
+    bandService.getBandGenres(this.bandId).then((response) => {
+      this.$store.commit("SET_BAND_GENRES", response.data);
+    });
+    this.updateFollowedList();
   },
 };
 </script>
 
 <style>
-.managerhub {
+.manager-hub {
   text-align: center;
 }
-.userhub {
+.user-hub {
   text-align: center;
 }
 .description {
@@ -98,7 +107,7 @@ export default {
 .band-members {
   text-align: center;
 }
-.thisimage {
+.this-image {
   display: block;
   margin: auto;
   max-width: 60%;

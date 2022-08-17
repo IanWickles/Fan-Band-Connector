@@ -1,6 +1,11 @@
 import axios from 'axios';
 
 export default {
+
+    getByBand(bandName) {
+        return axios.get(`/genres/band/${bandName}`);
+    },
+
     get(genreId) {
         return axios.get(`/genres/${genreId}`);
     },
