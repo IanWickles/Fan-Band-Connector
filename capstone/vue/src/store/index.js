@@ -27,7 +27,8 @@ export default new Vuex.Store({
       bandImage: "",
       bandDesc: "",
       Members: "",
-      mgrId: ""
+      mgrId: "",
+      genreName: "",
     },
     activeBandPhotos: [],
     activeBandGenres: [],
@@ -56,7 +57,6 @@ export default new Vuex.Store({
       venueId: 0
     },
     followed: [],
-    genres: []
   },
 
   mutations: {
@@ -68,6 +68,9 @@ export default new Vuex.Store({
     },
     SET_BAND_SHOW(state, data) {
       state.shows = data;
+    },
+    SET_GENRES(state, data) {
+      state.genres = data;
     },
     SET_VENUES(state, data) {
       state.venues = data;
@@ -115,10 +118,7 @@ export default new Vuex.Store({
     SET_BAND_GENRES(state, genres) {
       state.activeBandGenres = genres;
     },
-    SET_GENRES(state, data) {
-      state.genres = data;
-    },
-    ADD_MESSAGE(state,message){
+    ADD_MESSAGE(state, message) {
       state.messages.push(message)
     },
     SET_BAND_PHOTOS(state, photos) {

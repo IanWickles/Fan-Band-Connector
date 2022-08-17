@@ -21,15 +21,16 @@ export default {
   name: "home",
   data() {
     return {
-      message: "Louisiana Beat Wave celebrates the birthplace of Jazz - New Orleans, Louisiana - and it's diverse music scene. Users can connect with their favorite bands and discover new ones to fall in love with. Bands can connect with their followers by sending message updates."
+      message:
+        "Louisiana Beat Wave celebrates the birthplace of Jazz - New Orleans, Louisiana - and it's diverse music scene. Users can connect with their favorite bands and discover new ones to fall in love with. Bands can connect with their followers by sending message updates.",
     };
   },
   computed: {
     loggedOut() {
-      return this.$store.state.token == '';
-    }
-  }
-}
+      return this.$store.state.token == "";
+    },
+  },
+};
 </script>
 <style>
 .home {
@@ -41,12 +42,12 @@ h1 {
 }
 .mymessage {
   text-align: center;
-  font-family: 'Indie Flower', cursive;
+  font-family: "Indie Flower", cursive;
   font-size: larger;
 }
 .headerimg {
   display: block;
-  margin:auto;
+  margin: auto;
   margin-top: -100px;
   transform: scaleX(1.5);
 }

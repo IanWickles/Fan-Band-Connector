@@ -23,6 +23,7 @@ public class JdbcBandDao implements BandDao {
         List<Band> bands = new ArrayList<>();
         String sql = "SELECT * FROM band;";
 
+
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while (results.next()) {
             Band band = mapRowToBand(results);
@@ -157,6 +158,7 @@ public class JdbcBandDao implements BandDao {
         band.setMembers(rs.getString("band_member"));
         band.setBandImage(rs.getString("band_image"));
         band.setMgrId(rs.getInt("manager_id"));
+
 
         return band;
     }

@@ -2,12 +2,18 @@
   <div>
     <h1 class="name">{{ this.$store.state.activeVenue.venueName }}</h1>
     <h2 class="address">{{ venue.venueAddress }}</h2>
-    <br>
-    <h1>About:</h1>
+    <br />
+    <h2>About:</h2>
     <h2 class="description">{{ venue.venueDesc }}</h2>
-    <br>
-    <iframe width="600" height="450" style="border:0" loading="lazy" allowfullscreen :src="venue.venueMap"></iframe>
-    
+    <br />
+    <iframe
+      width="600"
+      height="450"
+      style="border:0"
+      loading="lazy"
+      allowfullscreen
+      :src="venue.venueMap"
+    ></iframe>
   </div>
 </template>
 
@@ -30,9 +36,6 @@ export default {
       .get(this.venueId)
       .then((response) => {
         this.$store.commit("SET_ACTIVE_VENUE", response.data);
-        console.log("here");
-        console.log(this.$store.state.activeVenue);
-        console.log(this.$store);
       })
       .catch((error) => {
         if (error.response.status == 404) {
