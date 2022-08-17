@@ -15,53 +15,55 @@
       }"
       class="band-container"
     >
-    <div class="band">
-
-      <tbody>
-        <tr>
-          <!-- <div class="item band" v-for="band in filteredList()" :key="band.bandName"> -->
-          <input
-            class="input is-rounded"
-            v-model="results.bandName"
-            name="byBand"
-            type="text"
-            placeholder="Search by band"
-          />
-        </tr>
-        <!-- <tr v-for="band in this.$store.state.bands" v-bind:key="band.bandId"> -->
-        <tr v-for="band in filteredList()" v-bind:key="band.bandId">
-          <div class="card">
+      <table class="band">
+        <tbody>
+          <tr>
+            <!-- <div class="item band" v-for="band in filteredList()" v-bind:key="band.bandName"> -->
             <td>
-              <h1>{{ band.bandName }}</h1>
+              <input
+                class="input is-rounded"
+                v-model="filter.bandName"
+                name="byBand"
+                type="text"
+                placeholder="Search by band"
+              />
             </td>
-            <router-link
-              v-bind:to="{ name: 'band', params: { bandId: band.bandId } }"
-            >
-              <div class="card-image">
-                <figure class="image">
-                  <img :src="band.bandImage" />
-                </figure>
+          </tr>
+          <tr v-for="band in filteredList" v-bind:key="band.bandId">
+            <td>
+              <div class="card">
+                <h1>{{ band.bandName }}</h1>
+
+                <router-link
+                  v-bind:to="{ name: 'band', params: { bandId: band.bandId } }"
+                >
+                  <div class="card-image">
+                    <figure class="image">
+                      <img :src="band.bandImage" />
+                    </figure>
+                  </div>
+                </router-link>
+                <div class="card-content">{{ band.bandDesc }}</div>
+                <!-- <h2 class="genre">{{ band.genre }}</h2> -->
               </div>
-            </router-link>
-            <div class="card-content">{{ band.bandDesc }}</div>
-            <!-- <h2 class="genre">{{ band.genre }}</h2> -->
-          </div>
-        </tr>
-      </tbody>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-    <!-- </div> -->
   </div>
 </template>
 
 <script>
 import bandService from "@/services/BandService.js";
+import genreService from "@/services/genreService.js";
 
 export default {
   name: "band-list",
   setup() {},
   data() {
     return {
-      results: {
+      filter: {
         bandId: 0,
         bandName: "",
         bandImage: "",
@@ -77,26 +79,40 @@ export default {
         this.$store.commit("SET_BANDS", response.data);
       });
     },
-    filterList() {
-      let bandList = this.$store.state.bands;
-
-      if (this.filter != "") {
-        bandList = bandList.filter((band) =>
-          band.bandName
-            .toLowerCase()
-            .includes(this.filter.bandName.toLowerCase())
-        );
-      }
-      return bandList;
+    getGenre() {
+      genreService.list().then((response) => {
+        this.$store.commit("SET_GENRES", response.data);
+      });
     },
+
     //  if (this.$store.state.bands.genre != "") {
     //   results = results.filter((band) =>
     //     band.genre.toLowerCase().includes(this.filter.genre.toLowerCase())
     //   );
     // }
   },
+  computed: {
+    filteredList() {
+      let bandList = this.$store.state.bands;
+
+      if (this.filter.bandName != "") {
+        bandList = bandList.filter((band) =>
+          band.bandName
+            .toLowerCase()
+            .includes(this.filter.bandName.toLowerCase())
+        );
+      }
+      // if (this.filter.genre != "") {
+      //   bandList = bandList.filter((band) =>
+      //     band.genre.toLowerCase().includes(this.filter.genre.toLowerCase())
+      //   );
+      // }
+      return bandList;
+    },
+  },
   created() {
     this.getBands();
+    this.getGenre();
   },
 };
 </script>

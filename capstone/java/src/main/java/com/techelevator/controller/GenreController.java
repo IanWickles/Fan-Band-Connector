@@ -41,7 +41,7 @@ public class GenreController {
     }
 
     @PreAuthorize("hasRole('ADMIN')")
-    @PostMapping("/genres/newgenre") //WORKING: Postman confirmed
+    @PostMapping("/genres/newGenre") //WORKING: Postman confirmed
     Genre createGenre(@RequestBody Genre newGenre, @Valid Principal user) {
             return genreDao.createGenre(newGenre);
     }
