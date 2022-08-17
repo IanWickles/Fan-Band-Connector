@@ -1,75 +1,63 @@
 <template>
-  <form class="new-band-form" v-on:submit.prevent>
+  <form class="update-band-form" @submit.prevent="updateBand()">
     <div>
       <label for="name-input"> Band Name: </label>
       <input
-        class="name-input"
         type="text"
+        id="bandName" 
+        class="name-input" 
         placeholder="Name"
-        v-model="band.bandName"
+        v-model="updatedBand.bandName"
+        required 
+        autofocus
+       />
+    </div>
+    <div>
+      <label for="bandMember-input"> Members: </label>
+      <input  
+        type="text" 
+        id="bandMember"
+        class="bandMember-input"
+        placeholder="Name"
+        required
+        v-model="updatedBand.members"
       />
     </div>
+
     <div>
-      <label for="bandMember-input"> Member: </label>
-      <input class="bandMember-input" type="text" placeholder="Name" />
+      <label for="managerId-input"> Manager Id: </label>
+      <input 
+        type="number" 
+        id="bandManager"
+        class="managerId-input"
+        placeholder="New user ID"
+        required
+        v-model="updatedBand.mgrId"
+      />
     </div>
+    
     <div>
-      <label for="bandMember-input"> Member: </label>
-      <input class="bandMember-input" type="text" placeholder="Name" />
-    </div>
-    <div class="field">
-      <label for="genre-one"> First Genre: </label>
-      <div class="select is-small">
-        <div class="select">
-          <select>
-            <option>Jazz</option>
-            <option>Bluegrass</option>
-            <option>Rock</option>
-            <option>Country</option>
-            <option>Americana</option>
-            <option>Cajun</option>
-            <option>Blues</option>
-            <option>Gospel</option>
-            <option>R-B</option>
-            <option>Zydeco</option>
-            <option>Funk</option>
-            <option>Soul</option>
-          </select>
-        </div>
-      </div>
+      <label for="bandImage-input"> Cover Photo: </label>
+      <input 
+        type="img" 
+        id="bandImage"
+        class="bandImage-input"
+        placeholder="Cover Image"
+        required
+        v-model="updatedBand.bandImage"
+        />
     </div>
 
     <div class="field">
-      <label for="genre-two"> Second Genre: </label>
-      <div class="select is-small">
-        <div class="select">
-          <select>
-            <option>Jazz</option>
-            <option>Bluegrass</option>
-            <option>Rock</option>
-            <option>Country</option>
-            <option>Americana</option>
-            <option>Cajun</option>
-            <option>Blues</option>
-            <option>Gospel</option>
-            <option>R&B</option>
-            <option>Zydeco</option>
-            <option>Funk</option>
-            <option>Soul</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <div>
-      <label for="image"> Cover Photo: </label>
-      <input class="image" type="img" placeholder="Cover Image" />
-    </div>
-
-    <div class="field">
-      <label class="label">Who Dat</label>
-      <div class="control">
-        <textarea class="textarea" placeholder="Description"></textarea>
-      </div>
+      <label for="bandDesc-input">Who Dat:</label>
+        <input 
+        type="text"
+        id="bandDesc"
+        class="bandDesc-input" 
+        placeholder="Description"
+        required
+        v-model="updatedBand.bandDesc"
+        />
     </div>
 
     <div class="control">
@@ -79,19 +67,37 @@
 </template>
 
 <script>
+import bandService from "../services/BandService";
+
 export default {
   name: "update-band",
-  props: ["bandId"],
   data() {
     return {
-      title: "",
+      updatedBand: {
+        bandName: "",
+        bandImage: "",
+        bandDesc: "",
+        members: "",
+        mgrId: ""
+      },
     };
   },
   methods: {
-    updateBands() {},
+    updateBand() {
+      const updatedBand = {
+        id: this.$route.params.bandId,
+        bandName: this.updatedBand.bandName,
+        bandImage: this.updatedBand.bandImage,
+        bandDesc: this.updatedBand.bandDesc,
+        members: this.updatedBand.members,
+        mgrId: this.updatedBand.mgrId
+      };
+      bandService.updateBand(updatedBand),
+      this.$router.push({ name: "bands" });
+}
   },
-  created() {},
 };
+
 </script>
 
 <style></style>

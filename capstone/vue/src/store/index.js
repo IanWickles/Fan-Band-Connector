@@ -103,6 +103,9 @@ export default new Vuex.Store({
     ADD_BAND(state, band) {
       state.bands.push(band)
     },
+    UPDATE_BAND(state, band) {
+      state.bands.push(band)
+    },
     SET_MESSAGES(state, data) {
       state.messages = data;
     },
@@ -114,6 +117,9 @@ export default new Vuex.Store({
     },
     SET_GENRES(state, data) {
       state.genres = data;
+    },
+    ADD_MESSAGE(state,message){
+      state.messages.push(message)
     },
     SET_BAND_PHOTOS(state, photos) {
       state.activeBandPhotos = photos;
