@@ -1,16 +1,18 @@
 <template>
   <div>
+    
     <h1 class="name">{{ this.$store.state.activeBand.bandName }}</h1>
     <div class="managerhub">
     <button class="manageredit"><router-link v-bind:to="{ name: 'update-band' }">Edit</router-link></button> |
     <button class="managershow">Post Show</button>
+    <button class="managermessage"><router-link v-bind:to="{ name: 'new-message' }">Send Message</router-link> </button>
     </div>
     <figure class="thisimage"><img :src="band.bandImage" /></figure>
     <h1>Who Dat</h1>
     <h2 class="description">{{ band.bandDesc }}</h2>
     <h1>Members:</h1>
     <ul>
-      <li v-for="genre in band.genres" :key="genre.genreId">{{ genre.genreName }}</li>
+      <li v-for="genre in genres" :key="genre.genreId">{{ genre.genreName }}</li>
       </ul>
     <h2 class="band-members">{{ band.members }}</h2>
     <div class="userhub">
@@ -20,7 +22,9 @@
       </div>
       <br>
       <h1>Photo Gallery</h1>
-      insert photo gallery here
+      <ul class="photo-gallery">
+      <li v-for="photo in photos" :key="photo.photoId"><img :src="photo.photoImage" class="galleryimg"/></li>
+      </ul>
     <!-- <div>
         <router-link :to="{ name: '', params: { id: band.id } }"
           >Edit</router-link
@@ -42,11 +46,14 @@ export default {
     band() {
       return this.$store.state.activeBand;
     },
-    isFollowing() {
-      return this.$store.state.followed.find(band=>band.bandId==this.bandId)!=undefined;
+    photos() {
+      return this.$store.state.activeBandPhotos;
     },
     genres() {
-      return this.$store.state.activeBand.genres;
+      return this.$store.state.activeBandGenres;
+    },
+    isFollowing() {
+      return this.$store.state.followed.find(band=>band.bandId==this.bandId)!=undefined;
     }
   },
   methods: {
@@ -60,11 +67,21 @@ export default {
         this.$store.commit("SET_FOLLOWED", followedResponse.data);
       });
     },
+    updateBandGenres() {
+      bandService.getBandGenres(this.bandId).then((response)=>{
+        this.$store.commit("SET_BAND_GENRES", response.data);
+      });
+    },
+    updateBandPhotos() {
+      bandService.getBandPhotos(this.bandId).then((response)=>{
+        this.$store.commit("SET_BAND_PHOTOS", response.data);
+      })
+    },
     unfollowBand() {
       userService.unfollowBand(this.bandId).then(()=>{
         this.updateFollowedList();
       });
-    },
+    }
   },
   created() {
     bandService
@@ -77,10 +94,9 @@ export default {
           this.$router.push({ name: "not-found" });
         }
       });
-      bandService.getBandGenres(this.bandId).then((response)=>{
-        this.$store.commit("SET_BAND_GENRES", response.data);
-      })
       this.updateFollowedList();
+      this.updateBandGenres();
+      this.updateBandPhotos();
   },
 };
 </script>
@@ -102,5 +118,12 @@ export default {
   display: block;
   margin: auto;
   max-width: 60%;
+}
+.photo-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.galleryimg {
+  max-width: 80%;
 }
 </style>

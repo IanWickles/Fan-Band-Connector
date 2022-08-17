@@ -60,17 +60,13 @@ public class JdbcGenreDao implements GenreDao {
     public Genre createGenre(Genre newGenre) {
         String sql = "INSERT INTO genre (genre_name) " +
                 "VALUES (?) RETURNING genre_id;";
-        try{
-            Integer newId = jdbcTemplate.queryForObject(sql, Integer.class, newGenre.getGenreName());
-            return getGenreByID(newId);
-        } catch (Exception e){
-            e.printStackTrace();
-        }
-        return null;
+
+        Integer newId = jdbcTemplate.queryForObject(sql, Integer.class, newGenre.getGenreName());
+        return getGenreByID(newId);
     }
 
     @Override
-    public boolean deleteGenre(Genre genreToDelete, int genreID) {
+    public boolean deleteGenre(int genreID) {
         String sql = "DELETE FROM band_genre WHERE genre_id = ANY(SELECT genre_id FROM genre WHERE genre_id = " + genreID + ");" +
                 "DELETE FROM genre WHERE genre_id = " + genreID + ";";
         try {

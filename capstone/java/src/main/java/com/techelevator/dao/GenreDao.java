@@ -14,7 +14,7 @@ public interface GenreDao {
 
     Genre createGenre(Genre newGenre);
 
-    boolean deleteGenre(Genre genreToDelete, int genreID);
+    boolean deleteGenre(int genreID);
 
     public void addGenreToBand(int bandId, int genreId);
 
