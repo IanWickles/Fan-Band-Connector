@@ -103,11 +103,7 @@ export default new Vuex.Store({
     ADD_BAND(state, band) {
       state.bands.push(band)
     },
-<<<<<<< HEAD
-    SET_MESSAGES(state, data){
-=======
     SET_MESSAGES(state, data) {
->>>>>>> e22736d07543367b09651b542a2dd259170de075
       state.messages = data;
     },
     SET_FOLLOWED(state, followed) {
@@ -119,13 +115,11 @@ export default new Vuex.Store({
     SET_GENRES(state, data) {
       state.genres = data;
     },
-<<<<<<< HEAD
     ADD_MESSAGE(state,message){
       state.messages.push(message)
-=======
+    },
     SET_BAND_PHOTOS(state, photos) {
       state.activeBandPhotos = photos;
->>>>>>> e22736d07543367b09651b542a2dd259170de075
     }
   }
 })

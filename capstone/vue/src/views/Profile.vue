@@ -8,11 +8,7 @@
     <!-- if user is manager of a band, have this link to the band they manage, hide button if not a manager -->
     <h1 class="user-inbox">Inbox</h1>
     <div class="inbox-content">
-<<<<<<< HEAD
-    <message-list />
-=======
       <message-list />
->>>>>>> e22736d07543367b09651b542a2dd259170de075
     </div>
 
     <br />
