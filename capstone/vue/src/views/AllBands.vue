@@ -48,7 +48,4 @@ h1 {
   margin-left: 10vw;
   margin-right: 10vw;
 }
-button {
-  height: 20px;
-}
 </style>
