@@ -38,11 +38,6 @@
         <img :src="photo.photoImage" class="galleryimg" />
       </li>
     </ul>
-    <!-- <div>
-        <router-link :to="{ name: '', params: { id: band.id } }"
-          >Edit</router-link
-        >
-      </div> -->
   </div>
 </template>
 
