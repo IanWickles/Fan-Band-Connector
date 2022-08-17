@@ -17,9 +17,9 @@
     />
     <button class="big-button"><router-link v-bind:to="{ name: 'new-band' }">Create a New Band</router-link></button>
     </div>
-    <div class="adminhub">
-      Manage genres
-      Manage bands
+    <div class="adminhub" v-if="isAdmin">
+      <button>Manage genres</button>
+      <button>Manage bands</button>
       </div>
       <band-list />
   </div>
@@ -34,6 +34,11 @@
 import BandList from "../components/BandList.vue";
 export default {
   components: { BandList},
+  computed: {
+    isAdmin() {
+      return this.$store.state.user.authorities.find(authority=>authority.name=="ROLE_ADMIN")!=undefined;
+    }
+  }
 };
 </script>
 
