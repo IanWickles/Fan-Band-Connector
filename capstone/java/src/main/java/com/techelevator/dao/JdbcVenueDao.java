@@ -63,6 +63,7 @@ public class JdbcVenueDao implements VenueDao{
         venue.setVenueName(rs.getString("venue_name"));
         venue.setVenueAddress(rs.getString("venue_address"));
         venue.setVenueDesc(rs.getString("venue_description"));
+        venue.setVenueMap(rs.getString("venue_map"));
 
       return venue;
     }
