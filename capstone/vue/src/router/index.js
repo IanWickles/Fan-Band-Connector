@@ -15,6 +15,7 @@ import AllVenues from '../views/AllVenues.vue'
 import AllShows from '../views/AllShows.vue'
 import Show from '../views/Show.vue'
 import Genres from'../views/Genres.vue'
+import UpdateBand from '../views/UpdateBand.vue'
 //import { getOwnPropertySymbols } from 'core-js/core/object'
 Vue.use(Router)
 
@@ -79,14 +80,14 @@ const router = new Router({
         requiresAuth: true
       }
     },
-    // {
-    //   path: "/bands/edit/:bandId",
-    //   name: "update-band",
-    //   component: EditBand,
-    //   meta: {
-    //     requiresAuth: false
-    //   }
-    // },
+    {
+      path: "/bands/:bandId/edit",
+      name: "update-band",
+      component: UpdateBand,
+      meta: {
+        requiresAuth: false
+      }
+    },
     {
       path: "/genres",
       name: "genres",

@@ -2,7 +2,7 @@
   <div>
     <h1 class="name">{{ this.$store.state.activeBand.bandName }}</h1>
     <div class="managerhub">
-    <button class="manageredit">Edit</button> |
+    <button class="manageredit"><router-link v-bind:to="{ name: 'update-band' }">Edit</router-link></button> |
     <button class="managershow">Post Show</button>
     </div>
     <figure class="thisimage"><img :src="band.bandImage" /></figure>
