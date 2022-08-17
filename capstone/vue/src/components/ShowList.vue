@@ -13,16 +13,16 @@
           v-for="show in this.$store.state.shows"
           v-bind:key="show.showId"
         >
-          <div class="container">
+          <div class="card column is-offset-one-quarter">
             <td>
-              <router-link
+              <router-link class="card-header"
                 v-bind:to="{ name: 'show', params: { showId: show.showId } }"
                 >{{ show.showTitle }}</router-link
               >
             </td>
-            <h2 class="time">Show Time: {{ show.showTime }}</h2>
+            <h2 class="card-header">Show Time: {{ show.showTime }}</h2>
             <br>
-            <h2 class="description">{{ show.showDesc }}</h2>
+            <h2 class="card-content">{{ show.showDesc }}</h2>
           </div>
         </tr>
       </tbody>
@@ -53,4 +53,11 @@ export default {
 .container {
   padding: 10px;
 }
+.card-header{
+  font-size: 30px;
+}
+.card-content{
+  font-size: 30px;
+}
+
 </style>
