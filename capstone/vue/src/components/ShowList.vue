@@ -1,12 +1,5 @@
 <template>
   <div class="show-container">
-    <input
-      class="input is-rounded"
-      v-model="input"
-      name="byShow"
-      type="text"
-      placeholder="Search by show"
-    />
     <div class="show">
       <tbody>
         <tr

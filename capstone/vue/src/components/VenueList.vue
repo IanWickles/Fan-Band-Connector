@@ -1,12 +1,13 @@
 <template>
   <div class="venue-container">
+    <div class="searchbar">
     <input
       class="input is-rounded"
       v-model="input"
       name="byTitle"
       type="text"
-      placeholder="Search by venue"
-    />
+      placeholder="Search by venue name"
+    /></div>
     <div class="venue">
       <tbody>
         <tr

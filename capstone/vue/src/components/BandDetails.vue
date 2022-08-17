@@ -19,7 +19,7 @@
     
     <div class="userhub">
       <button class="big-button" @click="followBand" v-if="!isFollowing">Follow</button>
-      <button class="big-button" @click="unfollowBand" v-if="isFollowing">Unfollow</button>
+      <button class="big-button" @click="unfollowBand" v-if="isFollowing" id="unfollow">Unfollow</button>
       <!--Make this follow/unfollow -->
       </div>
       <br>
@@ -130,5 +130,13 @@ export default {
 }
 .galleryimg {
   max-width: 80%;
+}
+:root #unfollow {
+  --backgroundColor: rgb(246, 209, 209);
+    --colorShadeA: rgb(163, 106, 106);
+    --colorShadeB: rgb(186, 121, 121);
+    --colorShadeC: rgb(232, 150, 150);
+    --colorShadeD: rgb(232, 187, 187);
+    --colorShadeE: rgb(255, 205, 205);
 }
 </style>
