@@ -115,6 +115,9 @@ export default new Vuex.Store({
     SET_GENRES(state, data) {
       state.genres = data;
     },
+    ADD_MESSAGE(state,message){
+      state.messages.push(message)
+    },
     SET_BAND_PHOTOS(state, photos) {
       state.activeBandPhotos = photos;
     }
