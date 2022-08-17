@@ -103,12 +103,8 @@ export default new Vuex.Store({
       state.bands.push(band)
     },
     SET_MESSAGES(state, data){
-<<<<<<< HEAD
-      state.messages = data;},
-=======
       state.messages = data;
     },
->>>>>>> 043e297ddd3849626f4dcdc73b2bd0bc07127d6c
     SET_FOLLOWED(state, followed) {
       state.followed = followed;
     },
