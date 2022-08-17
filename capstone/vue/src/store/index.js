@@ -27,9 +27,10 @@ export default new Vuex.Store({
       bandImage: "",
       bandDesc: "",
       Members: "",
-      mgrId: "",
-      genres: []
+      mgrId: ""
     },
+    activeBandPhotos: [],
+    activeBandGenres: [],
     venues: [],
     activeVenue: {
       venueId: 0,
@@ -111,7 +112,10 @@ export default new Vuex.Store({
       state.followed = followed;
     },
     SET_BAND_GENRES(state, genres) {
-      state.activeBand.genres = genres;
+      state.activeBandGenres = genres;
     },
+    SET_BAND_PHOTOS(state, photos) {
+      state.activeBandPhotos = photos;
+    }
   }
 })

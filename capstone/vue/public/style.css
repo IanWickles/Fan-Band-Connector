@@ -11,7 +11,7 @@ body {
   display: fixed;
   background-color: #f0f8ffbb;
   border-radius: 12px;
-  margin: 10vh 10vw;
+  margin: 0vh 10vw;
   margin-right: calc(10vw + 125px);
 }
 :root {

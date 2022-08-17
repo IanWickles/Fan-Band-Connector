@@ -7,6 +7,10 @@
     </button>
     <h1 class="name">Bands</h1>
     <band-list />
+    <div class="adminhub" v-if="isAdmin">
+      <button>Manage genres</button>
+      <button>Manage bands</button>
+    </div>
   </div>
 </template>
 <!--  
@@ -19,6 +23,15 @@
 import BandList from "../components/BandList.vue";
 export default {
   components: { BandList },
+  computed: {
+    isAdmin() {
+      return (
+        this.$store.state.user.authorities.find(
+          (authority) => authority.name == "ROLE_ADMIN"
+        ) != undefined
+      );
+    },
+  },
 };
 </script>
 

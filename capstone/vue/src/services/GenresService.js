@@ -13,10 +13,7 @@ export default {
         return axios.get('/genres');
     },
     addGenre(genre) {
-        return axios.post('/genres', genre);
-    },
-    updateGenre(genre) {
-        return axios.put(`/genres/${genre.id}`, genre);
+        return axios.post('/genres', { genreName: genre });
     },
     deleteGenre(genreId) {
         return axios.delete(`/genres/${genreId}`);

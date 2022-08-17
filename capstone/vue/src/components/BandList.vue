@@ -18,7 +18,6 @@
       <table class="band">
         <tbody>
           <tr>
-            <!-- <div class="item band" v-for="band in filteredList()" v-bind:key="band.bandName"> -->
             <td>
               <input
                 class="input is-rounded"
@@ -56,7 +55,7 @@
 
 <script>
 import bandService from "@/services/BandService.js";
-import genresService from "@/services/GenresService.js";
+//import genresService from "@/services/GenresService.js";
 
 export default {
   name: "band-list",
@@ -79,12 +78,12 @@ export default {
         this.$store.commit("SET_BANDS", response.data);
       });
     },
-    getGenre() {
-      genresService.list().then((response) => {
-        this.$store.commit("SET_GENRES", response.data);
-      });
-    },
-  },
+  //   getGenre() {
+  //     bandService.getBandGenres().then((response) => {
+  //       this.$store.commit("SET_BAND_GENRES", response.data);
+  //     });
+  //   },
+  // },
   computed: {
     genres() {
       return this.$store.state.activeBand.genres;

@@ -52,7 +52,7 @@ const router = new Router({
       name: "logout",
       component: Logout,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       }
     },
     {
@@ -100,7 +100,7 @@ const router = new Router({
       name: "new-band",
       component: NewBand,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       }
     },
     {
@@ -116,7 +116,7 @@ const router = new Router({
       name: "profile",
       component: Profile,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       }
     },
     {
