@@ -38,6 +38,12 @@ export default {
       .get(this.venueId)
       .then((response) => {
         this.$store.commit("SET_ACTIVE_VENUE", response.data);
+<<<<<<< Updated upstream
+=======
+        // console.log("here");
+        // console.log(this.$store.state.activeVenue);
+        // console.log(this.$store);
+>>>>>>> Stashed changes
       })
       .catch((error) => {
         if (error.response.status == 404) {
