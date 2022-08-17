@@ -5,11 +5,11 @@
     
     <p class="mymessage">{{ message }}</p><br><br>
     <img src="jazzband.png"/><br>
-    <button class="big-button"><router-link v-bind:to="{ name: 'bands' }">Explore Bands</router-link></button>
-    <button class="big-button"><router-link v-bind:to="{ name: 'venues' }">Explore Venues</router-link></button>
-    <button class="big-button"><router-link v-bind:to="{ name: 'shows' }">Explore Shows</router-link></button><br>
-    <button class="big-button" v-if="loggedOut"><router-link v-bind:to="{ name: 'login' }">Login</router-link></button>
-    <button class="big-button" v-if="loggedOut"><router-link v-bind:to="{ name: 'register' }"> Create an Account</router-link></button>
+    <router-link v-bind:to="{ name: 'bands' }"><button class="big-button">Explore Bands</button></router-link>
+    <router-link v-bind:to="{ name: 'venues' }"><button class="big-button">Explore Venues</button></router-link>
+    <router-link v-bind:to="{ name: 'shows' }"><button class="big-button">Explore Shows</button></router-link><br>
+    <router-link v-bind:to="{ name: 'login' }"><button class="big-button" v-if="loggedOut">Login</button></router-link>
+    <router-link v-bind:to="{ name: 'register' }"><button class="big-button" v-if="loggedOut">Create an Account</button></router-link>
   </div>
 </template>
 

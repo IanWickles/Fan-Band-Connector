@@ -1,6 +1,8 @@
 <template>
   <div>
-    <h1 class="name">Bands</h1>
+    <router-link v-bind:to="{ name: 'new-band' }"><button class="big-button">Create a New Band</button></router-link><div class="adminhub" v-if="isAdmin">
+      <router-link v-bind:to="{ name: 'genres' }"><button class="big-button">Manage genres</button></router-link><button class="big-button">Manage bands</button>
+      </div><br>
     <div class="searchbar">
     <input
       class="input is-rounded"
@@ -15,12 +17,9 @@
       type="text"
       placeholder="Search by genre"
     />
-    <button><router-link v-bind:to="{ name: 'new-band' }">Create a New Band</router-link></button>
+    
     </div>
-    <div class="adminhub" v-if="isAdmin">
-      <button>Manage genres</button>
-      <button>Manage bands</button>
-      </div>
+    
       <band-list />
   </div>
 </template>
@@ -54,5 +53,10 @@ h1 {
 .searchbar {
   margin-left: 10vw;
   margin-right: 10vw;
+}
+.adminhub {
+  display:block;
+  margin-left: 765px;
+  margin-top: -85px;
 }
 </style>

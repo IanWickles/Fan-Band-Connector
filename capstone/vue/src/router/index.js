@@ -86,7 +86,7 @@ const router = new Router({
       name: "update-band",
       component: UpdateBand,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       }
     },
     {
