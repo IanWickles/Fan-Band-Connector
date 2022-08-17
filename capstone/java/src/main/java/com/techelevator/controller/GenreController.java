@@ -41,15 +41,15 @@ public class GenreController {
     }
 
     @PreAuthorize("hasRole('ADMIN')")
-    @PostMapping("/genres/newgenre") //WORKING: Postman confirmed
+    @PostMapping("/genres") //WORKING: Postman confirmed
     Genre createGenre(@RequestBody Genre newGenre, @Valid Principal user) {
             return genreDao.createGenre(newGenre);
     }
 
     @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/genres/{genreId}") //WORKING: Postman confirmed
-    public boolean deleteGenre (Genre genreToDelete, @PathVariable int genreId) {
-            return genreDao.deleteGenre(genreToDelete, genreId);
+    public boolean deleteGenre (@PathVariable int genreId) {
+            return genreDao.deleteGenre(genreId);
     }
 
     @PreAuthorize("hasRole('ADMIN')")

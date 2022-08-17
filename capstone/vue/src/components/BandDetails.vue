@@ -11,6 +11,12 @@
     <h1>Who Dat</h1>
     <h2 class="description">{{ band.bandDesc }}</h2>
     <h1>Members:</h1>
+<<<<<<< HEAD
+=======
+    <ul>
+      <li v-for="genre in genres" :key="genre.genreId">{{ genre.genreName }}</li>
+      </ul>
+>>>>>>> e22736d07543367b09651b542a2dd259170de075
     <h2 class="band-members">{{ band.members }}</h2>
     <div class="userhub">
       <button class="big-button" @click="followBand" v-if="!isFollowing">Follow</button>
@@ -19,8 +25,14 @@
       </div>
       <br>
       <h1>Photo Gallery</h1>
+<<<<<<< HEAD
       insert photo gallery here
     <!-- <h2 class="genre">{{ band.genre }}</h2> -->
+=======
+      <ul class="photo-gallery">
+      <li v-for="photo in photos" :key="photo.photoId"><img :src="photo.photoImage" class="galleryimg"/></li>
+      </ul>
+>>>>>>> e22736d07543367b09651b542a2dd259170de075
     <!-- <div>
         <router-link :to="{ name: '', params: { id: band.id } }"
           >Edit</router-link
@@ -42,6 +54,15 @@ export default {
     band() {
       return this.$store.state.activeBand;
     },
+<<<<<<< HEAD
+=======
+    photos() {
+      return this.$store.state.activeBandPhotos;
+    },
+    genres() {
+      return this.$store.state.activeBandGenres;
+    },
+>>>>>>> e22736d07543367b09651b542a2dd259170de075
     isFollowing() {
       return this.$store.state.followed.find(band=>band.bandId==this.bandId)!=undefined;
     }
@@ -56,6 +77,16 @@ export default {
       userService.getFollowedBands().then(followedResponse=>{
         this.$store.commit("SET_FOLLOWED", followedResponse.data);
       });
+    },
+    updateBandGenres() {
+      bandService.getBandGenres(this.bandId).then((response)=>{
+        this.$store.commit("SET_BAND_GENRES", response.data);
+      });
+    },
+    updateBandPhotos() {
+      bandService.getBandPhotos(this.bandId).then((response)=>{
+        this.$store.commit("SET_BAND_PHOTOS", response.data);
+      })
     },
     unfollowBand() {
       userService.unfollowBand(this.bandId).then(()=>{
@@ -75,6 +106,8 @@ export default {
         }
       });
       this.updateFollowedList();
+      this.updateBandGenres();
+      this.updateBandPhotos();
   },
 };
 </script>
@@ -96,5 +129,12 @@ export default {
   display: block;
   margin: auto;
   max-width: 60%;
+}
+.photo-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.galleryimg {
+  max-width: 80%;
 }
 </style>
