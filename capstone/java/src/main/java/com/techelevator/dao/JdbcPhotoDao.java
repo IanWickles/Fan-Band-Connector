@@ -19,9 +19,9 @@ public class JdbcPhotoDao implements PhotoDao{
     @Override
     public List<Photo> getPhotosByBand(int bandId) {
         List<Photo> photos = new ArrayList<>();
-        String sql = "SELECT * FROM photo JOIN band_photo USING (photo_id) WHERE band_id = " + bandId + ";";
+        String sql = "SELECT * FROM photo JOIN band_photo USING (photo_id) WHERE band_id = ?;";
 
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, bandId);
         while (results.next()) {
             Photo photo = mapRowToPhoto(results);
             photos.add(photo);

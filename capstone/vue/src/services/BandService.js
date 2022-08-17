@@ -20,5 +20,8 @@ export default {
     },
     getBandGenres(bandId) {
         return axios.get(`/genres/bands/${bandId}`);
+    },
+    getBandPhotos(bandId) {
+        return axios.get(`/bands/${bandId}/photos`);
     }
 }
