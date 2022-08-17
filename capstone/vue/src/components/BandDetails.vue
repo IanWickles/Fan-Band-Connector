@@ -1,9 +1,14 @@
 <template>
   <div>
     <h1 class="name">{{ this.$store.state.activeBand.bandName }}</h1>
-    <div class="manager-hub">
-      <button class="manager-edit">Edit</button> |
-      <button class="manager-show">Post Show</button>
+    <div class="managerhub">
+      <button class="manageredit">Edit</button> |
+      <button class="managershow">Post Show</button> |
+      <button class="managermessage">
+        <router-link v-bind:to="{ name: 'new-message' }"
+          >Send Message</router-link
+        >
+      </button>
     </div>
     <figure class="this-image"><img :src="band.bandImage" /></figure>
     <h1>Who Dat</h1>

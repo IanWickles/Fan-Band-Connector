@@ -15,6 +15,7 @@ import AllVenues from '../views/AllVenues.vue'
 import AllShows from '../views/AllShows.vue'
 import Show from '../views/Show.vue'
 import Genres from'../views/Genres.vue'
+import NewMessage from '../views/NewMessage.vue'
 //import { getOwnPropertySymbols } from 'core-js/core/object'
 Vue.use(Router)
 
@@ -101,6 +102,14 @@ const router = new Router({
       component: NewBand,
       meta: {
         requiresAuth: true
+      }
+    },
+    {
+      path:"/bands/:bandId/new-message",  //how do we get the bandId?
+      name:"new-message",
+      component: NewMessage,
+      meta: {
+        requiresAuth: false
       }
     },
     {

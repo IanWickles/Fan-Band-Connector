@@ -78,6 +78,7 @@ export default {
         this.$store.commit("SET_BANDS", response.data);
       });
     },
+  },
   //   getGenre() {
   //     bandService.getBandGenres().then((response) => {
   //       this.$store.commit("SET_BAND_GENRES", response.data);

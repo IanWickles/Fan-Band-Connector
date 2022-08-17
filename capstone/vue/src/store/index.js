@@ -114,6 +114,9 @@ export default new Vuex.Store({
     SET_BAND_GENRES(state, genres) {
       state.activeBandGenres = genres;
     },
+    ADD_MESSAGE(state, message) {
+      state.messages.push(message)
+    },
     SET_BAND_PHOTOS(state, photos) {
       state.activeBandPhotos = photos;
     }
