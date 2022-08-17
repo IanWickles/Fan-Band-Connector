@@ -13,15 +13,15 @@
           v-for="venue in this.$store.state.venues"
           v-bind:key="venue.venueId"
         >
-          <div class="container">
+          <div class="card">
             <td>
-              <router-link
+              <router-link class="card-header"
                 v-bind:to="{ name: 'venue', params: { venueId: venue.venueId } }"
                 >{{ venue.venueName }}</router-link
               >
             </td>
-            <h2 class="address">{{ venue.venueAddress }}</h2>
-            <h2 class="description">{{ venue.venueDesc }}</h2>
+            <h2 class="card-header">{{ venue.venueAddress }}</h2>
+            <h2 class="card-content">{{ venue.venueDesc }}</h2>
           </div>
         </tr>
       </tbody>

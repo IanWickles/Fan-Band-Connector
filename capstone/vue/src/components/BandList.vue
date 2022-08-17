@@ -116,10 +116,9 @@ export default {
   background-image: url(https://images.pexels.com/photos/3353055/pexels-photo-3353055.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2);
 }
 .card {
-  background-color: #cc9200;
+  background-color: #f7ff00;
   border-radius: 12px;
-  background-image: url("https://www.transparenttextures.com/patterns/cardboard.png");
-  padding: 10px;
+  background-image: url("https://www.transparenttextures.com/patterns/my-little-plaid.png");
 }
 .card-header-title {
   color: white;

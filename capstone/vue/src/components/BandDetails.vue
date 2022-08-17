@@ -125,7 +125,10 @@ export default {
 .band-members {
   text-align: center;
 }
-.this-image {
+.genre-list {
+  text-align: center;
+}
+.thisimage {
   display: block;
   margin: auto;
   max-width: 60%;

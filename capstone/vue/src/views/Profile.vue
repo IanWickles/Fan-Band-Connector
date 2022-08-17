@@ -12,7 +12,6 @@
     </div>
 
     <br />
-    <h1 class="band-list">Followed Bands</h1>
   </div>
 </template>
 <!--
