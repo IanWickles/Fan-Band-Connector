@@ -4,7 +4,7 @@
       v-on:click="
         sortByDate();
       "
-      class="button is-info is-outlined"
+      class="button is-info is-rounded"
       id="sortDate"
     >
       Sort By Date
@@ -13,7 +13,7 @@
       v-on:click="
         sortByBand();
       "
-      class="button is-success"
+      class="button is-success is-rounded"
       id="sortBand"
     >
       Sort by Band

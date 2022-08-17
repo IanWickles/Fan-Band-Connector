@@ -48,4 +48,15 @@ public class MessageController {
             return false;
         }
     }
+
+//    @PostMapping("/bands/newmessage")
+//    public boolean sendMessageToFollowers(@RequestBody Message newMessage @Valid Principal user){
+//        User currentUser = userDao.findByUsername(user.getName());
+//        int currentUserId = currentUser.getId();
+//        int bandMgr = band.getMgrId();
+//        if(currentUserId == bandMgr){
+//            return messageDao.sendMessageToFollowers(newMessage);
+//        }
+//        return false;
+//    }
 }
