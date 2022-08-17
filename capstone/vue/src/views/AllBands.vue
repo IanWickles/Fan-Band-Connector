@@ -1,27 +1,16 @@
 <template>
   <div>
+    <button class="big-button">
+      <router-link v-bind:to="{ name: 'new-band' }"
+        >Create a New Band</router-link
+      >
+    </button>
     <h1 class="name">Bands</h1>
-    <div class="searchbar">
-    <input
-      class="input is-rounded"
-      v-model="input"
-      name="byBand"
-      type="text"
-      placeholder="Search by band"
-    />
-    <input
-      class="input is-rounded"
-      name="byGenre"
-      type="text"
-      placeholder="Search by genre"
-    />
-    <button><router-link v-bind:to="{ name: 'new-band' }">Create a New Band</router-link></button>
-    </div>
+    <band-list />
     <div class="adminhub" v-if="isAdmin">
       <button>Manage genres</button>
       <button>Manage bands</button>
-      </div>
-      <band-list />
+    </div>
   </div>
 </template>
 <!--  
@@ -33,12 +22,16 @@
 <script>
 import BandList from "../components/BandList.vue";
 export default {
-  components: { BandList},
+  components: { BandList },
   computed: {
     isAdmin() {
-      return this.$store.state.user.authorities.find(authority=>authority.name=="ROLE_ADMIN")!=undefined;
-    }
-  }
+      return (
+        this.$store.state.user.authorities.find(
+          (authority) => authority.name == "ROLE_ADMIN"
+        ) != undefined
+      );
+    },
+  },
 };
 </script>
 

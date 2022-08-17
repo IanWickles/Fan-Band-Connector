@@ -70,6 +70,8 @@ public class Band {
     public void setMgrId(int mgrId) {
         this.mgrId = mgrId;
     }
+
+
 }
 
 

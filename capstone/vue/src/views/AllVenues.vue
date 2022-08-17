@@ -1,7 +1,7 @@
 <template>
   <div>
-      <h1>Venues</h1>
-      <venue-list />
+    <h1>Venues</h1>
+    <venue-list />
   </div>
 </template>
 <!--  

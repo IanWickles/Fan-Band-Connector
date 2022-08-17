@@ -14,7 +14,7 @@ import NotFound from '../views/NotFound.vue'
 import AllVenues from '../views/AllVenues.vue'
 import AllShows from '../views/AllShows.vue'
 import Show from '../views/Show.vue'
-import Genres from'../views/Genres.vue'
+import Genres from '../views/Genres.vue'
 import UpdateBand from '../views/UpdateBand.vue'
 import NewMessage from '../views/NewMessage.vue'
 //import { getOwnPropertySymbols } from 'core-js/core/object'
@@ -70,7 +70,7 @@ const router = new Router({
       name: "bands",
       component: AllBands,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       }
     },
     {
@@ -86,7 +86,7 @@ const router = new Router({
       name: "update-band",
       component: UpdateBand,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       }
     },
     {
@@ -106,8 +106,8 @@ const router = new Router({
       }
     },
     {
-      path:"/bands/:bandId/new-message",  //how do we get the bandId?
-      name:"new-message",
+      path: "/bands/:bandId/new-message",  //how do we get the bandId?
+      name: "new-message",
       component: NewMessage,
       meta: {
         requiresAuth: false
