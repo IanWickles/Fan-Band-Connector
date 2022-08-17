@@ -70,7 +70,7 @@ public class JdbcGenreDao implements GenreDao {
     }
 
     @Override
-    public boolean deleteGenre(Genre genreToDelete, int genreID) {
+    public boolean deleteGenre( int genreID) {
         String sql = "DELETE FROM band_genre WHERE genre_id = ANY(SELECT genre_id FROM genre WHERE genre_id = " + genreID + ");" +
                 "DELETE FROM genre WHERE genre_id = " + genreID + ";";
         try {
