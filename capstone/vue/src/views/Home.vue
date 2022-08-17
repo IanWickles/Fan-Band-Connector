@@ -21,7 +21,7 @@ export default {
   name: "home",
   data() {
     return {
-      message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Eu mi bibendum neque egestas. A diam sollicitudin tempor id eu nisl nunc. Sed lectus vestibulum mattis ullamcorper velit. Sed odio morbi quis commodo. Malesuada fames ac turpis egestas integer eget. Cras ornare arcu dui vivamus. Volutpat ac tincidunt vitae semper quis lectus. Nulla facilisi morbi tempus iaculis. Sem nulla pharetra diam sit amet nisl. Purus ut faucibus pulvinar elementum integer enim. Nisl purus in mollis nunc sed id semper. Eget nulla facilisi etiam dignissim diam quis enim. Sed tempus urna et pharetra pharetra massa massa. A condimentum vitae sapien pellentesque habitant morbi tristique senectus."
+      message: "Louisiana Beat Wave celebrates the birthplace of Jazz - New Orleans, Louisiana - and it's diverse music scene. Users can connect with their favorite bands and discover new ones to fall in love with. Bands can connect with their followers by sending message updates."
     };
   },
   computed: {

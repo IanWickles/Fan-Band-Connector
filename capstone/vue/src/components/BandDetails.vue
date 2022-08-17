@@ -11,10 +11,12 @@
     <h1>Who Dat</h1>
     <h2 class="description">{{ band.bandDesc }}</h2>
     <h1>Members:</h1>
-    <ul>
-      <li v-for="genre in genres" :key="genre.genreId">{{ genre.genreName }}</li>
-      </ul>
     <h2 class="band-members">{{ band.members }}</h2>
+    <h1>Genre:</h1>
+    <ul class="genre-list">
+    <li v-for="genre in genres" :key="genre.genreId">{{ genre.genreName }}</li>
+    </ul>
+    
     <div class="userhub">
       <button class="big-button" @click="followBand" v-if="!isFollowing">Follow</button>
       <button class="big-button" @click="unfollowBand" v-if="isFollowing">Unfollow</button>
@@ -112,6 +114,9 @@ export default {
   text-align: center;
 }
 .band-members {
+  text-align: center;
+}
+.genre-list {
   text-align: center;
 }
 .thisimage {
