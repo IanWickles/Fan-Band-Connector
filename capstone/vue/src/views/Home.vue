@@ -1,7 +1,8 @@
 <template>
   <div class="home">
     <img src="musicnotes.png" class="headerimg" />
-    <h1>Welcome to Louisiana Beat-Wave!</h1><br><br>
+    <h1>Welcome to Louisiana</h1><img src="actualsaxmirror (1).png" class="titleimg1"/><img src="actualsax.png" class="titleimg2"/><h1 class="wave">Beat-Wave!</h1>
+    
     <p class="mymessage">{{ message }}</p><br><br>
     <img src="jazzband.png"/><br>
     <button class="big-button"><router-link v-bind:to="{ name: 'bands' }">Explore Bands</router-link></button>
@@ -48,5 +49,23 @@ h1 {
   margin:auto;
   margin-top: -100px;
   transform: scaleX(1.5);
+}
+.wave {
+  margin-top: -20px;
+  font-size: 70px;
+  font-family: 'Inspiration', cursive;
+}
+.titleimg2 {
+  display:block;
+  margin-left: 800px;
+  margin-top: -152px;
+  max-width: 8%;
+  margin-bottom: -90px;
+}
+.titleimg1 {
+  display: block;
+  margin-left: 464px;
+  margin-top: -70px;
+  max-width: 8%;
 }
 </style>
