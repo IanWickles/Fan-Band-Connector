@@ -38,7 +38,6 @@
         >
           Unfollow
         </button>
-        <!--Make this follow/unfollow -->
       </div>
     </div>
     <div id="photo-gallery">
