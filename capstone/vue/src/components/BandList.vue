@@ -50,6 +50,9 @@
               <img :src="band.bandImage" /></figure
           ></router-link>
           <div class="card-content">{{ band.bandDesc }}</div>
+          <p v-for="genre in genres" :key="genre.genreId" params: {bandId: band.bandId } >
+              {{ genre.genreName }}
+            </p>
         </div>
 
         <!-- <h2 class="genre">{{ band.genre }}</h2> -->
@@ -86,11 +89,6 @@ export default {
             .includes(this.filter.bandName.toLowerCase())
         );
       }
-      //  if (this.$store.state.bands.genre != "") {
-      //   results = results.filter((band) =>
-      //     band.genre.toLowerCase().includes(this.filter.genre.toLowerCase())
-      //   );
-      // },
       return bandList;
     },
     isAdmin() {
@@ -107,9 +105,15 @@ export default {
         this.$store.commit("SET_BANDS", response.data);
       });
     },
+    getBandGenres(bandId) {
+      bandService.getBandGenres(bandId).then((response) => {
+        this.$store.commit("SET_BAND_GENRES", response.data);
+      });
+    },
   },
   created() {
     this.getBands();
+    this.getBandGenres();
   },
 };
 </script>

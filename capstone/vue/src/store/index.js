@@ -21,14 +21,15 @@ export default new Vuex.Store({
     token: currentToken || '',
     user: currentUser || {},
     bands: [],
+    genres: [],
     activeBand: {
       bandId: 0,
       bandName: "",
       bandImage: "",
       bandDesc: "",
       Members: "",
-      mgrId: 0,
-      genreName: "",
+      mgrId: "",
+
     },
     activeBandPhotos: [],
     activeBandGenres: [],
