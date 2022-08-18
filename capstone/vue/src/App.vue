@@ -32,7 +32,7 @@
         </li>
         <li class="navbar-item">
           <router-link v-bind:to="{ name: 'shows' }"
-            ><i class="fa-solid fa-guitar"></i>
+            ><i class="fa-solid fa-music"></i>
             <div>Shows</div></router-link
           >
         </li>

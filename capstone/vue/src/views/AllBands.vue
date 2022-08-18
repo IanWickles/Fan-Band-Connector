@@ -1,10 +1,6 @@
 <template>
   <div>
-    <router-link v-bind:to="{ name: 'new-band' }"><button class="big-button">Create a New Band</button></router-link><div class="adminhub" v-if="isAdmin">
-      <router-link v-bind:to="{ name: 'genres' }"><button class="big-button">Manage genres</button></router-link><button class="big-button">Manage bands</button>
-      </div><br>
-    
-      <band-list />
+    <band-list />
   </div>
 </template>
 <!--  
@@ -30,21 +26,4 @@ export default {
 </script>
 
 <style>
-section {
-  height: 500px;
-  margin: 50px;
-}
-h1 {
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-.searchbar {
-  margin-left: 10vw;
-  margin-right: 10vw;
-}
-.adminhub {
-  display:block;
-  margin-left: 765px;
-  margin-top: -85px;
-}
 </style>

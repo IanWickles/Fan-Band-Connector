@@ -3,8 +3,8 @@
     <img src="musicnotes.png" class="headerimg" />
     <h1>Welcome to Louisiana</h1><img src="actualsaxmirror (1).png" class="titleimg1"/><img src="actualsax.png" class="titleimg2"/><h1 class="wave">Beat-Wave!</h1>
     
-    <p class="mymessage">{{ message }}</p><br><br>
-    <img src="jazzband.png"/><br>
+    <p class="mymessage">{{ message }}</p><br>
+    <img src="jazzband.png" class="footerimg"/><br>
     <router-link v-bind:to="{ name: 'bands' }"><button class="big-button">Explore Bands</button></router-link>
     <router-link v-bind:to="{ name: 'venues' }"><button class="big-button">Explore Venues</button></router-link>
     <router-link v-bind:to="{ name: 'shows' }"><button class="big-button">Explore Shows</button></router-link><br>
@@ -43,7 +43,7 @@ h1 {
 .mymessage {
   text-align: center;
   font-family: "Indie Flower", cursive;
-  font-size: larger;
+  font-size: x-large;
 }
 .headerimg {
   display: block;
@@ -68,5 +68,10 @@ h1 {
   margin-left: 464px;
   margin-top: -70px;
   max-width: 8%;
+}
+.footerimg {
+  display: block;
+  margin:auto;
+  margin-bottom: -45px;
 }
 </style>

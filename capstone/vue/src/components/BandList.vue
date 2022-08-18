@@ -1,61 +1,58 @@
 <template>
-  <div>
-    <div
-      :style="{
-        'background-image':
-          'url(https://images.pexels.com/photos/3353055/pexels-photo-3353055.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2)',
-      }"
-      class="band-container"
+  <div class="band-container">
+    <div class="buttonnav">
+    <router-link v-bind:to="{ name: 'new-band' }"
+      ><button class="big-button">Create a New Band</button></router-link
     >
-      <table class="item band">
-        <tr>
-          <td>
-            <input
-              id="band-filter"
-              class="input is-rounded"
-              v-model="filter.bandName"
-              name="byBand"
-              type="text"
-              placeholder="Search by band"
-            />
-          </td>
-          <td>
-            <input
-              class="input is-rounded"
-              name="byGenre"
-              type="text"
-              placeholder="Search by genre"
-            />
-          </td>
-        </tr>
-        <tbody>
-          <tr v-for="band in filteredList" :key="band.bandId">
-            <td class="card">
-              <router-link
-                v-bind:to="{
-                  name: 'band',
-                  params: { bandId: band.bandId },
-                }"
-              >
-                <h1 class="card-header-title is-size-2">
-                  {{ band.bandName }}
-                </h1></router-link
-              >
-              <router-link
-                v-bind:to="{
-                  name: 'band',
-                  params: { bandId: band.bandId },
-                }"
-                ><figure class="image">
-                  <img :src="band.bandImage" /></figure
-              ></router-link>
-              <div class="card-content">{{ band.bandDesc }}</div>
-            </td>
+    <div class="adminhub" v-if="isAdmin">
+      <router-link v-bind:to="{ name: 'genres' }"
+        ><button class="big-button">Manage genres</button></router-link
+      ><button class="big-button">Manage bands</button>
+    </div></div>
+    <br />
+    <div class="band">
+      <div class="searchbar">
+        <br>
+        <input
+          id="band-filter"
+          class="input is-rounded"
+          v-model="filter.bandName"
+          name="byBand"
+          type="text"
+          placeholder="Search by band"
+        /><br />
+        <input
+          class="input is-rounded"
+          name="byGenre"
+          type="text"
+          placeholder="Search by genre"
+        />
+      </div>
+      <div v-for="band in filteredList" :key="band.bandId">
+        <div class="card">
+          <router-link
+            v-bind:to="{
+              name: 'band',
+              params: { bandId: band.bandId },
+            }"
+          >
+            <h1 class="card-header-title is-size-2">
+              {{ band.bandName }}
+            </h1></router-link
+          >
+          <router-link
+            v-bind:to="{
+              name: 'band',
+              params: { bandId: band.bandId },
+            }"
+            ><figure class="image">
+              <img :src="band.bandImage" /></figure
+          ></router-link>
+          <div class="card-content">{{ band.bandDesc }}</div>
+        </div>
 
-            <!-- <h2 class="genre">{{ band.genre }}</h2> -->
-          </tr>
-        </tbody>
-      </table>
+        <!-- <h2 class="genre">{{ band.genre }}</h2> -->
+      </div>
     </div>
   </div>
 </template>
@@ -121,14 +118,26 @@ export default {
   background-image: url("https://www.transparenttextures.com/patterns/my-little-plaid.png");
 }
 .card-header-title {
-  color: white;
+  color: cadetblue;
 }
 .card-content {
-  color: white;
+  color:cadetblue;
 }
 .image {
   display: block;
   margin: auto;
   max-width: 90%;
+}
+.searchbar {
+  margin-left: 10vw;
+  margin-right: 10vw;
+}
+.adminhub {
+  display: block;
+  margin-left: 765px;
+  margin-top: -85px;
+}
+.buttonnav {
+  margin-bottom: 20px;
 }
 </style>
