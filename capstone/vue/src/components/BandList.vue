@@ -1,18 +1,19 @@
 <template>
   <div class="band-container">
     <div class="buttonnav">
-    <router-link v-bind:to="{ name: 'new-band' }"
-      ><button class="big-button">Create a New Band</button></router-link
-    >
-    <div class="adminhub" v-if="isAdmin">
-      <router-link v-bind:to="{ name: 'genres' }"
-        ><button class="big-button">Manage genres</button></router-link
-      ><button class="big-button">Manage bands</button>
-    </div></div>
+      <router-link v-bind:to="{ name: 'new-band' }"
+        ><button class="big-button">Create a New Band</button></router-link
+      >
+      <div class="adminhub" v-if="isAdmin">
+        <router-link v-bind:to="{ name: 'genres' }"
+          ><button class="big-button">Manage genres</button></router-link
+        ><button class="big-button">Manage bands</button>
+      </div>
+    </div>
     <br />
     <div class="band">
       <div class="searchbar">
-        <br>
+        <br />
         <input
           id="band-filter"
           class="input is-rounded"
@@ -120,15 +121,15 @@ export default {
   background-image: url(https://images.pexels.com/photos/3353055/pexels-photo-3353055.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2);
 }
 .card {
-  background-color: #f7ff00;
+  background-color: #8b008b;
   border-radius: 12px;
   background-image: url("https://www.transparenttextures.com/patterns/my-little-plaid.png");
 }
 .card-header-title {
-  color: cadetblue;
+  color: white;
 }
 .card-content {
-  color:cadetblue;
+  color: white;
 }
 .image {
   display: block;
