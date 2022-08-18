@@ -21,7 +21,7 @@ public class JdbcBandDao implements BandDao {
 
     public List<Band> getAllBands() {
         List<Band> bands = new ArrayList<>();
-        String sql = "SELECT * FROM band;";
+        String sql = "SELECT * FROM band JOIN band_genre USING (band_id) JOIN genre USING (genre_id);";
 
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);

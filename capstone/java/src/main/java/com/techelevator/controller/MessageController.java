@@ -33,6 +33,7 @@ public class MessageController {
     public List<Message> getMessagesOfCurrentUser(@Valid Principal user) {
         User currentUser = userDao.findByUsername(user.getName());
         int userId = currentUser.getId();
+        System.out.println("User ID: " + userId + " (" + user.getName() + ") retrieved messages");
         return messageDao.getMessagesOfCurrentUser(userId);
     }
 
@@ -49,14 +50,14 @@ public class MessageController {
         }
     }
 
-//    @PostMapping("/bands/newmessage")
-//    public boolean sendMessageToFollowers(@RequestBody Message newMessage @Valid Principal user){
-//        User currentUser = userDao.findByUsername(user.getName());
-//        int currentUserId = currentUser.getId();
-//        int bandMgr = band.getMgrId();
-//        if(currentUserId == bandMgr){
-//            return messageDao.sendMessageToFollowers(newMessage);
-//        }
-//        return false;
-//    }
+    @PreAuthorize("isAuthenticated()")
+    @DeleteMapping("/inbox/{msgId}")
+    public boolean deleteMessage(@Valid Principal user, @PathVariable int msgId){
+        System.out.println(user.getName() + " deleted messages");
+        User currentUser = userDao.findByUsername(user.getName());
+        int currentUserId = currentUser.getId();
+        System.out.println("User ID: " + currentUserId);
+        return messageDao.deleteMessage(currentUserId, msgId);
+    }
+
 }
