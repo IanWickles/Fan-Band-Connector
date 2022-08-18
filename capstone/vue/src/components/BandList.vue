@@ -50,9 +50,6 @@
               <img :src="band.bandImage" /></figure
           ></router-link>
           <div class="card-content">{{ band.bandDesc }}</div>
-          <p v-for="genre in genres" :key="genre.genreId" params: {bandId: band.bandId } >
-              {{ genre.genreName }}
-            </p>
         </div>
 
         <!-- <h2 class="genre">{{ band.genre }}</h2> -->
@@ -113,7 +110,6 @@ export default {
   },
   created() {
     this.getBands();
-    this.getBandGenres();
   },
 };
 </script>
