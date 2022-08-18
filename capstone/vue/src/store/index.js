@@ -21,6 +21,7 @@ export default new Vuex.Store({
     token: currentToken || '',
     user: currentUser || {},
     bands: [],
+    genres: [],
     activeBand: {
       bandId: 0,
       bandName: "",
@@ -28,7 +29,7 @@ export default new Vuex.Store({
       bandDesc: "",
       Members: "",
       mgrId: "",
-      genreName: "",
+
     },
     activeBandPhotos: [],
     activeBandGenres: [],

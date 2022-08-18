@@ -19,6 +19,8 @@
               placeholder="Search by band"
             />
           </td>
+        </tr>
+        <tr>
           <td>
             <input
               class="input is-rounded"
@@ -28,7 +30,7 @@
             />
           </td>
         </tr>
-        <tbody>
+        
           <tr v-for="band in filteredList" :key="band.bandId">
             <td class="card">
               <router-link
@@ -51,10 +53,11 @@
               ></router-link>
               <div class="card-content">{{ band.bandDesc }}</div>
             </td>
-
-            <!-- <h2 class="genre">{{ band.genre }}</h2> -->
+            <p v-for="genre in genres" :key="genre.genreId" params: {bandId: band.bandId } >
+              {{ genre.genreName }}
+            </p>
           </tr>
-        </tbody>
+       
       </table>
     </div>
   </div>
@@ -102,9 +105,15 @@ export default {
         this.$store.commit("SET_BANDS", response.data);
       });
     },
+    getBandGenres(bandId) {
+      bandService.getBandGenres(bandId).then((response) => {
+        this.$store.commit("SET_BAND_GENRES", response.data);
+      });
+    },
   },
   created() {
     this.getBands();
+    this.getBandGenres();
   },
 };
 </script>
