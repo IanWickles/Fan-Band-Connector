@@ -42,9 +42,6 @@
               ></router-link>
               <div class="card-content">{{ band.bandDesc }}</div>
             </td>
-            <p v-for="genre in genres" :key="genre.genreId" params: {bandId: band.bandId } >
-              {{ genre.genreName }}
-            </p>
           </tr>
       </table>
     </div>
@@ -96,7 +93,6 @@ export default {
   },
   created() {
     this.getBands();
-    this.getBandGenres();
   },
 };
 </script>
