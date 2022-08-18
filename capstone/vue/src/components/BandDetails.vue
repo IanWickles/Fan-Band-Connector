@@ -1,13 +1,13 @@
 <template>
   <div>
     <h1 class="name">{{ this.$store.state.activeBand.bandName }}</h1>
-    <div class="managerhub">
-      <button class="manageredit">
+    <div class="manager-hub">
+      <button class="manager-edit">
         <router-link v-bind:to="{ name: 'update-band' }">Edit</router-link>
       </button>
       |
-      <button class="managershow">Post Show</button>
-      <button class="managermessage">
+      <button class="manager-show">Post Show</button>
+      <button class="manager-message">
         <router-link v-bind:to="{ name: 'new-message' }"
           >Send Message</router-link
         >
@@ -35,7 +35,7 @@
     <h1>Photo Gallery</h1>
     <ul class="photo-gallery">
       <li v-for="photo in photos" :key="photo.photoId">
-        <img :src="photo.photoImage" class="galleryimg" />
+        <img :src="photo.photoImage" class="gallery-img" />
       </li>
     </ul>
   </div>
@@ -128,7 +128,7 @@ export default {
 .genre-list {
   text-align: center;
 }
-.thisimage {
+.this-image {
   display: block;
   margin: auto;
   max-width: 60%;
@@ -137,7 +137,7 @@ export default {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
 }
-.galleryimg {
+.gallery-img {
   max-width: 80%;
 }
 </style>

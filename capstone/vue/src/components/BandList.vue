@@ -20,17 +20,6 @@
             />
           </td>
         </tr>
-        <tr>
-          <td>
-            <input
-              class="input is-rounded"
-              name="byGenre"
-              type="text"
-              placeholder="Search by genre"
-            />
-          </td>
-        </tr>
-        
           <tr v-for="band in filteredList" :key="band.bandId">
             <td class="card">
               <router-link
@@ -57,7 +46,6 @@
               {{ genre.genreName }}
             </p>
           </tr>
-       
       </table>
     </div>
   </div>
@@ -91,11 +79,6 @@ export default {
             .includes(this.filter.bandName.toLowerCase())
         );
       }
-      //  if (this.$store.state.bands.genre != "") {
-      //   results = results.filter((band) =>
-      //     band.genre.toLowerCase().includes(this.filter.genre.toLowerCase())
-      //   );
-      // }
       return bandList;
     },
   },
