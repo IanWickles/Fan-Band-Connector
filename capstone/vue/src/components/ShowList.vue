@@ -1,32 +1,32 @@
 <template>
-  <div class="show-container">
-    <input
-      class="input is-rounded"
-      v-model="input"
-      name="byShow"
-      type="text"
-      placeholder="Search by show"
-    />
-    <div class="show">
+  <div class="show">
+    <table>
       <tbody>
-        <tr
-          v-for="show in this.$store.state.shows"
-          v-bind:key="show.showId"
-        >
-          <div class="card column is-offset-one-quarter">
-            <td>
-              <router-link class="card-header"
-                v-bind:to="{ name: 'show', params: { showId: show.showId } }"
-                >{{ show.showTitle }}</router-link
-              >
-            </td>
+        <tr>
+          <td>
+            <input
+              class="input is-rounded"
+              v-model="filter.showTitle"
+              name="byShow"
+              type="text"
+              placeholder="Search by show"
+            />
+          </td>
+        </tr>
+
+        <tr v-for="show in filteredList" :key="show.showId">
+          <td class="show-container">
+            <router-link
+              class="card-header"
+              v-bind:to="{ name: 'show', params: { showId: show.showId } }"
+              >{{ show.showTitle }}</router-link
+            >
             <h2 class="card-header">Show Time: {{ show.showTime }}</h2>
-            <br>
             <h2 class="card-content">{{ show.showDesc }}</h2>
-          </div>
+          </td>
         </tr>
       </tbody>
-    </div>
+    </table>
   </div>
 </template>
 
@@ -35,6 +35,30 @@ import showService from "@/services/ShowService.js";
 
 export default {
   name: "show-list",
+  data() {
+    return {
+      filter: {
+        showId: 0,
+        showTime: 0,
+        showTitle: "",
+        showDesc: "",
+        venueId: 0,
+      },
+    };
+  },
+  computed: {
+    filteredList() {
+      let showList = this.$store.state.shows;
+      if (this.filter.showTitle != "") {
+        showList = showList.filter((show) =>
+          show.showTitle
+            .toLowerCase()
+            .includes(this.filter.showTitle.toLowerCase())
+        );
+      }
+      return showList;
+    },
+  },
   methods: {
     getShows() {
       showService.list().then((response) => {
@@ -53,11 +77,10 @@ export default {
 .container {
   padding: 10px;
 }
-.card-header{
+.card-header {
   font-size: 30px;
 }
-.card-content{
+.card-content {
   font-size: 30px;
 }
-
 </style>
