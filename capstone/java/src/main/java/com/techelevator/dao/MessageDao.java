@@ -16,6 +16,8 @@ public interface MessageDao {
 
     boolean sendMessageToFollowers(Message newMessage, int mgrId, int bandId);
 
+    boolean deleteMessage(int userId, int msgId);
+
    // void deleteMessage(int messageId);
 
 }
