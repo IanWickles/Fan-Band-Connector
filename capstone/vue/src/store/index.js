@@ -27,7 +27,7 @@ export default new Vuex.Store({
       bandImage: "",
       bandDesc: "",
       Members: "",
-      mgrId: "",
+      mgrId: 0,
       genreName: "",
     },
     activeBandPhotos: [],

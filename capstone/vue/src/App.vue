@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div id="titleBar">
-      <img src="header.png" />
+      <img src="/header.png" />
     </div>
     <div
       id="nav"
