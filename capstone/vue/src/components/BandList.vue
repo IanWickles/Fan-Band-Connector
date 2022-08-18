@@ -51,8 +51,6 @@
           ></router-link>
           <div class="card-content">{{ band.bandDesc }}</div>
         </div>
-
-        <!-- <h2 class="genre">{{ band.genre }}</h2> -->
       </div>
     </div>
   </div>
@@ -90,7 +88,7 @@ export default {
     },
     isAdmin() {
       return (
-        this.$store.state.user.authorities.find(
+        this.$store.state.user.authorities != undefined && this.$store.state.user.authorities.find(
           (authority) => authority.name == "ROLE_ADMIN"
         ) != undefined
       );
@@ -121,7 +119,7 @@ export default {
   background-image: url(https://images.pexels.com/photos/3353055/pexels-photo-3353055.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2);
 }
 .card {
-  background-color: #8B008B;
+  background-color: #8b008b;
   border-radius: 12px;
   background-image: url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
 }

@@ -1,32 +1,27 @@
 <template>
-  <div class="show">
-    <table>
-      <tbody>
-        <tr>
-          <td>
-            <input
-              class="input is-rounded"
-              v-model="filter.showTitle"
-              name="byShow"
-              type="text"
-              placeholder="Search by show"
-            />
-          </td>
-        </tr>
-
-        <tr v-for="show in filteredList" :key="show.showId">
-          <td class="card">
-            <router-link
-              class="card-header"
-              v-bind:to="{ name: 'show', params: { showId: show.showId } }"
-              >{{ show.showTitle }}</router-link
-            >
-            <h2 class="card-header">Show Time: {{ show.showTime }}</h2>
-            <h2 class="card-content">{{ show.showDesc }}</h2>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+  <div>
+    <div class="searchbar">
+      <input
+        class="input is-rounded"
+        v-model="filter.showTitle"
+        name="byShow"
+        type="text"
+        placeholder="Search by show"
+      />
+    </div>
+    <div class="show">
+      <div v-for="show in filteredList" :key="show.showId">
+        <div class="card">
+          <router-link
+            class="card-header"
+            v-bind:to="{ name: 'show', params: { showId: show.showId } }"
+            ><h1>{{ show.showTitle }}</h1></router-link
+          >
+          <h2 class="card-header">Show Time: {{ show.showTime }}</h2>
+          <h2 class="card-content">{{ show.showDesc }}</h2>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -74,7 +69,6 @@ export default {
 </script>
 
 <style>
-
 .container {
   padding: 10px;
 }
