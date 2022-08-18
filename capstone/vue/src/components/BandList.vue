@@ -89,8 +89,15 @@ export default {
       //   results = results.filter((band) =>
       //     band.genre.toLowerCase().includes(this.filter.genre.toLowerCase())
       //   );
-      // }
+      // },
       return bandList;
+    },
+    isAdmin() {
+      return (
+        this.$store.state.user.authorities.find(
+          (authority) => authority.name == "ROLE_ADMIN"
+        ) != undefined
+      );
     },
   },
   methods: {
@@ -134,7 +141,7 @@ export default {
 }
 .adminhub {
   display: block;
-  margin-left: 765px;
+  margin-left: 700px;
   margin-top: -85px;
 }
 .buttonnav {

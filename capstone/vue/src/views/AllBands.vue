@@ -13,15 +13,6 @@
 import BandList from "../components/BandList.vue";
 export default {
   components: { BandList },
-  computed: {
-    isAdmin() {
-      return (
-        this.$store.state.user.authorities.find(
-          (authority) => authority.name == "ROLE_ADMIN"
-        ) != undefined
-      );
-    },
-  },
 };
 </script>
 
