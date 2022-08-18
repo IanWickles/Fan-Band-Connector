@@ -21,8 +21,8 @@
                 >{{ venue.venueName }}</router-link
               >
             </td>
-            <h2 class="card-header">{{ venue.venueAddress }}</h2>
-            <h2 class="card-content">{{ venue.venueDesc }}</h2>
+            <h2 class="card-header" id="addy">{{ venue.venueAddress }}</h2>
+            <h2 class="card-content" id="vdesc">{{ venue.venueDesc }}</h2>
           </div>
         </tr>
       </tbody>
@@ -49,8 +49,12 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .container {
   padding: 10px;
+}
+.card-header{
+  text-align: center;
+  color: white;
 }
 </style>
