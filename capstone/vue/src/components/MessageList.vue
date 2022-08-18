@@ -19,24 +19,25 @@
       Sort by Band
     </button>
     <div
-      class="message is-warning"
+      class="message is-warning is-large"
       v-for="message in this.$store.state.messages"
       v-bind:key="message.messageId"
     >
-      <h5 class="message-header">{{ message.bandName }}</h5>
+      <h5 class="message-header">{{ message.bandName }}<i class="fa-solid fa-envelope"></i></h5>
 
       <h3 class="message-body">
-        <i>{{ message.messageBody }}</i>
+      "{{ message.messageBody }}"
       </h3>
 
       <h4>{{ message.messageTimestamp }}</h4>
 
-      <!--<button class="button is-danger">Delete</button>-->
+      <button v-on:click="deleteMessage(message.messageId)" class="button is-danger">Delete</button>
     </div>
   </div>
 </template>
 
 <script>
+import MessageService from '../services/MessageService';
 import messageService from "../services/MessageService";
 export default {
   name: "message-list",
@@ -106,6 +107,13 @@ export default {
       }
       return 0;
     },
+    deleteMessage(messageId){
+      MessageService.deleteMessage(this.$store.state.user.userId, messageId).then((response) => {
+        if(response.status===200){
+          this.getMessages();
+        }
+      });
+    }
   },
   created() {
     this.getMessages();
