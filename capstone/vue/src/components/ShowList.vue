@@ -15,7 +15,7 @@
         </tr>
 
         <tr v-for="show in filteredList" :key="show.showId">
-          <td class="show-container">
+          <td class="card">
             <router-link
               class="card-header"
               v-bind:to="{ name: 'show', params: { showId: show.showId } }"
