@@ -4,18 +4,18 @@
       <label for="name-input"> Band Name: </label>
       <input
         type="text"
-        id="bandName" 
-        class="name-input" 
+        id="bandName"
+        class="name-input"
         placeholder="Name"
         v-model="updatedBand.bandName"
-        required 
+        required
         autofocus
-       />
+      />
     </div>
     <div>
       <label for="bandMember-input"> Members: </label>
-      <input  
-        type="text" 
+      <input
+        type="text"
         id="bandMember"
         class="bandMember-input"
         placeholder="Name"
@@ -26,8 +26,8 @@
 
     <div>
       <label for="managerId-input"> Manager Id: </label>
-      <input 
-        type="number" 
+      <input
+        type="number"
         id="bandManager"
         class="managerId-input"
         placeholder="New user ID"
@@ -35,29 +35,29 @@
         v-model="updatedBand.mgrId"
       />
     </div>
-    
+
     <div>
       <label for="bandImage-input"> Cover Photo: </label>
-      <input 
-        type="img" 
+      <input
+        type="img"
         id="bandImage"
         class="bandImage-input"
         placeholder="Cover Image"
         required
         v-model="updatedBand.bandImage"
-        />
+      />
     </div>
 
     <div class="field">
       <label for="bandDesc-input">Who Dat:</label>
-        <input 
+      <input
         type="text"
         id="bandDesc"
-        class="bandDesc-input" 
+        class="bandDesc-input"
         placeholder="Description"
         required
         v-model="updatedBand.bandDesc"
-        />
+      />
     </div>
 
     <div class="control">
@@ -78,7 +78,7 @@ export default {
         bandImage: "",
         bandDesc: "",
         members: "",
-        mgrId: ""
+        mgrId: "",
       },
     };
   },
@@ -90,14 +90,12 @@ export default {
         bandImage: this.updatedBand.bandImage,
         bandDesc: this.updatedBand.bandDesc,
         members: this.updatedBand.members,
-        mgrId: this.updatedBand.mgrId
+        mgrId: this.updatedBand.mgrId,
       };
-      bandService.updateBand(updatedBand),
-      this.$router.push({ name: "bands" });
-}
+      bandService.updateBand(updatedBand), this.$router.push({ name: "bands" });
+    },
   },
 };
-
 </script>
 
 <style></style>

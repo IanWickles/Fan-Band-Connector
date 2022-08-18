@@ -1,15 +1,33 @@
 <template>
   <div class="home">
     <img src="musicnotes.png" class="headerimg" />
-    <h1>Welcome to Louisiana</h1><img src="actualsaxmirror (1).png" class="titleimg1"/><img src="actualsax.png" class="titleimg2"/><h1 class="wave">Beat-Wave!</h1>
-    
-    <p class="mymessage">{{ message }}</p><br>
-    <img src="jazzband.png" class="footerimg"/><br>
-    <router-link v-bind:to="{ name: 'bands' }"><button class="big-button">Explore Bands</button></router-link>
-    <router-link v-bind:to="{ name: 'venues' }"><button class="big-button">Explore Venues</button></router-link>
-    <router-link v-bind:to="{ name: 'shows' }"><button class="big-button">Explore Shows</button></router-link><br>
-    <router-link v-bind:to="{ name: 'login' }"><button class="big-button" v-if="loggedOut">Login</button></router-link>
-    <router-link v-bind:to="{ name: 'register' }"><button class="big-button" v-if="loggedOut">Create an Account</button></router-link>
+    <h1>Welcome to Louisiana</h1>
+    <img src="actualsaxmirror (1).png" class="titleimg1" /><img
+      src="actualsax.png"
+      class="titleimg2"
+    />
+    <h1 class="wave">Beat-Wave!</h1>
+
+    <p class="mymessage">{{ message }}</p>
+    <br />
+    <img src="jazzband.png" class="footerimg" /><br />
+    <router-link v-bind:to="{ name: 'bands' }"
+      ><button class="big-button">Explore Bands</button></router-link
+    >
+    <router-link v-bind:to="{ name: 'venues' }"
+      ><button class="big-button">Explore Venues</button></router-link
+    >
+    <router-link v-bind:to="{ name: 'shows' }"
+      ><button class="big-button">Explore Shows</button></router-link
+    ><br />
+    <router-link v-bind:to="{ name: 'login' }"
+      ><button class="big-button" v-if="loggedOut">Login</button></router-link
+    >
+    <router-link v-bind:to="{ name: 'register' }"
+      ><button class="big-button" v-if="loggedOut">
+        Create an Account
+      </button></router-link
+    >
   </div>
 </template>
 
@@ -54,10 +72,10 @@ h1 {
 .wave {
   margin-top: -20px;
   font-size: 70px;
-  font-family: 'Inspiration', cursive;
+  font-family: "Inspiration", cursive;
 }
 .titleimg2 {
-  display:block;
+  display: block;
   margin-left: 800px;
   margin-top: -152px;
   max-width: 8%;
@@ -71,7 +89,7 @@ h1 {
 }
 .footerimg {
   display: block;
-  margin:auto;
+  margin: auto;
   margin-bottom: -45px;
 }
 </style>

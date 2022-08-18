@@ -1,17 +1,15 @@
 <template>
   <div>
-      <genres-list />
+    <genres-list />
   </div>
 </template>
 
 <script>
-import GenresList from '../components/GenresList.vue'
+import GenresList from "../components/GenresList.vue";
 export default {
   components: { GenresList },
-
-}
+};
 </script>
 
 <style>
-
 </style>

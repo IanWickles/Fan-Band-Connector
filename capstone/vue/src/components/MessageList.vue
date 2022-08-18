@@ -1,18 +1,14 @@
 <template>
   <div>
     <button
-      v-on:click="
-        sortByDate();
-      "
+      v-on:click="sortByDate()"
       class="button is-info is-rounded"
       id="sortDate"
     >
       Sort By Date
     </button>
     <button
-      v-on:click="
-        sortByBand();
-      "
+      v-on:click="sortByBand()"
       class="button is-success is-rounded"
       id="sortBand"
     >
@@ -23,27 +19,31 @@
       v-for="message in this.$store.state.messages"
       v-bind:key="message.messageId"
     >
-      <h5 class="message-header">{{ message.bandName }}<i class="fa-solid fa-envelope"></i></h5>
+      <h5 class="message-header">
+        {{ message.bandName }}<i class="fa-solid fa-envelope"></i>
+      </h5>
 
-      <h3 class="message-body">
-      "{{ message.messageBody }}"
-      </h3>
+      <h3 class="message-body">"{{ message.messageBody }}"</h3>
 
       <h4>{{ message.messageTimestamp }}</h4>
 
-      <button v-on:click="deleteMessage(message.messageId)" class="button is-danger">Delete</button>
+      <button
+        v-on:click="deleteMessage(message.messageId)"
+        class="button is-danger"
+      >
+        Delete
+      </button>
     </div>
   </div>
 </template>
 
 <script>
-import MessageService from '../services/MessageService';
+import MessageService from "../services/MessageService";
 import messageService from "../services/MessageService";
 export default {
   name: "message-list",
   data() {
-    return { sb: true,
-    sd:true };
+    return { sb: true, sd: true };
   },
   methods: {
     getMessages() {
@@ -81,10 +81,13 @@ export default {
     },
 
     sortByDate() {
-      if(!this.sd) {this.$store.state.messages.sort(this.compareDateDesc);
-      this.sd=!this.sd;} else {
-      this.$store.state.messages.sort(this.compareDate);
-      this.sd=!this.sd}
+      if (!this.sd) {
+        this.$store.state.messages.sort(this.compareDateDesc);
+        this.sd = !this.sd;
+      } else {
+        this.$store.state.messages.sort(this.compareDate);
+        this.sd = !this.sd;
+      }
     },
 
     compareDate(a, b) {
@@ -107,20 +110,21 @@ export default {
       }
       return 0;
     },
-    deleteMessage(messageId){
-      MessageService.deleteMessage(this.$store.state.user.userId, messageId).then((response) => {
-        if(response.status===200){
+    deleteMessage(messageId) {
+      MessageService.deleteMessage(
+        this.$store.state.user.userId,
+        messageId
+      ).then((response) => {
+        if (response.status === 200) {
           this.getMessages();
         }
       });
-    }
+    },
   },
   created() {
     this.getMessages();
   },
-  computed: {
-   
-  },
+  computed: {},
 };
 </script>
 
