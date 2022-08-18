@@ -88,7 +88,8 @@ export default {
     },
     isAdmin() {
       return (
-        this.$store.state.user.authorities != undefined && this.$store.state.user.authorities.find(
+        this.$store.state.user.authorities != undefined &&
+        this.$store.state.user.authorities.find(
           (authority) => authority.name == "ROLE_ADMIN"
         ) != undefined
       );

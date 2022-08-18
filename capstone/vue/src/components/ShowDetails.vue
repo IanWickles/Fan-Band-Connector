@@ -1,11 +1,8 @@
 <template>
-  <div>
-    <h1>{{ this.$store.state.activeShow.title }}</h1>
+  <div class="show-details">
     <h1 class="name">{{ this.$store.state.activeShow.showTitle }}</h1>
-    <h2>Show Time:</h2>
-    <h2 class="time">{{ show.showTime }}</h2>
-    <br>
-    <h2>About:</h2>
+    <div class="time">{{ show.showTime }}</div>
+    <h1>Details:</h1>
     <h2 class="description">{{ show.showDesc }}</h2>
   </div>
 </template>
@@ -43,7 +40,14 @@ export default {
 </script>
 
 <style>
-div {
+.show-details {
   margin: 10px;
+  text-align: center;
+}
+.time {
+  font-size: x-large;
+}
+.description {
+  font-size: larger;
 }
 </style>
