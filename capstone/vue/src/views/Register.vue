@@ -14,18 +14,20 @@
         placeholder="Username"
         v-model="user.username"
         required
-        autofocus/>
-        <br>
-        <label for="email" class="sr-only">Email</label>
-        <input
+        autofocus
+      />
+      <br />
+      <label for="email" class="sr-only">Email</label>
+      <input
         type="email"
         id="email"
         class="form-control"
         placeholder="Email"
         v-model="user.userEmail"
         required
-        autofocus/>
-      <br>
+        autofocus
+      />
+      <br />
       <label for="password" class="sr-only">Password</label>
       <input
         type="password"
@@ -35,7 +37,7 @@
         v-model="user.password"
         required
       />
-      <br>
+      <br />
       <input
         type="password"
         id="confirmPassword"
@@ -44,14 +46,10 @@
         v-model="user.confirmPassword"
         required
       />
-      <br>
+      <br />
       <router-link :to="{ name: 'login' }">Have an account?</router-link>
-      <br>
-      <button class="big-button" type="submit">
-        Create Account
-      </button><br>
-      
-      
+      <br />
+      <button class="big-button" type="submit">Create Account</button><br />
     </form>
   </div>
 </template>
@@ -107,7 +105,7 @@ export default {
 };
 </script>
 <style>
-  .text-center {
-    text-align: center;
-  }
+.text-center {
+  text-align: center;
+}
 </style>

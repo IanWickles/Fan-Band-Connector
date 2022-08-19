@@ -1,36 +1,30 @@
 <template>
-  <div class="venue-container">
-    <table>
-      <tr>
-        <td>
-          <input
-            class="input is-rounded"
-            v-model="filter.venueName"
-            name="byTitle"
-            type="text"
-            placeholder="Search by venue"
-          />
-        </td>
-      </tr>
-      <td>
-        <tr v-for="venue in filteredList" :key="venue.venueId" class="venue">
-          <div class="card">
-            <td>
-              <router-link
-                class="card-header"
-                v-bind:to="{
-                  name: 'venue',
-                  params: { venueId: venue.venueId },
-                }"
-                >{{ venue.venueName }}</router-link
-              >
-            </td>
-            <h2 class="card-header" id="addy">{{ venue.venueAddress }}</h2>
-            <h2 class="card-content" id="vdesc">{{ venue.venueDesc }}</h2>
-          </div>
-        </tr>
-      </td>
-    </table>
+  <div>
+    <div class="searchbar">
+      <input
+        class="input is-rounded"
+        v-model="filter.venueName"
+        name="byTitle"
+        type="text"
+        placeholder="Search by venue"
+      />
+    </div>
+    <div class="venue">
+      <div v-for="venue in filteredList" :key="venue.venueId" class="venue">
+        <div class="card">
+          <router-link
+            class="card-header"
+            v-bind:to="{
+              name: 'venue',
+              params: { venueId: venue.venueId },
+            }"
+            ><h1>{{ venue.venueName }}</h1></router-link
+          >
+          <h2 class="card-content" id="addy">{{ venue.venueAddress }}</h2>
+          <h2 class="card-content" id="vdesc">{{ venue.venueDesc }}</h2>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -81,8 +75,11 @@ export default {
 .container {
   padding: 10px;
 }
-.card-header{
+.card-header {
   text-align: center;
-  color: white;
+  color: cyan;
+}
+.card-content {
+  color: seashell;
 }
 </style>

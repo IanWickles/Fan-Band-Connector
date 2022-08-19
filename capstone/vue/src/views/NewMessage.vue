@@ -3,12 +3,11 @@
 </template>
 
 <script>
-import NewMessage from '../components/NewMessage.vue'
+import NewMessage from "../components/NewMessage.vue";
 export default {
-components: {NewMessage}
-}
+  components: { NewMessage },
+};
 </script>
 
 <style>
-
 </style>

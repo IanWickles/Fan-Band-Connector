@@ -22,10 +22,10 @@ public class JdbcMessageDao implements MessageDao {
     @Override
     public List<Message> getMessagesOfCurrentUser(int userId) {
         List<Message> messages = new ArrayList<>();
-        String sql = "SELECT * from MESSAGES JOIN user_messages USING (message_id) JOIN band USING (band_id) WHERE user_id ="+ userId+
+        String sql = "SELECT * from MESSAGES JOIN user_messages USING (message_id) JOIN band USING (band_id) WHERE user_id = ? " +
                 "ORDER BY message_timestamp DESC;";
 
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);
         while (results.next()) {
             Message message = mapRowToMessage(results);
             messages.add(message);

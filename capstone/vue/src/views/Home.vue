@@ -1,30 +1,33 @@
 <template>
   <div class="home">
     <img src="musicnotes.png" class="headerimg" />
-    <h1>Welcome to Louisiana Beat-Wave!</h1>
-    <br /><br />
+    <h1>Welcome to Louisiana</h1>
+    <img src="actualsaxmirror (1).png" class="titleimg1" /><img
+      src="actualsax.png"
+      class="titleimg2"
+    />
+    <h1 class="wave">Beat-Wave!</h1>
+
     <p class="mymessage">{{ message }}</p>
-    <br /><br />
-    <img src="jazzband.png" /><br />
-    <button class="big-button" v-bind:to="{ name: 'bands' }">
-      <router-link v-bind:to="{ name: 'bands' }">Explore Bands</router-link>
-    </button>
-    <button class="big-button">
-      <router-link v-bind:to="{ name: 'venues' }">Explore Venues</router-link>
-    </button>
-    <button class="big-button">
-      <router-link v-bind:to="{ name: 'shows' }"
-        >Explore Shows</router-link
-      ></button
+    <br />
+    <img src="jazzband.png" class="footerimg" /><br />
+    <router-link v-bind:to="{ name: 'bands' }"
+      ><button class="big-button">Explore Bands</button></router-link
+    >
+    <router-link v-bind:to="{ name: 'venues' }"
+      ><button class="big-button">Explore Venues</button></router-link
+    >
+    <router-link v-bind:to="{ name: 'shows' }"
+      ><button class="big-button">Explore Shows</button></router-link
     ><br />
-    <button class="big-button" v-if="loggedOut">
-      <router-link v-bind:to="{ name: 'login' }">Login</router-link>
-    </button>
-    <button class="big-button" v-if="loggedOut">
-      <router-link v-bind:to="{ name: 'register' }">
-        Create an Account</router-link
-      >
-    </button>
+    <router-link v-bind:to="{ name: 'login' }"
+      ><button class="big-button" v-if="loggedOut">Login</button></router-link
+    >
+    <router-link v-bind:to="{ name: 'register' }"
+      ><button class="big-button" v-if="loggedOut">
+        Create an Account
+      </button></router-link
+    >
   </div>
 </template>
 
@@ -58,12 +61,35 @@ h1 {
 .mymessage {
   text-align: center;
   font-family: "Indie Flower", cursive;
-  font-size: larger;
+  font-size: x-large;
 }
 .headerimg {
   display: block;
   margin: auto;
   margin-top: -100px;
   transform: scaleX(1.5);
+}
+.wave {
+  margin-top: -20px;
+  font-size: 70px;
+  font-family: "Inspiration", cursive;
+}
+.titleimg2 {
+  display: block;
+  margin-left: 800px;
+  margin-top: -152px;
+  max-width: 8%;
+  margin-bottom: -90px;
+}
+.titleimg1 {
+  display: block;
+  margin-left: 464px;
+  margin-top: -70px;
+  max-width: 8%;
+}
+.footerimg {
+  display: block;
+  margin: auto;
+  margin-bottom: -45px;
 }
 </style>

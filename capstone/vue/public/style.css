@@ -8,11 +8,12 @@ body {
   background-attachment: fixed;
 }
 #content {
-  display: fixed;
-  background-color: #f0f8ffbb;
-  border-radius: 12px;
-  margin: 0vh 10vw;
-  margin-right: calc(10vw + 125px);
+    display: fixed;
+    background-color: #f0f8ffbb;
+    border-radius: 12px;
+    margin: 0vh 10vw;
+    margin-bottom: 2vw;
+    margin-right: calc(10vw + 125px);
 }
 :root {
   --backgroundColor: rgba(246, 241, 209);

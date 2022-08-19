@@ -1,15 +1,14 @@
 <template>
   <div>
     <h1 class="name">{{ this.$store.state.activeVenue.venueName }}</h1>
-    <h2 class="address">{{ venue.venueAddress }}</h2>
-    <br />
-    <h2>About:</h2>
+    <div class="address">{{ venue.venueAddress }}</div>
+    <h1>About:</h1>
     <h2 class="description">{{ venue.venueDesc }}</h2>
     <br />
     <iframe
       width="600"
       height="450"
-      style="border:0"
+      style="border: 0"
       loading="lazy"
       allowfullscreen
       :src="venue.venueMap"
@@ -52,6 +51,7 @@ div {
 }
 .address {
   text-align: center;
+  font-size: larger;
 }
 iframe {
   display: block;

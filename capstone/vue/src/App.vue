@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div id="titleBar">
-      <img src="header.png" />
+      <img src="/header.png" />
     </div>
     <div
       id="nav"
@@ -32,7 +32,7 @@
         </li>
         <li class="navbar-item">
           <router-link v-bind:to="{ name: 'shows' }"
-            ><i class="fa-solid fa-guitar"></i>
+            ><i class="fa-solid fa-music"></i>
             <div>Shows</div></router-link
           >
         </li>

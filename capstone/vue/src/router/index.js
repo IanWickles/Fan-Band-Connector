@@ -70,7 +70,7 @@ const router = new Router({
       name: "bands",
       component: AllBands,
       meta: {
-        requiresAuth: true
+        requiresAuth: false
       }
     },
     {
@@ -110,7 +110,7 @@ const router = new Router({
       name: "new-message",
       component: NewMessage,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       }
     },
     {
