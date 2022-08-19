@@ -21,12 +21,6 @@
           name="byBand"
           type="text"
           placeholder="Search by band"
-        /><br />
-        <input
-          class="input is-rounded"
-          name="byGenre"
-          type="text"
-          placeholder="Search by genre"
         />
       </div>
       <div v-for="band in filteredList" :key="band.bandId">
